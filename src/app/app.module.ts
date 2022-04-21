@@ -10,6 +10,8 @@ import { ListarInstrumentosComponent } from './components/instrumentos/listar-in
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { HeaderComponent } from './header/header.component';
     ListarInstrumentosComponent,
     ReservasComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

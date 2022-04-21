@@ -1,0 +1,18 @@
+.img {
+    width: 60%;
+    height: auto;
+}
+
+.icon {
+    color: white;
+    font-size: calc(1vw + 1vh + 0.5vmin);
+    opacity: 90%;
+}
+
+.nav {
+    padding-right: 2%;
+}
+
+.navbar{
+    flex-wrap: nowrap;
+}
