@@ -3,7 +3,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="../../../assets/img-01.png" alt="IMG">
+					<img src="../../../assets/logoFomentoCultural.png" alt="IMG">
 				</div>
 
 				<form class="login100-form" [formGroup]="loginForm" (ngSubmit)="login()">
@@ -17,7 +17,7 @@
 						<div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)" class="alert-validate">
 
 							<div *ngIf="usuario.errors?.['required']">
-								Name is required.
+								EL Usuario es requerido
 							</div>
 						</div>
 						<span class="focus-input100"></span>
