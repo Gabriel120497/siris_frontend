@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, Observable, Subscription } from "rxjs";
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +21,8 @@ export class DashboardComponent implements OnInit {
 
   start: number = 0;
   setSlidesVar: number = 0;
+
+  mostrarCalendarioBool: boolean = false;
 
 
   constructor() { }
@@ -58,6 +59,10 @@ export class DashboardComponent implements OnInit {
     else {
       this.setSlidesVar = 4
     }
+  }
+
+  mostrarCalendario() {
+    this.mostrarCalendarioBool = !this.mostrarCalendarioBool;
   }
 
 }

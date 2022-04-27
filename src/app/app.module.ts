@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     HeaderComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
+    CalendarioComponent
   ],
   imports: [
     BrowserModule,
