@@ -4,7 +4,7 @@
 <div ng-app="slider" >
   <div class="slider" (window:resize)="onResize($event)">
     <div class="left">
-      <button (click)="moveLeft()" [hidden]="setSlidesVar==slides.length">
+      <button (click)="moveLeft()" [disabled]="start==0">
         <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
       </button>
     </div>
@@ -23,7 +23,7 @@
 
     </div>
     <div class="right">
-      <button (click)="moveRight()" [hidden]="start==0">
+      <button (click)="moveRight()" [disabled]="setSlidesVar==slides.length">
         <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
       </button>
     </div>

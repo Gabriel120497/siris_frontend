@@ -31,15 +31,15 @@ export class DashboardComponent implements OnInit {
   }
 
   moveLeft() {
-    this.start = this.start + 1;
-    this.setSlidesVar = this.setSlidesVar + 1;
+    this.start = this.start - 1;
+    this.setSlidesVar = this.setSlidesVar - 1;
     console.log('left');
 
   }
 
   moveRight() {
-    this.start = this.start - 1;
-    this.setSlidesVar = this.setSlidesVar - 1;
+    this.start = this.start + 1;
+    this.setSlidesVar = this.setSlidesVar + 1;
     console.log('right');
   }
 
@@ -52,9 +52,9 @@ export class DashboardComponent implements OnInit {
   setSlides(value: number) {
     console.log(value);
 
-    if (value < 500) { this.setSlidesVar = 1; }
-    else if (value >= 500 && value < 1000) { this.setSlidesVar = 2; }
-    else if (value >= 1000 && value < 1600) { this.setSlidesVar = 3; }
+    if (value < 700) { this.setSlidesVar = 1; }
+    else if (value >= 700 && value < 1300) { this.setSlidesVar = 2; }
+    else if (value >= 1300 && value < 1600) { this.setSlidesVar = 3; }
     else {
       this.setSlidesVar = 4
     }
