@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, Observable, Subscription } from "rxjs";
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +22,8 @@ export class DashboardComponent implements OnInit {
   start: number = 0;
   setSlidesVar: number = 0;
 
+  mostrarCalendarioBool: boolean = false;
+
 
   constructor() { }
 
@@ -31,15 +32,15 @@ export class DashboardComponent implements OnInit {
   }
 
   moveLeft() {
-    this.start = this.start + 1;
-    this.setSlidesVar = this.setSlidesVar + 1;
+    this.start = this.start - 1;
+    this.setSlidesVar = this.setSlidesVar - 1;
     console.log('left');
 
   }
 
   moveRight() {
-    this.start = this.start - 1;
-    this.setSlidesVar = this.setSlidesVar - 1;
+    this.start = this.start + 1;
+    this.setSlidesVar = this.setSlidesVar + 1;
     console.log('right');
   }
 
@@ -58,6 +59,10 @@ export class DashboardComponent implements OnInit {
     else {
       this.setSlidesVar = 4
     }
+  }
+
+  mostrarCalendario() {
+    this.mostrarCalendarioBool = !this.mostrarCalendarioBool;
   }
 
 }

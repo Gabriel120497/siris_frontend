@@ -34,6 +34,25 @@ body {
   cursor: pointer;
 }
 
+.left button:disabled,
+.right button:disabled {
+  background-color: transparent;
+  font-size: 24px;
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  color: lightgrey;
+  border: 2px solid #e7e7e7;
+  border-radius: 25px;
+  cursor: auto;
+}
+
+.left button:hover:disabled,
+.right button:hover:disabled {
+  background-color: lightgrey;
+  color: white;
+}
+
 .left button:hover,
 .right button:hover {
   background-color: #f44336;

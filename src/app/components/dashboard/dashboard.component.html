@@ -1,10 +1,10 @@
 <app-header></app-header>
 
 
-<div ng-app="slider" >
+<div ng-app="slider">
   <div class="slider" (window:resize)="onResize($event)">
     <div class="left">
-      <button (click)="moveLeft()" [hidden]="setSlidesVar==slides.length">
+      <button (click)="moveLeft()" [disabled]="start==0">
         <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
       </button>
     </div>
@@ -17,18 +17,22 @@
           <h5 class="card-title">{{slide.name}}</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
             content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a (click)="mostrarCalendario()" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
 
     </div>
     <div class="right">
-      <button (click)="moveRight()" [hidden]="start==0">
+      <button (click)="moveRight()" [disabled]="setSlidesVar==slides.length">
         <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
       </button>
     </div>
 
   </div>
+</div>
+
+<div *ngIf="mostrarCalendarioBool">
+  <app-calendario></app-calendario>
 </div>
 
 <app-footer></app-footer>
