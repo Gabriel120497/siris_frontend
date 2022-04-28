@@ -1,0 +1,7 @@
+body {
+    color: #0e171c;
+    display: grid;
+    font: 300 100%/1.5em 'Lato', sans-serif;
+    margin-top: 5vh;
+    place-items: center;
+}

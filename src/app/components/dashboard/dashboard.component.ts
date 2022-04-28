@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +10,14 @@ export class DashboardComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { name: 'LIME', 'background-color': "#a4c400" },
-    { name: 'GREEN', 'background-color': "#60a917" },
-    { name: 'EMERALD', 'background-color': "#008a00" },
-    { name: 'TEAL', 'background-color': "#00aba9" },
-    { name: 'CIAN', 'background-color': "#1ba1e2" },
-    { name: 'COBALT', 'background-color': "#0050ef" },
-    { name: 'INDIGO', 'background-color': "#6a00ff" },
-    { name: 'VIOLET', 'background-color': "#aa00ff" }
+    { tipoReserva: 'LIME', 'background-color': "#a4c400" },
+    { tipoReserva: 'GREEN', 'background-color': "#60a917" },
+    { tipoReserva: 'EMERALD', 'background-color': "#008a00" },
+    { tipoReserva: 'TEAL', 'background-color': "#00aba9" },
+    { tipoReserva: 'CIAN', 'background-color': "#1ba1e2" },
+    { tipoReserva: 'COBALT', 'background-color': "#0050ef" },
+    { tipoReserva: 'INDIGO', 'background-color': "#6a00ff" },
+    { tipoReserva: 'VIOLET', 'background-color': "#aa00ff" }
   ];
 
   start: number = 0;
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
   mostrarCalendarioBool: boolean = false;
 
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
     this.setSlides(screen.width);
@@ -61,8 +62,8 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  mostrarCalendario() {
-    this.mostrarCalendarioBool = !this.mostrarCalendarioBool;
+  reservas(tipoReserva: string) {
+    this.route.navigate(['/reservas', tipoReserva]);
   }
 
 }

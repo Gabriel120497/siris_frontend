@@ -14,10 +14,10 @@
       <div class="card">
         <img src="../../../assets/img-01.png" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">{{slide.name}}</h5>
+          <h5 class="card-title">{{slide.tipoReserva}}</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
             content.</p>
-          <a (click)="mostrarCalendario()" class="btn btn-primary">Go somewhere</a>
+          <a (click)="reservas(slide.tipoReserva)" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
 

@@ -1,98 +1,129 @@
-<body>
-    <div class="container">
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()">
+                Previous
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                Today
+            </div>
+            <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()">
+                Next
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="btn btn-primary" (click)="setView(CalendarView.Month)"
+                [class.active]="view === CalendarView.Month">
+                Month
+            </div>
+            <div class="btn btn-primary" (click)="setView(CalendarView.Week)"
+                [class.active]="view === CalendarView.Week">
+                Week
+            </div>
+            <div class="btn btn-primary" (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
+                Day
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div [ngSwitch]="view">
+    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-day-view>
+</div>
 
-        <div class="calendar">
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
 
-            <header>
+<br /><br /><br />
 
-                <h2>September</h2>
+<h3>
+    Edit events
+    <button class="btn btn-primary float-right" (click)="addEvent()">
+        Add new
+    </button>
+    <div class="clearfix"></div>
+</h3>
 
-                <a class="btn-prev fontawesome-angle-left" href="#"></a>
-                <a class="btn-next fontawesome-angle-right" href="#"></a>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Primary color</th>
+                <th>Secondary color</th>
+                <th>Starts at</th>
+                <th>Ends at</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
 
-            </header>
+        <tbody>
+            <tr *ngFor="let event of events">
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()" />
+                </td>
+                <td>
+                    <!--input type="color" [(ngModel)]="event.color.primary" (change)="refresh.next()" /-->
+                </td>
+                <td>
+                    <!--input type="color" [(ngModel)]="event.color.secondary" (change)="refresh.next()" /-->
+                </td>
+                <td>
+                    <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
+                        (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                        [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
+                </td>
+                <td>
+                    <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
+                        (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                        [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteEvent(event)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <td>Mo</td>
-                        <td>Tu</td>
-                        <td>We</td>
-                        <td>Th</td>
-                        <td>Fr</td>
-                        <td>Sa</td>
-                        <td>Su</td>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td class="prev-month">26</td>
-                        <td class="prev-month">27</td>
-                        <td class="prev-month">28</td>
-                        <td class="prev-month">29</td>
-                        <td class="prev-month">30</td>
-                        <td class="prev-month">31</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td class="event">10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td class="event">21</td>
-                        <td>22</td>
-                    </tr>
-
-                    <tr>
-                        <td class="current-day event">23</td>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                    </tr>
-                    <tr>
-                        <td>30</td>
-                        <td class="next-month">1</td>
-                        <td class="next-month">2</td>
-                        <td class="next-month">3</td>
-                        <td class="next-month">4</td>
-                        <td class="next-month">5</td>
-                        <td class="next-month">6</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div> <!-- end calendar -->
-
-    </div> <!-- end container -->
-</body>
+<ng-template #modalContent let-close="close">
+    <div class="modal-header">
+        <h5 class="modal-title">Event action occurred</h5>
+        <button type="button" class="close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>
+            Action:
+            <pre>{{ modalData?.action }}</pre>
+        </div>
+        <div>
+            Event:
+            <pre>{{ modalData?.event | json }}</pre>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="close()">
+            OK
+        </button>
+    </div>
+</ng-template>

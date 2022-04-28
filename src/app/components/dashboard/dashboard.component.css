@@ -49,8 +49,9 @@ body {
 
 .left button:hover:disabled,
 .right button:hover:disabled {
-  background-color: lightgrey;
-  color: white;
+
+  background-color: white;
+  color: lightgrey;
 }
 
 .left button:hover,
