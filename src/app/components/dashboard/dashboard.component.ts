@@ -23,9 +23,6 @@ export class DashboardComponent implements OnInit {
   start: number = 0;
   setSlidesVar: number = 0;
 
-  mostrarCalendarioBool: boolean = false;
-
-
   constructor(private route:Router) { }
 
   ngOnInit(): void {

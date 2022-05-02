@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FooterComponent } from './footer/footer.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -26,7 +25,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     HeaderComponent,
     DashboardComponent,
-    FooterComponent,
     CalendarioComponent
   ],
   imports: [
