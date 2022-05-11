@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { ReservaEquiposComponent } from './components/reservas/reserva-equipos/reserva-equipos.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'reservas/:tipoReserva', component: ReservasComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent}

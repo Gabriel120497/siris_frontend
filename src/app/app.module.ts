@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ReservaEquiposComponent } from './components/reservas/reserva-equipos/reserva-equipos.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     HeaderComponent,
     DashboardComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    ReservaEquiposComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     FormsModule,
     NgbModule,
+    Ng2SearchPipeModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,

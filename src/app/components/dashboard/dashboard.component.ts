@@ -10,23 +10,19 @@ export class DashboardComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { tipoReserva: 'LIME', 'background-color': "#a4c400" },
-    { tipoReserva: 'GREEN', 'background-color': "#60a917" },
-    { tipoReserva: 'EMERALD', 'background-color': "#008a00" },
-    { tipoReserva: 'TEAL', 'background-color': "#00aba9" },
-    { tipoReserva: 'CIAN', 'background-color': "#1ba1e2" },
-    { tipoReserva: 'COBALT', 'background-color': "#0050ef" },
-    { tipoReserva: 'INDIGO', 'background-color': "#6a00ff" },
-    { tipoReserva: 'VIOLET', 'background-color': "#aa00ff" }
+    { nombre: 'Reserva de Instrumentos', tipoReserva: 'Instrumentos' },
+    { nombre: 'Reserva de Equipos', tipoReserva: 'Equipos' },
+    { nombre: 'Reserva de Salones', tipoReserva: 'Salones' },
+    { nombre: 'Grupos de Proyeccion' }
   ];
 
   start: number = 0;
   setSlidesVar: number = 0;
 
-  constructor(private route:Router) { }
+  constructor(private route: Router) { }
 
-  ngOnInit(): void {
-    this.setSlides(screen.width);
+  ngOnInit(): void {    
+    this.setSlides(innerWidth);
   }
 
   moveLeft() {
@@ -43,7 +39,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onResize(event: any) {
-    console.log(event.srcElement.innerWidth);
+    console.log(event.srcElement);
     this.setSlides(event.srcElement.innerWidth);
     //this.setSlides(event.)
   }
@@ -59,8 +55,22 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  reservas(tipoReserva: string) {
+  verMas(tipoReserva: string) {
     this.route.navigate(['/reservas', tipoReserva]);
+    switch (tipoReserva) {
+      case 'Instrumentos'||'Salones':
+        this.route.navigate(['/reservas', tipoReserva]);
+        break;
+      case 'Equipos':
+        //this.route.navigate(['/reservas/reservaEquipos']);
+        break;
+      case 'GruposProyeccion':
+
+        break;
+
+      default:
+        break;
+    }
   }
 
 }

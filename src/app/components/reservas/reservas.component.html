@@ -1,5 +1,50 @@
 <app-header></app-header>
+
 <body>
-    <h1>Reserva de Instrumentos</h1>
-    <app-calendario></app-calendario> 
+    <h1>{{ tipoReserva }}</h1>
+    <br>
+
+    <!--select class="form-select" aria-label="Default select example">
+        <option value="4">
+            <div class="input-group input-group-sm search-control"> <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Query" [(ngModel)]="instrument" />
+            </div>
+        </option>
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select-->
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown">Select
+            Prueba
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation">
+                <div class="input-group input-group-sm search-control"> <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Query" [(ngModel)]="instrument"/>
+                </div>
+            </li>
+            <li role="presentation" *ngFor='let item of items | filter:instrument'> <a href="#"> {{item.name}} </a>
+            </li>
+        </ul>
+    </div>
+    <!--div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div-->
+
+    <br>
+    <app-calendario></app-calendario>
 </body>

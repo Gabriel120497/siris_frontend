@@ -1,0 +1,34 @@
+<app-header></app-header>
+
+<body>
+    <div>
+        <h1>Reserva de Equipos</h1>
+    </div>
+    <br>
+
+    <div class="app">
+        <form class="form" (ngSubmit)="agregarItemReserva()">
+
+            <select [(ngModel)]="inputVal" name="inputVal" class="input form__input">
+                <option value="{{item.name}}" *ngFor="let item of items">{{item.name}}</option>
+            </select>
+            <button class="btn form__submit-btn" type="submit">Agregar</button>
+
+        </form>
+        <div tag="ol" name="list" class="todo-list">
+            <li class="todo-list__item" key="index" *ngFor="let item of itemsParaReservar, let i = index">
+                <button class="todo-list__item-remove" (click)="borrarItemReserva(i)">
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
+                <label class="todo-list__item-content">
+                    {{ item.nombre }}
+                </label>
+                <div>
+                    Cantidad: <input type="number" class="counter">
+                </div>
+
+            </li>
+        </div>
+    </div>
+
+</body>
