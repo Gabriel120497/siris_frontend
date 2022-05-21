@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EquiposModel } from 'src/app/models/equipos';
+import { ReservaEquiposModel } from "src/app/models/reserva-equipos";
 
 @Component({
   selector: 'app-reserva-equipos',
@@ -9,6 +11,8 @@ import { EquiposModel } from 'src/app/models/equipos';
 export class ReservaEquiposComponent implements OnInit {
 
   itemsParaReservar: EquiposModel[] = [];
+  reserva: ReservaEquiposModel = new ReservaEquiposModel;
+  reservaJson: any;
 
   items = [{
     'name': 'Item 1', 'id': 1
@@ -29,8 +33,10 @@ export class ReservaEquiposComponent implements OnInit {
   }];
 
   inputVal: string;
+  cantidad: number = 0;
+  calendario: boolean = true;
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
 
@@ -38,9 +44,12 @@ export class ReservaEquiposComponent implements OnInit {
 
   agregarItemReserva() {
     if (this.inputVal) {
+      console.log(this.itemsParaReservar);
+
       this.itemsParaReservar.push({
-        'id': '8',
-        'nombre': this.inputVal
+        'id': this.inputVal,
+        'nombre': this.items.find(item => { return item.id.toString() === this.inputVal })?.name,
+        'cantidad': this.cantidad
       });
     }
     this.inputVal = '';
@@ -50,6 +59,30 @@ export class ReservaEquiposComponent implements OnInit {
     console.log(index);
 
     this.itemsParaReservar.splice(index, 1)
+  }
+
+  agregarCatidad(index: number) {
+    console.log(this.cantidad);
+    this.itemsParaReservar[index].cantidad = this.cantidad
+    console.log(this.itemsParaReservar);
+    this.cantidad = 0
+  }
+
+  siguiente() {
+    this.calendario = !this.calendario
+  }
+
+  hacerReserva() {
+    this.reserva.id = '1';
+    this.reserva.equipos = this.itemsParaReservar;
+    this.reserva.fechaInicio = this.reservaJson[0].start;
+    this.reserva.fechaFin = this.reservaJson[0].end;
+    console.log(this.reserva);
+
+  }
+
+  obtenerHora(e: any) { 
+    this.reservaJson = JSON.parse(e);
   }
 
 }

@@ -4,46 +4,35 @@
     <h1>{{ tipoReserva }}</h1>
     <br>
 
-    <!--select class="form-select" aria-label="Default select example">
-        <option value="4">
-            <div class="input-group input-group-sm search-control"> <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-search"></span>
-                </span>
-                <input type="text" class="form-control" placeholder="Query" [(ngModel)]="instrument" />
-            </div>
-        </option>
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select-->
 
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown">Select
-            Prueba
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation">
-                <div class="input-group input-group-sm search-control"> <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Query" [(ngModel)]="instrument"/>
+    <div id="inputSearch" class="container">
+        <div class="form-group">
+
+            <label>Instrumento</label>
+            <div class="link-dropdown form-control">
+                <div class="link-dropdown-search">
+                    <div class="link-dropdown-display-item" v-on:click="toggleDropdown()" v-if="!open">
+                        <!--div>{{displayItem()}}</div-->
+                    </div>
+                    <input v-model="searchTerm" placeholder="Search and Select" id="displayValue" v-if="open" v-focus
+                        v-on:click="toggleDropdown()" />
+                    <div class="link-dropdown-button" v-on:click="toggleDropdown()">
+                        <div class="dropdown-arrow"></div>
+                    </div>
                 </div>
-            </li>
-            <li role="presentation" *ngFor='let item of items | filter:instrument'> <a href="#"> {{item.name}} </a>
-            </li>
-        </ul>
+                <div class="link-dropdown-panel" v-show="open">
+                    <div class="link-dropdown-item placeholder" v-on:click="itemClicked(index)"
+                        v-for="(item,index) in items" id="realitems" v-show="item.dd_visible">
+                        <!--option>{{item.field}}</option-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
-    <!--div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div-->
+
 
     <br>
     <app-calendario></app-calendario>

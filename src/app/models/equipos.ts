@@ -1,4 +1,5 @@
 export class EquiposModel {
     id: string;
-    nombre: string;
+    nombre?: string;
+    cantidad: number;
 }

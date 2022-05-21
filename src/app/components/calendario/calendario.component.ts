@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
@@ -41,7 +41,7 @@ export class CalendarioComponent implements OnInit {
 
   selectedDayViewDate: Date;
 
-  bookingChange = new EventEmitter();
+  @Output() bookingChange = new EventEmitter();
 
   actionDelete = [
     {

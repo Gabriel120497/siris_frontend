@@ -6,11 +6,11 @@
     </div>
     <br>
 
-    <div class="app">
+    <div class="app" *ngIf="!calendario">
         <form class="form" (ngSubmit)="agregarItemReserva()">
 
             <select [(ngModel)]="inputVal" name="inputVal" class="input form__input">
-                <option value="{{item.name}}" *ngFor="let item of items">{{item.name}}</option>
+                <option value="{{item.id}}" *ngFor="let item of items">{{item.name}}</option>
             </select>
             <button class="btn form__submit-btn" type="submit">Agregar</button>
 
@@ -24,11 +24,21 @@
                     {{ item.nombre }}
                 </label>
                 <div>
-                    Cantidad: <input type="number" class="counter">
+                    Cantidad: <input type="number" class="counter" (input)="agregarCatidad(i)" [(ngModel)]="cantidad">
                 </div>
 
             </li>
         </div>
+        <div>
+            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-danger">Cancelar</button>
+            <button type="button" class="btn btn-success" (click)="hacerReserva()">Guardar</button>
+        </div>
     </div>
-
+    <div *ngIf="calendario">
+        <app-calendario (bookingChange)="obtenerHora($event)"></app-calendario>
+        <div>
+            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-danger">Cancelar</button>
+            <button type="button" class="btn btn-success" (click)="siguiente()">Siguiente</button>
+        </div>
+    </div>
 </body>

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-reservas',
   templateUrl: './reservas.component.html',
   styleUrls: ['./reservas.component.css']
 })
-export class ReservasComponent implements OnInit {
+export class ReservasComponent implements OnInit, AfterContentInit {
 
   constructor(private router: ActivatedRoute) { }
 
@@ -32,6 +33,18 @@ export class ReservasComponent implements OnInit {
   }];
 
   ngOnInit(): void {
+
+  }
+
+  ngAfterContentInit(): void {
+    /*($('.dropdown') as any).dropdown({
+      constrainWidth:false,
+      label: {
+        duration: 0,
+      },
+      debug: true,
+      performance: true,
+    });*/
   }
 
 }
