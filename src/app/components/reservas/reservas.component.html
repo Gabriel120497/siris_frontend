@@ -1,29 +1,22 @@
-<app-header></app-header>
+
 
 <body>
     <h1>{{ tipoReserva }}</h1>
-    <br>
-
-
     <div id="inputSearch" class="container">
         <div class="form-group">
-
-            <label>Instrumento</label>
             <div class="link-dropdown form-control">
                 <div class="link-dropdown-search">
-                    <div class="link-dropdown-display-item" v-on:click="toggleDropdown()" v-if="!open">
-                        <!--div>{{displayItem()}}</div-->
+                    <div class="link-dropdown-display-item" (click)="toggleDropdown()" *ngIf="!open">
+                        <div>{{displayItem()}}</div>
                     </div>
-                    <input v-model="searchTerm" placeholder="Search and Select" id="displayValue" v-if="open" v-focus
-                        v-on:click="toggleDropdown()" />
-                    <div class="link-dropdown-button" v-on:click="toggleDropdown()">
+                    <input placeholder="Search and Select" #displayValue id="displayValue" *ngIf="open" autofocus class="form-control" [(ngModel)]="instrument" />
+                    <div class="link-dropdown-button" (click)="toggleDropdown()">
                         <div class="dropdown-arrow"></div>
                     </div>
                 </div>
-                <div class="link-dropdown-panel" v-show="open">
-                    <div class="link-dropdown-item placeholder" v-on:click="itemClicked(index)"
-                        v-for="(item,index) in items" id="realitems" v-show="item.dd_visible">
-                        <!--option>{{item.field}}</option-->
+                <div class="link-dropdown-panel" *ngIf="open">
+                    <div class="link-dropdown-item" (click)="itemClicked(i)" *ngFor="let item of items | filter:instrument; let i = index" id="realitems">
+                        <option>{{item.field}}</option>
                     </div>
                 </div>
             </div>

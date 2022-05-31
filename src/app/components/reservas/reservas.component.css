@@ -1,93 +1,97 @@
 body {
-    color: #0e171c;
-    display: grid;
-    font: 300 100%/1.5em 'Lato', sans-serif;
-    margin-top: 5vh;
-    place-items: center;
+  color: #0e171c;
+  display: grid;
+  font: 300 100%/1.5em 'Lato', sans-serif;
+  margin-top: 5vh;
+  place-items: center;
 }
 
-.container{
-    margin-top: 70px;
-    color:#fff;
-  }
-  .container h2{
-    text-align:center;
-    padding-bottom:30px;
-  }
-  .link-dropdown {
-    position: relative;
-  }
-  .form-group label{
-    padding-bottom:5px;
-    font-size:18px;
-  }
-  .form-control .link-dropdown-search {
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .form-control .link-dropdown-search input {
-    border: none;
-    flex: 1;
-  }
-  .form-control .link-dropdown-search input:focus{
-      outline: none;
-  }
-  .form-control .link-dropdown-search input::-webkit-input-placeholder {
-    padding-left: 5px;
-  }
-  .form-control .link-dropdown-search .link-dropdown-display-item {
-    display: flex;
-    flex-direction: row;
-    /*height: 28px;*/
-    align-items: center;
-    flex: 1;
-    
-  }
-  .form-control .link-dropdown-search .link-dropdown-button {
-    cursor: pointer;
-    height: 20px;
-    width: 20px;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .form-control .link-dropdown-search .link-dropdown-button .dropdown-arrow {
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 5px solid #575759;
-  }
-  .form-control .link-dropdown-panel {
-    position: absolute;
-    margin-top: 5px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(121,155,210);
-    background-color: white;
-    max-height: 200px;
-    overflow: auto;
-    z-index: 1;
-    left:0;
-  }
-  .form-control .link-dropdown-panel .link-dropdown-item {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    
-  }
-  .form-control .link-dropdown-panel .link-dropdown-item option{
-      margin-left: 13px;
-  }
-  #realitems:hover{
-      color: #fff !important;
-  }
-  .form-control .link-dropdown-panel .link-dropdown-item:hover {
-    background-color: rgb(30,144,255);
-  }
+.link-dropdown {
+  position: relative;
+}
+
+.form-group label {
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-control .link-dropdown-search {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-control .link-dropdown-search input {
+  border: none;
+  flex: 1;
+}
+
+.form-control .link-dropdown-search input:focus {
+  outline: none;
+}
+
+.form-control .link-dropdown-search input::-webkit-input-placeholder {
+  padding-left: 5px;
+}
+
+.form-control .link-dropdown-search .link-dropdown-display-item {
+  display: flex;
+  flex-direction: row;
+  /*height: 28px;*/
+  align-items: center;
+  flex: 1;
+
+}
+
+.form-control .link-dropdown-search .link-dropdown-button {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control .link-dropdown-search .link-dropdown-button .dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #575759;
+}
+
+.form-control .link-dropdown-panel {
+  position: absolute;
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  background-color: white;
+  max-height: 200px;
+  overflow: auto;
+  z-index: 1;
+  left: 0;
+}
+
+.form-control .link-dropdown-panel .link-dropdown-item {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.form-control .link-dropdown-panel .link-dropdown-item option {
+  margin-left: 13px;
+}
+
+#realitems:hover {
+  color: #fff !important;
+}
+
+.form-control .link-dropdown-panel .link-dropdown-item:hover {
+  background-color: rgb(30, 144, 255);
+}
