@@ -16,7 +16,7 @@ html {
   background: linear-gradient(210deg, lighten($color-main, 20%), $color-main);
 }
 
-body {
+.body {
   overflow: hidden;
   height: 100%;
   display: flex;

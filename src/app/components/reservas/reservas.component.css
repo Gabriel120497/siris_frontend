@@ -6,13 +6,12 @@ body {
   place-items: center;
 }
 
-.link-dropdown {
-  position: relative;
+.container {
+  width: 70%;
 }
 
-.form-group label {
-  padding-bottom: 5px;
-  font-size: 18px;
+.link-dropdown {
+  position: relative;
 }
 
 .form-control .link-dropdown-search {
@@ -52,6 +51,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 0;
 }
 
 .form-control .link-dropdown-search .link-dropdown-button .dropdown-arrow {
@@ -72,8 +72,9 @@ body {
   background-color: white;
   max-height: 200px;
   overflow: auto;
-  z-index: 1;
+  z-index: 2;
   left: 0;
+  line-height: 2;
 }
 
 .form-control .link-dropdown-panel .link-dropdown-item {

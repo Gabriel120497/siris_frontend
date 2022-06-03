@@ -34,15 +34,18 @@
     </div>
 </div>
 <br />
-<div [ngSwitch]="view">
-    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
-        [refresh]="refresh" (dayClicked)="viewDate = $event.day.date; view = CalendarView.Day">
-    </mwl-calendar-month-view>
-    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
-        [refresh]="refresh" (dayHeaderClicked)="viewDate = $event.day.date; view = CalendarView.Day" [dayStartHour]="6"
-        [dayEndHour]="22">
-    </mwl-calendar-week-view>
-    <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
-        [dayStartHour]="6" [dayEndHour]="22" (hourSegmentClicked)="hourSegmentClicked($event.date)">
-    </mwl-calendar-day-view>
+<div class="container">
+    <div [ngSwitch]="view">
+        <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (dayClicked)="viewDate = $event.day.date; view = CalendarView.Day">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (dayHeaderClicked)="viewDate = $event.day.date; view = CalendarView.Day"
+            [dayStartHour]="6" [dayEndHour]="22">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" [dayStartHour]="6" [dayEndHour]="22"
+            (hourSegmentClicked)="hourSegmentClicked($event.date)">
+        </mwl-calendar-day-view>
+    </div>
 </div>

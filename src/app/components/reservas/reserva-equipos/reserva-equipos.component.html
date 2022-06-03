@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<body>
+<div class="body">
     <div>
         <h1>Reserva de Equipos</h1>
     </div>
@@ -34,11 +34,11 @@
             <button type="button" class="btn btn-success" (click)="hacerReserva()">Guardar</button>
         </div>
     </div>
+</div>
     <div *ngIf="calendario">
         <app-calendario (bookingChange)="obtenerHora($event)"></app-calendario>
-        <div>
-            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-danger">Cancelar</button>
+        <div class="body">
             <button type="button" class="btn btn-success" (click)="siguiente()">Siguiente</button>
         </div>
+        <br>
     </div>
-</body>

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
@@ -42,6 +42,7 @@ export class CalendarioComponent implements OnInit {
   selectedDayViewDate: Date;
 
   @Output() bookingChange = new EventEmitter();
+  @Input() tipoReserva:string;
 
   actionDelete = [
     {
@@ -76,6 +77,8 @@ export class CalendarioComponent implements OnInit {
   }
 
   hourSegmentClicked(date: Date) {
+    console.log(this.tipoReserva);
+    
     if (this.tipoPrestamo === 'Implements') {
       this.implementos(date);
     } else {
@@ -123,7 +126,7 @@ export class CalendarioComponent implements OnInit {
           }
         });
         if (this.mensaje === '') {
-          this.events[this.events.length - 1].title += ' hasta ' + endDate.toLocaleDateString('es-CO', options);
+          this.events[this.events.length - 1].title = ' hasta ' + endDate.toLocaleDateString('es-CO', options);
           this.events[this.events.length - 1].end = endDate;
           this.cont++;
           const reservas: any[] = [];
