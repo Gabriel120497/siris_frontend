@@ -1,4 +1,4 @@
-$color-main: #4fc08d;
+$color-main: #009045;
 
 $font-family: 'Source Sans Pro', sans-serif;
 
@@ -27,10 +27,95 @@ html {
   margin-top: 5vh;
 }
 
-button {
-  background: none;
+.link-dropdown {
+  position: relative;
+}
+
+.form-control .link-dropdown-search {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-control .link-dropdown-search input {
   border: none;
-  color: inherit;
+  flex: 1;
+}
+
+.form-control .link-dropdown-search input:focus {
+  outline: none;
+}
+
+.form-control .link-dropdown-search input::-webkit-input-placeholder {
+  padding-left: 5px;
+}
+
+.form-control .link-dropdown-search .link-dropdown-display-item {
+  display: flex;
+  flex-direction: row;
+  /*height: 28px;*/
+  align-items: center;
+  flex: 1;
+
+}
+
+.form-control .link-dropdown-search .link-dropdown-button {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.form-control .link-dropdown-search .link-dropdown-button .dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #575759;
+}
+
+.form-control .link-dropdown-panel {
+  position: absolute;
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  background-color: white;
+  max-height: 200px;
+  overflow: auto;
+  z-index: 2;
+  left: 0;
+  line-height: 2;
+}
+
+.form-control .link-dropdown-panel .link-dropdown-item {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.form-control .link-dropdown-panel .link-dropdown-item option {
+  margin-left: 13px;
+}
+
+#realitems:hover {
+  color: #fff !important;
+}
+
+.form-control .link-dropdown-panel .link-dropdown-item:hover {
+  background-color: rgb(30, 144, 255);
+}
+
+button {
+  background: $color-main;
   font-size: inherit;
   font-family: inherit;
   font-weight: inherit;
@@ -39,6 +124,7 @@ button {
   }
   &:hover {
     cursor: pointer;
+    background: darken($color-main, 10%);
   }
 }
 
@@ -57,19 +143,14 @@ button {
   border-radius: 2em;
   padding: 0.75em 1.5em;
   cursor: pointer;
-  background: none;
   color: darken($color-main, 20%);
   border: 1px solid;
   letter-spacing: 1px;
   font-family: $font-family;
-  color: #4fc08d;
+  color: #fff;
   border: $color-main 1px solid;
   transition: 250ms ease-out;
   box-shadow: none;
-  &:hover {
-    color: #fff;
-    background: $color-main;
-  }
 }
 
 .form {

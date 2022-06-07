@@ -1,19 +1,21 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReservaEquiposModel } from 'src/app/models/reserva-equipos';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reservas',
   templateUrl: './reservas.component.html',
-  styleUrls: ['./reservas.component.css']
+  styleUrls: ['./reservas.component.scss']
 })
-export class ReservasComponent implements OnInit {
+export class ReservasComponent {
 
   constructor(private router: ActivatedRoute) { }
 
   tipoReserva: any = this.router.snapshot.paramMap.get('tipoReserva');
   instrument!: string;
   open: boolean = false;
+  disabled: boolean = true;
   searchTerm: string = '';
   selectedItem: any = [];
   reserva: ReservaEquiposModel = new ReservaEquiposModel;
@@ -62,10 +64,6 @@ export class ReservasComponent implements OnInit {
       { value: "40", field: "Bricklayer" }
     ];
 
-  ngOnInit(): void {
-
-  }
-
   toggleDropdown() {
     this.open = !this.open;
     this.searchTerm = '';
@@ -78,8 +76,8 @@ export class ReservasComponent implements OnInit {
     } else {
       return this.selectedItem.field;
     }
-
   }
+  
   itemClicked(index: any) {
     this.open = false;
     this.selectedItem = this.items[index];
@@ -95,6 +93,13 @@ export class ReservasComponent implements OnInit {
       this.reserva.fechaInicio = this.reservaJson[0].start;
       this.reserva.fechaInicio = this.reservaJson[0].end;
       console.log(this.reserva);   
+    }else {
+      Swal.fire({
+        title: 'Atención',
+        text: `No se a seleccionado ${this.tipoReserva} o fecha`,
+        icon: 'warning',
+        confirmButtonColor: '#009045'
+      })
     }
   }
 

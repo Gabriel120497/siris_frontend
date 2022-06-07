@@ -6,13 +6,35 @@
     </div>
     <br>
 
-    <div class="app" *ngIf="!calendario">
+    <div class="app" *ngIf="!mostrarCalendario">
         <form class="form" (ngSubmit)="agregarItemReserva()">
 
-            <select [(ngModel)]="inputVal" name="inputVal" class="input form__input">
-                <option value="{{item.id}}" *ngFor="let item of items">{{item.name}}</option>
-            </select>
-            <button class="btn form__submit-btn" type="submit">Agregar</button>
+            <div id="inputSearch" class="container">
+                <div class="form-group">
+                    <div class="link-dropdown form-control"> 
+                        <div class="link-dropdown-search">
+                            <div class="link-dropdown-display-item" (click)="toggleDropdown()" *ngIf="!open">
+                                <div>{{displayItem()}}</div>
+                            </div>
+                            <div class="link-dropdown-button" (click)="toggleDropdown()">
+                                <div class="dropdown-arrow"></div>
+                            </div>
+                        </div>
+                        <div class="link-dropdown-panel" *ngIf="open">
+                            <div class="link-dropdown-item" (click)="itemClicked(i)"
+                                *ngFor="let item of items; let i = index" id="realitems">
+                                <option>{{item.field}}</option>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+
+            <!--select [(ngModel)]="inputVal" name="inputVal" class="input form__input">
+                <option value="{{item.value}}" *ngFor="let item of items">{{item.field}}</option>
+            </select-->
+            <button class="btn btn-succes" type="button" (click)="agregarItemReserva()">Agregar</button>
 
         </form>
         <div tag="ol" name="list" class="todo-list">
@@ -30,12 +52,12 @@
             </li>
         </div>
         <div>
-            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-danger">Cancelar</button>
+            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-success" (click)="cancelar()">Cancelar</button>
             <button type="button" class="btn btn-success" (click)="hacerReserva()">Guardar</button>
         </div>
     </div>
 </div>
-    <div *ngIf="calendario">
+    <div *ngIf="mostrarCalendario">
         <app-calendario (bookingChange)="obtenerHora($event)"></app-calendario>
         <div class="body">
             <button type="button" class="btn btn-success" (click)="siguiente()">Siguiente</button>

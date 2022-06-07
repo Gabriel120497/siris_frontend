@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EquiposModel } from 'src/app/models/equipos';
 import { ReservaEquiposModel } from "src/app/models/reserva-equipos";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserva-equipos',
@@ -14,27 +15,56 @@ export class ReservaEquiposComponent implements OnInit {
   reserva: ReservaEquiposModel = new ReservaEquiposModel;
   reservaJson: any;
 
-  items = [{
-    'name': 'Item 1', 'id': 1
-  }, {
-    'name': 'Item 2', 'id': 2
-  }, {
-    'name': 'Account 3', 'id': 3
-  }, {
-    'name': 'Account 4', 'id': 4
-  }, {
-    'name': 'Item 5', 'id': 5
-  }, {
-    'name': 'Item 6', 'id': 6
-  }, {
-    'name': 'User 7', 'id': 7
-  }, {
-    'name': 'User 8', 'id': 8
-  }];
+  items =
+    [
+      { value: "1", field: "Teacher" },
+      { value: "2", field: "Technician" },
+      { value: "3", field: "Physician" },
+      { value: "4", field: "Engineering Technologist" },
+      { value: "5", field: "Mechanic" },
+      { value: "6", field: "Tradesman" },
+      { value: "7", field: "Electrician" },
+      { value: "8", field: "Machinist" },
+      { value: "9", field: "Radiographer" },
+      { value: "10", field: "Programmer" },
+      { value: "11", field: "Actuary" },
+      { value: "12", field: "Plumber" },
+      { value: "13", field: "Surveyor" },
+      { value: "14", field: "Welder" },
+      { value: "15", field: "Consultant" },
+      { value: "16", field: "Auto Mechanic" },
+      { value: "17", field: "Tailor" },
+      { value: "18", field: "Journalist" },
+      { value: "19", field: "Broker" },
+      { value: "20", field: "Lawyer" },
+      { value: "21", field: "Judge" },
+      { value: "22", field: "Barrister" },
+      { value: "23", field: "Solicitor" },
+      { value: "24", field: "Paramedic" },
+      { value: "25", field: "Dental Technician" },
+      { value: "26", field: "Quantity Surveyor" },
+      { value: "27", field: "Tailor" },
+      { value: "28", field: "Nurse" },
+      { value: "30", field: "Pharmacist" },
+      { value: "31", field: "Hairdresser" },
+      { value: "32", field: "Anesthesiology" },
+      { value: "33", field: "Engineer" },
+      { value: "34", field: "Actuary" },
+      { value: "35", field: "Electrician" },
+      { value: "36", field: "Machinist" },
+      { value: "37", field: "Tradesman" },
+      { value: "38", field: "Drafter" },
+      { value: "39", field: "Chef" },
+      { value: "40", field: "Bricklayer" }
+    ];
 
   inputVal: string;
-  cantidad: number = 0;
-  calendario: boolean = true;
+  cantidad: number = 1;
+  mostrarCalendario: boolean = true;
+  open: boolean = false;
+  disabled: boolean = true;
+  searchTerm: string = '';
+  selectedItem: any = [];
 
   constructor(private route: Router) { }
 
@@ -42,23 +72,60 @@ export class ReservaEquiposComponent implements OnInit {
 
   }
 
+  toggleDropdown() {
+    this.open = !this.open;
+    this.searchTerm = '';
+  }
+
+  displayItem() {
+    let val = this.selectedItem;
+    if (val.length === 0) {
+      return 'Seleccionar Equipo'
+    } else {
+      return this.selectedItem.field;
+    }
+  }
+  
+  itemClicked(index: any) {
+    this.open = false;
+    this.selectedItem = this.items[index];
+    this.displayItem();
+  }
+
   agregarItemReserva() {
-    if (this.inputVal) {
+    if (this.selectedItem) {
       console.log(this.itemsParaReservar);
 
       this.itemsParaReservar.push({
-        'id': this.inputVal,
-        'nombre': this.items.find(item => { return item.id.toString() === this.inputVal })?.name,
+        'id': this.selectedItem['value'],
+        'nombre': this.selectedItem['field'],
         'cantidad': this.cantidad
       });
     }
-    this.inputVal = '';
+    this.selectedItem = '';
   }
 
   borrarItemReserva(index: number) {
     console.log(index);
 
     this.itemsParaReservar.splice(index, 1)
+  }
+
+  cancelar() {
+    Swal.fire({
+      title: 'Está seguro que desea cancelar?',
+      text: "Será redirigido al menú principal",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#009045',
+      confirmButtonText: 'Confirmar',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.route.navigate(['/dashboard']);
+      }
+    })
   }
 
   agregarCatidad(index: number) {
@@ -69,19 +136,38 @@ export class ReservaEquiposComponent implements OnInit {
   }
 
   siguiente() {
-    this.calendario = !this.calendario
+    if (this.reservaJson) {
+      this.mostrarCalendario = !this.mostrarCalendario
+    } else {
+      Swal.fire({
+        title: 'Atención',
+        text: 'No se a seleccionado fecha ni hora',
+        icon: 'warning',
+        confirmButtonColor: '#009045'
+      })
+    }
   }
 
   hacerReserva() {
-    this.reserva.id = '1';
-    this.reserva.equipos = this.itemsParaReservar;
-    this.reserva.fechaInicio = this.reservaJson[0].start;
-    this.reserva.fechaFin = this.reservaJson[0].end;
-    console.log(this.reserva);
+    if (this.itemsParaReservar.length !== 0) {
+      this.reserva.id = '1';
+      this.reserva.equipos = this.itemsParaReservar;
+      this.reserva.fechaInicio = this.reservaJson[0].start;
+      this.reserva.fechaFin = this.reservaJson[0].end;
+      console.log(this.reserva);
+    } else {
+      Swal.fire({
+        title: 'Atención',
+        text: 'No se a agregado equipo(s)',
+        icon: 'warning',
+        confirmButtonColor: '#009045'
+      })
+    }
+
 
   }
 
-  obtenerHora(e: any) { 
+  obtenerHora(e: any) {
     this.reservaJson = JSON.parse(e);
   }
 

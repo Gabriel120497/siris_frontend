@@ -1,5 +1,6 @@
 <app-header></app-header>
-<body>
+
+<div class="body">
     <h1>{{ tipoReserva }}</h1>
     <div id="inputSearch" class="container">
         <div class="form-group">
@@ -8,13 +9,15 @@
                     <div class="link-dropdown-display-item" (click)="toggleDropdown()" *ngIf="!open">
                         <div>{{displayItem()}}</div>
                     </div>
-                    <input placeholder="Search and Select" id="displayValue" *ngIf="open" autofocus class="link-dropdown-display-item" [(ngModel)]="instrument" />
+                    <input placeholder="Search and Select" id="displayValue" *ngIf="open" autofocus
+                        class="link-dropdown-display-item" [(ngModel)]="instrument" />
                     <div class="link-dropdown-button" (click)="toggleDropdown()">
                         <div class="dropdown-arrow"></div>
                     </div>
                 </div>
                 <div class="link-dropdown-panel" *ngIf="open">
-                    <div class="link-dropdown-item" (click)="itemClicked(i)" *ngFor="let item of items | filter:instrument; let i = index" id="realitems">
+                    <div class="link-dropdown-item" (click)="itemClicked(i)"
+                        *ngFor="let item of items | filter:instrument; let i = index" id="realitems">
                         <option>{{item.field}}</option>
                     </div>
                 </div>
@@ -23,8 +26,8 @@
         </div>
     </div>
     <br>
-</body>
+</div>
 <app-calendario [tipoReserva]="displayItem()" (bookingChange)="obtenerHora($event)"></app-calendario>
-<div>
-    <button type="button" class="btn btn-success" (click)="hacerReserva()">Hacer Reserva</button>
+<div class="body">
+    <button type="button" class="btn btn-success" [disabled]="" (click)="hacerReserva()">Hacer Reserva</button>
 </div>

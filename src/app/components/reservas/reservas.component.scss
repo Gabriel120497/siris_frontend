@@ -1,9 +1,41 @@
-body {
+$color-main: #009045;
+$font-family: 'Source Sans Pro', sans-serif;
+
+.body {
   color: #0e171c;
   display: grid;
   font: 300 100%/1.5em 'Lato', sans-serif;
-  margin-top: 5vh;
+  margin-top: 3vh;
   place-items: center;
+  margin-bottom: 3vh;
+}
+
+button {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  font-size: 14px;
+  margin: 0 .5em;
+  border-radius: 2em;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  color: darken($color-main, 20%);
+  border: 1px solid;
+  letter-spacing: 1px;
+  font-family: $font-family;
+  color: #fff;
+  border: $color-main 1px solid;
+  transition: 250ms ease-out;
+  box-shadow: none;
 }
 
 .container {
