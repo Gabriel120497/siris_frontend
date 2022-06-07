@@ -1,5 +1,4 @@
 <app-header></app-header>
-
 <body>
     <h1>{{ tipoReserva }}</h1>
     <div id="inputSearch" class="container">
@@ -25,4 +24,7 @@
     </div>
     <br>
 </body>
-<app-calendario [tipoReserva]="displayItem()" ></app-calendario>
+<app-calendario [tipoReserva]="displayItem()" (bookingChange)="obtenerHora($event)"></app-calendario>
+<div>
+    <button type="button" class="btn btn-success" (click)="hacerReserva()">Hacer Reserva</button>
+</div>

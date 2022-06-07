@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ReservaEquiposModel } from 'src/app/models/reserva-equipos';
 
 @Component({
   selector: 'app-reservas',
@@ -10,17 +11,16 @@ export class ReservasComponent implements OnInit {
 
   constructor(private router: ActivatedRoute) { }
 
-  @ViewChild("displayValue") myInputField: ElementRef;
-
   tipoReserva: any = this.router.snapshot.paramMap.get('tipoReserva');
   instrument!: string;
   open: boolean = false;
   searchTerm: string = '';
   selectedItem: any = [];
+  reserva: ReservaEquiposModel = new ReservaEquiposModel;
+  reservaJson: any;
 
   items =
     [
-      { value: "0", field: "Search and Select" },
       { value: "1", field: "Teacher" },
       { value: "2", field: "Technician" },
       { value: "3", field: "Physician" },
@@ -86,5 +86,20 @@ export class ReservasComponent implements OnInit {
     this.displayItem();
   }
 
+  hacerReserva(){
+    if (this.selectedItem.length !== 0 && this.reservaJson !== undefined) {
+      console.log(this.reservaJson);
+
+      this.reserva.id = '1';
+      this.reserva.equipos = this.selectedItem;
+      this.reserva.fechaInicio = this.reservaJson[0].start;
+      this.reserva.fechaInicio = this.reservaJson[0].end;
+      console.log(this.reserva);   
+    }
+  }
+
+  obtenerHora(e :any) {
+    this.reservaJson = JSON.parse(e)
+  }
 
 }
