@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReservasComponent } from './components/reservas/reservas.component';
+import { ReservasComponent } from './components/users/reservas/reservas.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { ReservaEquiposComponent } from './components/reservas/reserva-equipos/reserva-equipos.component';
+import { ReservaEquiposComponent } from './components/users/reservas/reserva-equipos/reserva-equipos.component';
+import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/grupos-proyeccion.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ReservaEquiposComponent } from './components/reservas/reserva-equipos/r
     HeaderComponent,
     DashboardComponent,
     CalendarioComponent,
-    ReservaEquiposComponent
+    ReservaEquiposComponent,
+    GruposProyeccionComponent
   ],
   imports: [
     BrowserModule,

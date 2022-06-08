@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-grupos-proyeccion',
+  templateUrl: './grupos-proyeccion.component.html',
+  styleUrls: ['../../dashboard/dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class GruposProyeccionComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { nombre: 'Reserva de Instrumentos', tipoReserva: 'Instrumentos' },
-    { nombre: 'Reserva de Equipos', tipoReserva: 'Equipos' },
-    { nombre: 'Reserva de Salones', tipoReserva: 'Salones' },
-    { nombre: 'Grupos de Proyeccion', tipoReserva: 'GruposProyeccion' }
+    { nombre: 'Chirimia', tipoReserva: 'Chirimia' },
+    { nombre: 'Banda de Rock', tipoReserva: 'BandaRock' },
+    { nombre: 'Teatro', tipoReserva: 'Teatro' },
+    { nombre: 'Coro', tipoReserva: 'Coro' }
   ];
 
   start: number = 0;
   setSlidesVar: number = 0;
 
-  constructor(private route: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.setSlides(innerWidth);
   }
+
 
   moveLeft() {
     this.start = this.start - 1;
@@ -55,12 +55,9 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  verMas(tipoReserva: string) {
-    if (tipoReserva !== 'GruposProyeccion') {
-      this.route.navigate(['/users/reservas', tipoReserva]);
-    } else {
-      this.route.navigate(['users/gruposdeproyeccion']);
-    }
+  audicionar(tipoReserva: string) {
+    console.log(`se manda correo al docente del grupo ${tipoReserva}`);
+    
   }
 
 }

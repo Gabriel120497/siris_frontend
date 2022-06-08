@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<div ng-app="slider">
+    <div class="slider" (window:resize)="onResize($event)">
+      <div class="left">
+        <button (click)="moveLeft()" [disabled]="start==0">
+          <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
+        </button>
+      </div>
+  
+      <div class="card2" *ngFor="let slide of slides; let i = index" [hidden]="!(i >= start && i <= setSlidesVar-1)">
+  
+        <div class="card">
+          <img src="../../../assets/img-01.png" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{slide.nombre}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a (click)="audicionar(slide.tipoReserva)" class="btn btn-primary">Audicionar</a>
+          </div>
+        </div>
+  
+      </div>
+      <div class="right">
+        <button (click)="moveRight()" [disabled]="setSlidesVar==slides.length">
+          <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
+        </button>
+      </div>
+  
+    </div>
+  </div>
