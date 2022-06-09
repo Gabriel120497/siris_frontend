@@ -10,14 +10,15 @@ export class DashboardComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { nombre: 'Reserva de Instrumentos', tipoReserva: 'Instrumentos' },
-    { nombre: 'Reserva de Equipos', tipoReserva: 'Equipos' },
-    { nombre: 'Reserva de Salones', tipoReserva: 'Salones' },
+    { nombre: 'Instrumentos', tipoReserva: 'Instrumentos' },
+    { nombre: 'Equipos', tipoReserva: 'Equipos' },
+    { nombre: 'Salones', tipoReserva: 'Salones' },
     { nombre: 'Grupos de Proyeccion', tipoReserva: 'GruposProyeccion' }
   ];
 
   start: number = 0;
   setSlidesVar: number = 0;
+  userRole: string = 'comunidad';
 
   constructor(private route: Router) { }
 
@@ -56,11 +57,31 @@ export class DashboardComponent implements OnInit {
   }
 
   verMas(tipoReserva: string) {
-    if (tipoReserva !== 'GruposProyeccion') {
-      this.route.navigate(['/users/reservas', tipoReserva]);
-    } else {
-      this.route.navigate(['users/gruposdeproyeccion']);
+    switch (this.userRole) {
+      case 'admin':
+        if (tipoReserva !== 'GruposProyeccion') {
+          this.route.navigate(['/admin/reservas', tipoReserva]);
+        } else {
+          this.route.navigate(['admin/gruposdeproyeccion']);
+        }
+        break;
+
+      case 'profesor':
+
+        break;
+
+      case 'comunidad':
+        if (tipoReserva !== 'GruposProyeccion') {
+          this.route.navigate(['/users/reservas', tipoReserva]);
+        } else {
+          this.route.navigate(['users/gruposdeproyeccion']);
+        }
+        break;
+
+      default:
+        break;
     }
+
   }
 
 }

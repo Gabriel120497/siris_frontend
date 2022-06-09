@@ -60,6 +60,7 @@ export class ReservaEquiposComponent implements OnInit {
 
   inputVal: string;
   cantidad: number = 1;
+  descripcionNecesidad:string = '';
   mostrarCalendario: boolean = true;
   open: boolean = false;
   disabled: boolean = true;
@@ -141,7 +142,7 @@ export class ReservaEquiposComponent implements OnInit {
     } else {
       Swal.fire({
         title: 'Atención',
-        text: 'No se a seleccionado fecha ni hora',
+        text: 'No se ha seleccionado fecha ni hora',
         icon: 'warning',
         confirmButtonColor: '#009045'
       })
@@ -149,16 +150,17 @@ export class ReservaEquiposComponent implements OnInit {
   }
 
   hacerReserva() {
-    if (this.itemsParaReservar.length !== 0) {
+    if (this.itemsParaReservar.length !== 0 && this.descripcionNecesidad !== '') {
       this.reserva.id = '1';
       this.reserva.equipos = this.itemsParaReservar;
       this.reserva.fechaInicio = this.reservaJson[0].start;
       this.reserva.fechaFin = this.reservaJson[0].end;
+      this.reserva.descripcionNecesidad = this.descripcionNecesidad
       console.log(this.reserva);
     } else {
       Swal.fire({
         title: 'Atención',
-        text: 'No se a agregado equipo(s)',
+        text: 'No se ha agregado equipo(s) o la descripción de la necesidad',
         icon: 'warning',
         confirmButtonColor: '#009045'
       })

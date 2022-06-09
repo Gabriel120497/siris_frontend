@@ -19,6 +19,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ReservaEquiposComponent } from './components/users/reservas/reserva-equipos/reserva-equipos.component';
 import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/grupos-proyeccion.component';
+import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
+import { SalonesComponent } from './components/admin/salones/salones.component';
+import { EquiposComponent } from './components/admin/equipos/equipos.component';
+import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/
     DashboardComponent,
     CalendarioComponent,
     ReservaEquiposComponent,
-    GruposProyeccionComponent
+    GruposProyeccionComponent,
+    InstrumentosComponent,
+    SalonesComponent,
+    EquiposComponent,
+    ReservasAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -4,5 +4,6 @@ export class ReservaEquiposModel {
     id: string;
     equipos: EquiposModel[];
     fechaInicio: string;
-    fechaFin: string
+    fechaFin: string;
+    descripcionNecesidad: string;
 }
