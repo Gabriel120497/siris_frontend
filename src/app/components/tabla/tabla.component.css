@@ -1,0 +1,20 @@
+.row {
+    flex-direction: row-reverse;
+}
+.col{
+    width: auto;
+    flex: 0 0 auto;
+}
+
+.body {
+    color: #0e171c;
+    display: grid;
+    font: 300 100%/1.5em 'Lato', sans-serif;
+    margin-top: 3vh;
+    place-items: center;
+    margin-bottom: 3vh;
+  }
+
+  .del-icon{
+    margin-right:10px;
+  }

@@ -23,6 +23,7 @@ import { InstrumentosComponent } from './components/admin/instrumentos/instrumen
 import { SalonesComponent } from './components/admin/salones/salones.component';
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
+import { TablaComponent } from './components/tabla/tabla.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ReservasAdminComponent } from './components/admin/reservas-admin/reserv
     InstrumentosComponent,
     SalonesComponent,
     EquiposComponent,
-    ReservasAdminComponent
+    ReservasAdminComponent,
+    TablaComponent
   ],
   imports: [
     BrowserModule,

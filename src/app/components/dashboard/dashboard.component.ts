@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   start: number = 0;
   setSlidesVar: number = 0;
-  userRole: string = 'comunidad';
+  userRole: string = 'admin';
 
   constructor(private route: Router) { }
 
@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
     switch (this.userRole) {
       case 'admin':
         if (tipoReserva !== 'GruposProyeccion') {
-          this.route.navigate(['/admin/reservas', tipoReserva]);
+          this.route.navigate(['/admin', tipoReserva]);
         } else {
           this.route.navigate(['admin/gruposdeproyeccion']);
         }
