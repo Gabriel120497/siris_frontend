@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="body">
-    <h1>Instrumentos</h1>
+    <h1>{{modulo}}</h1>
 </div>
 <div class="page-content-wrapper">
     <div class="container-fluid">
@@ -10,7 +10,7 @@
                 <button type="button" class="btn btn-success">Nueva Reserva</button>
             </div> <!-- End of column -->
             <div class="col">
-                <button type="button" class="btn btn-success">Agregar Instrumento</button>
+                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar {{modulo}}</button>
             </div> <!-- End of column -->
 
         </div> <!-- End of row -->

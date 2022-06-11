@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:ActivatedRoute, private route:Router) { }
+
+  modulo: any=this.router.snapshot.paramMap.get('modulo');
 
   ngOnInit(): void {
+  }
+
+  redirigir(){
+    this.route.navigate([`admin/agregar/${this.modulo}`]);
+    
   }
 
 }
