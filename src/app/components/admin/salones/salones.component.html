@@ -1,1 +1,39 @@
-<p>salones works!</p>
+<app-header></app-header>
+<div class="container">   
+    <div class="body">
+        <h3>{{modulo}} Nuevo</h3> 
+    </div>
+    <div id="new{{modulo}}" class="col3">
+        <!-- New -->
+        <form name="new{{modulo}}" class="new">
+            
+            <fieldset class="row1">
+                
+                <div class="form-group">
+                    <label>Número Salón</label>
+                        <input type="text" name="numeroSalon" class="form-control">
+                    <label>Ubicación</label>
+                        <input type="text" name="ubicacion" class="form-control">
+                </div>            
+                
+            </fieldset>
+
+        </form> 
+    </div>
+     <!-- Botones -->
+    <div class="row">
+        
+         <div class="col">
+            <button type="button" class="btn btn-outline-secondary">Cancelar</button>
+        </div> <!-- End of column -->
+        
+        <div class="col">
+             <button type="button" class="btn btn-success" >Guardar</button>
+        </div> <!-- End of column -->    
+    </div> <!-- End of row -->
+           
+  
+ 
+    
+</div> <!-- /container -->
+

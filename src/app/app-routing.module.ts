@@ -9,6 +9,7 @@ import { ReservasComponent } from './components/users/reservas/reservas.componen
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
+import { SalonesComponent } from './components/admin/salones/salones.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
+  {path: 'admin/agregar/Salones', component: SalonesComponent},
   {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent},

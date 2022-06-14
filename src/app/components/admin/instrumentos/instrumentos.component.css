@@ -7,7 +7,7 @@ label {
 
 h1 {
 	font-weight: 200;
-	color: #000000;
+	color: gray;
 	font-size: 17pt;
 	text-align: center;
 }
@@ -61,9 +61,8 @@ h1 {
 	padding: 7px 0 7px 0;
     font-size: 1rem;
     font-weight: 400;
-    display: block;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem;
+    display: block;  
+    border-radius: 0.25rem;     
  
 }
 
@@ -158,5 +157,4 @@ div.agreement label{
 
 .container{
     max-width:60%;  
-
 }
