@@ -10,7 +10,7 @@ import { ReservasAdminComponent } from './components/admin/reservas-admin/reserv
 import { TablaComponent } from './components/tabla/tabla.component';
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
 import { SalonesComponent } from './components/admin/salones/salones.component';
-import { ClasesGruposComponent } from './components/admin/clasesGrupos/clases-grupos.component';
+import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
-  {path: 'admin/agregar/Clases-Grupos', component: ClasesGruposComponent},
+  {path: 'admin/agregar/Cursos-Grupos', component: CursosGruposComponent},
   {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
 
   {path: 'dashboard', component: DashboardComponent},

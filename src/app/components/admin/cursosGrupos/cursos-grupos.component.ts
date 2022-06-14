@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-clases-grupos',
-  templateUrl: './clases-grupos.component.html',
-  styleUrls: ['./clases-grupos.component.css']
+  selector: 'app-cursos-grupos',
+  templateUrl: './cursos-grupos.component.html',
+  styleUrls: ['./cursos-grupos.component.css']
 })
-export class ClasesGruposComponent implements OnInit {
+export class CursosGruposComponent implements OnInit {
 
   constructor(private router:ActivatedRoute, private route:Router) { }
   

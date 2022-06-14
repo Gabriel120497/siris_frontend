@@ -24,7 +24,7 @@ import { SalonesComponent } from './components/admin/salones/salones.component';
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
-import { ClasesGruposComponent } from './components/admin/clasesGrupos/clases-grupos.component';
+import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import { ClasesGruposComponent } from './components/admin/clasesGrupos/clases-gr
     InstrumentosComponent,
     SalonesComponent,
     EquiposComponent,
-    ClasesGruposComponent,
+    CursosGruposComponent,
     ReservasAdminComponent,
     TablaComponent
   ],
