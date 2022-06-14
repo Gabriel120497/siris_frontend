@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+
 @Component({
-  selector: 'app-salones',
-  templateUrl: './salones.component.html',
-  styleUrls: ['./salones.component.css']
+  selector: 'app-cursos-grupos',
+  templateUrl: './cursos-grupos.component.html',
+  styleUrls: ['./cursos-grupos.component.css']
 })
-export class SalonesComponent implements OnInit {
+export class CursosGruposComponent implements OnInit {
 
   constructor(private router:ActivatedRoute, private route:Router) { }
   
   modulo: any=this.router.snapshot.paramMap.get('modulo');
-
+  
   ngOnInit(): void {
   }
-
+  
   cancelar() {
     Swal.fire({
       title: 'Está seguro que desea cancelar?',

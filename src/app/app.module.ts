@@ -24,6 +24,7 @@ import { SalonesComponent } from './components/admin/salones/salones.component';
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
+import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { TablaComponent } from './components/tabla/tabla.component';
     InstrumentosComponent,
     SalonesComponent,
     EquiposComponent,
+    CursosGruposComponent,
     ReservasAdminComponent,
     TablaComponent
   ],

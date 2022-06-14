@@ -1,25 +1,26 @@
 .row {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
-.col{
-    width: auto;
-    flex: 0 0 auto;
+
+.col {
+  width: auto;
+  flex: 0 0 auto;
 }
 
 .body {
-    color: #0e171c;
-    display: grid;
-    font: 300 100%/1.5em 'Lato', sans-serif;
-    margin-top: 3vh;
-    place-items: center;
-    margin-bottom: 3vh;
-  }
+  color: #0e171c;
+  display: grid;
+  font: 300 100%/1.5em 'Lato', sans-serif;
+  margin-top: 3vh;
+  place-items: center;
+  margin-bottom: 3vh;
+}
 
-  .del-icon{
-    margin-right:10px;
-  }
+.del-icon {
+  margin-right: 10px;
+}
 
-  .btn {
-    padding: 0.1rem 0.4rem;
-    font-size: medium;
-  }
+.btn {
+  padding: 0.1rem 0.4rem;
+  font-size: medium;
+}

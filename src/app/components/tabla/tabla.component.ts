@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -39,5 +39,4 @@ export class TablaComponent implements OnInit {
   redirigir() {
     this.route.navigate([`/admin/agregar/${this.modulo}`]);
   }
-
 }
