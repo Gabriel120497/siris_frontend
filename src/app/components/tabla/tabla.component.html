@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="body">
-    <h1>Instrumentos</h1>
+    <h1>{{modulo}}</h1>
 </div>
 <div class="page-content-wrapper">
     <div class="container-fluid">
@@ -10,7 +10,7 @@
                 <button type="button" class="btn btn-success">Nueva Reserva</button>
             </div> <!-- End of column -->
             <div class="col">
-                <button type="button" class="btn btn-success">Agregar Instrumento</button>
+                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar {{modulo}}</button>
             </div> <!-- End of column -->
 
         </div> <!-- End of row -->
@@ -24,15 +24,7 @@
                         <table class="table cust-table">
                             <thead>
                                 <tr>
-                                    <th style="width:80px;">Placa</th>
-                                    <th style="width:250px;">Nombre</th>
-                                    <th style="width:200px;">Tipo</th>
-                                    <th style="width:100px;">Estado</th>
-                                    <th style="width:120px;">Descripción</th>
-                                    <th style="width:150px;">Status</th>
-                                    <th style="width:120px;">Habilitado Para</th>
-                                    <th style="width:120px;">Trasladable</th>
-                                    <th style="width:120px;">Salon</th>
+                                    <th *ngFor="let item of headerTabla">{{item}}</th>
                                     <th style="width:150px;" class="text-center">
                                         <i class="bi bi-gear-fill"></i>
                                     </th>
@@ -40,102 +32,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th style="width:80px;">1</th>
-
-                                    <td>Lorem ipsum dolor sit</td>
-                                    <td>lorem ispusm</td>
-                                    <td>high</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td class="text-center"><button class="btn btn-outline-danger del-icon"><span><i
-                                                    class="bi bi-trash"></i></span></button> <button
-                                            class="btn btn-outline-success"><span><i
-                                                    class="bi bi-pencil"></i></span></button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">2</th>
-
-                                    <td>Lorem ipsum dolor sit</td>
-                                    <td>lorem ispusm</td>
-                                    <td>high</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td class="text-center"><button class="btn btn-outline-danger del-icon"><span><i
-                                                    class="bi bi-trash"></i></span></button> <button
-                                            class="btn btn-outline-success"><span><i
-                                                    class="bi bi-pencil"></i></span></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-
-                                    <td>Lorem ipsum dolor sit</td>
-                                    <td>lorem ispusm</td>
-                                    <td>high</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td class="text-center"><button class="btn btn-outline-danger del-icon"><span><i
-                                                    class="bi bi-trash"></i></span></button> <button
-                                            class="btn btn-outline-success"><span><i
-                                                    class="bi bi-pencil"></i></span></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-
-                                    <td>Lorem ipsum dolor sit</td>
-                                    <td>lorem ispusm</td>
-                                    <td>high</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td class="text-center"><button
-                                            class="btn btn-outline-danger del-icon"><span></span><i
-                                                class="bi bi-trash"></i></button> <button
-                                            class="btn btn-outline-success"><span><i
-                                                    class="bi bi-pencil"></i></span></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-
-                                    <td>Lorem ipsum dolor sit</td>
-                                    <td>lorem ispusm</td>
-                                    <td>high</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td class="text-center"><button class="btn btn-outline-danger del-icon"><span><i
-                                                    class="bi bi-trash"></i></span></button> <button
-                                            class="btn btn-outline-success"><span><i
-                                                    class="bi bi-pencil"></i></span></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>Lorem ipsum dolor sit</td>
-                                    <td>lorem ispusm</td>
-                                    <td>high</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
-                                    <td>lorem ipsum</td>
+                                    <td *ngFor="let item of headerTabla">Lorem ipsum dolor sit</td>
                                     <td class="text-center"><button class="btn btn-outline-danger del-icon"><span><i
                                                     class="bi bi-trash"></i></span></button> <button
                                             class="btn btn-outline-success"><span><i

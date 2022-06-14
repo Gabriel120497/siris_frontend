@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
         if (tipoReserva !== 'GruposProyeccion') {
           this.route.navigate(['/admin', tipoReserva]);
         } else {
-          this.route.navigate(['admin/gruposdeproyeccion']);
+          this.route.navigate(['admin/Grupos-de-Proyeccion']);
         }
         break;
 
@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
         if (tipoReserva !== 'GruposProyeccion') {
           this.route.navigate(['/users/reservas', tipoReserva]);
         } else {
-          this.route.navigate(['users/gruposdeproyeccion']);
+          this.route.navigate(['users/Grupos-de-Proyeccion']);
         }
         break;
 

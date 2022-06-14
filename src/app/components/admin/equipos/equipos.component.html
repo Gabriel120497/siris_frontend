@@ -1,1 +1,30 @@
-<p>equipos works!</p>
+<app-header></app-header>
+<div class="container">
+    <div class="col">
+        <!-- New Equipo -->
+        <form name="newEquipo" class="register">
+            <h1>Nuevo Equipo</h1>
+            <fieldset class="row1">
+                <div class="form-group">
+                    <label>Placa *</label>
+                    <input type="text" name="placa" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Nombre *</label>
+                    <input type="text" name="nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Estado *</label>
+                    <input type="text" name="estado" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Descripción Estado</label>
+                    <textarea name="descripcionEstado" class="form-control"></textarea>
+                </div>
+            </fieldset>
+            <div>
+                <button type="button" id="registerButton" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+    </div> <!-- New Equipo -->
+</div> <!-- Container -->

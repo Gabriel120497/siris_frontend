@@ -8,17 +8,21 @@ import { ReservaEquiposComponent } from './components/users/reservas/reserva-equ
 import { ReservasComponent } from './components/users/reservas/reservas.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
+import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
+import { EquiposComponent } from './components/admin/equipos/equipos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'users/reservas/:tipoReserva', component: ReservasComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
-  {path: 'admin/:tipoReserva', component: TablaComponent},
-  {path: 'admin/reservas/:tipoReserva', component: ReservasAdminComponent},
+  {path: 'admin/:modulo', component: TablaComponent},
+  {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
+  {path: 'admin/agregar/Equipos', component: EquiposComponent},
+  {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent},
-  {path: 'users/gruposdeproyeccion', component: GruposProyeccionComponent},
+  {path: 'users/Grupos-de-Proyeccion', component: GruposProyeccionComponent},
 
 ];
 
