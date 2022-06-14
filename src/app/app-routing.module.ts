@@ -10,19 +10,25 @@ import { ReservasAdminComponent } from './components/admin/reservas-admin/reserv
 import { TablaComponent } from './components/tabla/tabla.component';
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
 import { SalonesComponent } from './components/admin/salones/salones.component';
+import { ClasesGruposComponent } from './components/admin/clasesGrupos/clases-grupos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'users/reservas/:tipoReserva', component: ReservasComponent},
+  {path: 'users/gruposdeproyeccion', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
+
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
+  {path: 'admin/agregar/Clases-Grupos', component: ClasesGruposComponent},
   {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
+
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent},
-  {path: 'users/gruposdeproyeccion', component: GruposProyeccionComponent},
+  
 
 ];
 
