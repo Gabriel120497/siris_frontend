@@ -1,39 +1,29 @@
 <app-header></app-header>
-<div class="container">   
-    <div class="body">
-        <h3>{{modulo}} Nuevo</h3> 
-    </div>
-    <div id="new{{modulo}}" class="col3">
+<div class="container">
+    <div>
         <!-- New -->
-        <form name="new{{modulo}}" class="new">
-            
+        <form name="newSalon" class="register">
+            <h1>Nuevo Salón</h1>
             <fieldset class="row1">
-                
+
                 <div class="form-group">
-                    <label>Número Salón *</label>
-                        <input type="text" name="numeroSalon" class="form-control">
                     <label>Ubicación *</label>
-                        <input type="text" name="ubicacion" class="form-control">
-                </div>            
-                
+                    <input type="text" name="ubicacion" class="form-control">
+                    <label>Número Salón *</label>
+                    <input type="text" name="numeroSalon" class="form-control">
+                </div>
+
             </fieldset>
 
-        </form> 
+        </form>
     </div>
-     <!-- Botones -->
-    <div class="row">
-        
-         <div class="col">
-            <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
-        </div> <!-- End of column -->
-        
-        <div class="col">
-             <button type="button" class="btn btn-success" >Guardar</button>
-        </div> <!-- End of column -->    
+    <!-- Botones -->
+    <div class="col">
+        <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn btn-success">Guardar</button>
     </div> <!-- End of row -->
-           
-  
- 
-    
-</div> <!-- /container -->
 
+
+
+
+</div> <!-- /container -->

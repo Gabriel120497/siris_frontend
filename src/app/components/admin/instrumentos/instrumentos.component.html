@@ -1,136 +1,97 @@
 <app-header></app-header>
-<div class="container">   
-    <div class="body">
-        <h3>{{modulo}} Nuevo</h3> 
-    </div>
-    <div id="new{{modulo}}" class="col3">
+<div class="container">
+    <div>
         <!-- New -->
-        <form name="new{{modulo}}" class="new">
-            
+        <form name="newInstrumento" class="register">
+            <h1>Nuevo Instrumento</h1>
             <fieldset class="row1">
-                 <!-- PLACA -->
+                <!-- PLACA -->
                 <div class="form-group">
                     <label>Placa*</label>
-                        <input type="text" name="placa" class="form-control">
+                    <input type="text" name="placa" class="form-control">
                     <label>Placa *</label>
-                        <input type="text" name="userRepeatplaca" class="form-control">
+                    <input type="text" name="userRepeatplaca" class="form-control">
                 </div>
-               
+
                 <div class="form-group">
                     <label>Nombre*</label>
-                        <input type="text" name="name" class="form-control">
-                        <div class="row">
-                            <div class="col2">
-                                <label>Tipo*</label>
-                                    <select name="tipo" class="form-group2">
-                                        <option value="tipo 1">Tipo 01
-                                        </option>
-                                        <option value="tipo 2">Tipo 02
-                                        </option>
-                                        <option value="tipo 3">Tipo 03
-                                        </option>
-                                        <option value="tipo 4">Tipo 04
-                                        </option>
-                                        <option value="tipo 5">Tipo 05
-                                        </option>
-                                    </select >
-                            </div>
-                            <div class="col2">
-                                <label>Estado*</label>
-                                    <select name="estado" class="form-group2">
-                                        <option value="excelente">Excelente
-                                        </option>
-                                        <option value="bueno">Bueno
-                                        </option>
-                                        <option value="regular">Regular
-                                        </option>
-                                        <option value="aceptable">Aceptable
-                                        </option>        
-                                    </select >
-                             </div>
-                             <div class="col2">
-                                <label>Trasladable*</label>
-                                    <select name="trasladable" class="form-group2">
-                                        <option value="si">Si
-                                        </option>
-                                        <option value="no">No
-                                        </option>                                  
-                                    </select >
-                            </div>
-                            <div class="col2">
-                                <label>Salón</label>
-                                    <select name="salon" class="form-group2">
-                                        <option value="no aplica">No Aplica
-                                        </option>
-                                        <option value="salon">Salón 101
-                                        </option>                                  
-                                    </select >
-                            </div> 
-                            <div class="col2">
-                                <label>Status</label>
-                                    <select name="status" class="form-group2">
-                                        <option value="activo">Activo
-                                        </option>
-                                        <option value="inactivo">Inactivo
-                                        </option>
-                                        <option value="reparacion">Reparacion
-                                        </option>                          
-                                    </select >
-                            </div>   
+                    <input type="text" name="name" class="form-control">
+                    <div class="row">
+                        <div class="col2">
+                            <label>Tipo*</label>
+                            <select name="tipo" class="form-group2">
+                                <option value="tipo 1">Tipo 01
+                                </option>
+                                <option value="tipo 2">Tipo 02
+                                </option>
+                                <option value="tipo 3">Tipo 03
+                                </option>
+                                <option value="tipo 4">Tipo 04
+                                </option>
+                                <option value="tipo 5">Tipo 05
+                                </option>
+                            </select>
                         </div>
-                    <label>Descripción</label>
-                        <input type="text" name="description" class="form-control">
-                    <!-- <label>Status</label>
-                    <select name="status" class="form-group2">
-                        <option value="activo">Activo
-                        </option>
-                        <option value="inactivo">Inactivo
-                        </option>
-                        <option value="reparacion">Reparacion
-                        </option>                          
-                    </select > -->
-                    <label>Habilitado para</label>
-                        <input type="text" name="anabled" class="form-control">
-                    <!-- <div class="row">
+                        <div class="col2">
+                            <label>Estado*</label>
+                            <select name="estado" class="form-group2">
+                                <option value="excelente">Excelente
+                                </option>
+                                <option value="bueno">Bueno
+                                </option>
+                                <option value="regular">Regular
+                                </option>
+                                <option value="aceptable">Aceptable
+                                </option>
+                            </select>
+                        </div>
                         <div class="col2">
                             <label>Trasladable*</label>
-                                <select name="trasladable" class="form-group2">
-                                    <option value="si">Si
-                                    </option>
-                                    <option value="no">No
-                                    </option>                                  
-                                </select >
+                            <select name="trasladable" class="form-group2">
+                                <option value="si">Si
+                                </option>
+                                <option value="no">No
+                                </option>
+                            </select>
                         </div>
                         <div class="col2">
                             <label>Salón</label>
-                                <select name="salon" class="form-group2">
-                                    <option value="no aplica">No Aplica
-                                    </option>
-                                    <option value="salon">Salón 101
-                                    </option>                                  
-                                </select >
-                        </div>  
-                    </div>    -->
-                </div>       
-                
+                            <select name="salon" class="form-group2">
+                                <option value="no aplica">No Aplica
+                                </option>
+                                <option value="salon">Salón 101
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col2">
+                            <label>Status</label>
+                            <select name="status" class="form-group2">
+                                <option value="activo">Activo
+                                </option>
+                                <option value="inactivo">Inactivo
+                                </option>
+                                <option value="reparacion">Reparacion
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <label>Descripción</label>
+                    <textarea name="descripcionEstado" class="form-control"></textarea>
+                    <label>Habilitado para</label>
+                    <input type="text" name="anabled" class="form-control">
+                </div>
+
             </fieldset>
 
-        </form> 
+        </form>
     </div>
-     <!-- Botones -->
-    <div class="row">
-        
-         <div class="col">
-            <button type="button" class="btn btn-outline-secondary" (click)="cancelar()" >Cancelar</button>
-        </div> <!-- End of column -->
-        
-        <div class="col">
-             <button type="button" class="btn btn-success" >Guardar</button>
-        </div> <!-- End of column -->    
+    <!-- Botones -->
+    <div class="col">
+        <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn btn-success">Guardar</button>
     </div> <!-- End of row -->
-           
-  
- 
-    
-</div> <!-- /container -->
 
+
+
+
+</div> <!-- /container -->

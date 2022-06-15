@@ -4,13 +4,13 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-salones',
   templateUrl: './salones.component.html',
-  styleUrls: ['./salones.component.css']
+  styleUrls: ['../../../css/formularioAdminAgregar.component.css']
 })
 export class SalonesComponent implements OnInit {
 
-  constructor(private router:ActivatedRoute, private route:Router) { }
-  
-  modulo: any=this.router.snapshot.paramMap.get('modulo');
+  constructor(private router: ActivatedRoute, private route: Router) { }
+
+  modulo: any = this.router.snapshot.url[2].path;
 
   ngOnInit(): void {
   }
@@ -18,7 +18,7 @@ export class SalonesComponent implements OnInit {
   cancelar() {
     Swal.fire({
       title: 'Está seguro que desea cancelar?',
-      text: "Será redirigido a {{modulo}}",
+      text: `Será redirigido a ${this.modulo}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#009045',
@@ -27,7 +27,7 @@ export class SalonesComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate(['admin/:modulo']);
+        this.route.navigate([`admin/${this.modulo}`]);
       }
     })
   }

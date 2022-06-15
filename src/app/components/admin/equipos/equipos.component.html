@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-    <div class="col">
+    <div>
         <!-- New Equipo -->
         <form name="newEquipo" class="register">
             <h1>Nuevo Equipo</h1>
@@ -22,7 +22,8 @@
                     <textarea name="descripcionEstado" class="form-control"></textarea>
                 </div>
             </fieldset>
-            <div>
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelar()" >Cancelar</button>
                 <button type="button" id="registerButton" class="btn btn-success">Guardar</button>
             </div>
         </form>

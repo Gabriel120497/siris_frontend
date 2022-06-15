@@ -5,21 +5,21 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-cursos-grupos',
   templateUrl: './cursos-grupos.component.html',
-  styleUrls: ['./cursos-grupos.component.css']
+  styleUrls: ['../../../css/formularioAdminAgregar.component.css']
 })
 export class CursosGruposComponent implements OnInit {
 
-  constructor(private router:ActivatedRoute, private route:Router) { }
-  
-  modulo: any=this.router.snapshot.paramMap.get('modulo');
-  
+  constructor(private router: ActivatedRoute, private route: Router) { }
+
+  modulo: any = this.router.snapshot.url[2].path;
+
   ngOnInit(): void {
   }
-  
+
   cancelar() {
     Swal.fire({
       title: 'Está seguro que desea cancelar?',
-      text: "Será redirigido a {{modulo}}",
+      text: `Será redirigido a ${this.modulo}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#009045',
@@ -28,7 +28,7 @@ export class CursosGruposComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate(['admin/:modulo']);
+        this.route.navigate([`admin/${this.modulo}`]);
       }
     })
   }

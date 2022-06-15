@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-grupos-proyeccion',
   templateUrl: './grupos-proyeccion.component.html',
-  styleUrls: ['../../dashboard/dashboard.component.css']
+  styleUrls: ['../../../css/dashboardCarousel.component.css']
 })
 export class GruposProyeccionComponent implements OnInit {
 

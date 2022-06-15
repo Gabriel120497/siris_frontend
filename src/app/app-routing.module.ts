@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
-  {path: 'admin/agregar/Cursos-Grupos', component: CursosGruposComponent},
+  {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},
   {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent},
