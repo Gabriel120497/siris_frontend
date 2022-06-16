@@ -29,10 +29,18 @@ export class TablaComponent implements OnInit {
       case 'Grupos-de-Proyeccion':
         this.headerTabla = ['Nombre', 'Descripción', 'Profesor', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
         break;
+      case 'Audiciones':
+        this.headerTabla = ['Solicitud', 'Nombre', 'Número de Contacto', 'Correo', 'Grupo'];
+        break;
+      case 'Mis-Grupos':
+        this.headerTabla = ['Código', 'Nombre', 'Descripción', 'Pre-Requisitos', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
+        break;
 
       default:
         break;
     }
+
+    this.modulo = this.modulo.replaceAll('-',' ')
 
   }
 

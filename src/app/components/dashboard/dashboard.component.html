@@ -1,14 +1,13 @@
 <app-header></app-header>
 
-
-<div ng-app="slider">
+<div>
   <div class="slider" (window:resize)="onResize($event)">
+    
     <div class="left">
       <button (click)="moveLeft()" [disabled]="start==0">
         <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
       </button>
     </div>
-
     <div class="card2" *ngFor="let slide of slides; let i = index" [hidden]="!(i >= start && i <= setSlidesVar-1)">
 
       <div class="card">

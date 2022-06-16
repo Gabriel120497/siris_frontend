@@ -1,6 +1,15 @@
 <app-header></app-header>
-
-<div ng-app="slider">
+<div class="row" *ngIf="role === 'profesor'">
+  <div class="col">
+    <button class="btn btn-success del-icon" (click)="redirigir('Audiciones')">
+      Audiciones Pendientes
+    </button>
+    <button class="btn btn-success" (click)="redirigir('Mis-Grupos')">
+      Mis Grupos
+    </button>
+  </div>
+</div>
+<div>
   <div class="slider" (window:resize)="onResize($event)">
     <div class="left">
       <button (click)="moveLeft()" [disabled]="start==0">
