@@ -19,7 +19,7 @@ const routes: Routes = [
 
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'users/reservas/:tipoReserva', component: ReservasComponent},
-  {path: 'users/gruposdeproyeccion', component: GruposProyeccionComponent},
+  {path: 'Grupos-de-Proyeccion/:role', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
@@ -27,11 +27,9 @@ const routes: Routes = [
   {path: 'admin/agregar/Salones', component: SalonesComponent},
   {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},
   {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
-  {path: 'teacher/Grupos-de-Proyeccion', component: GruposComponent},
-  {path: 'teacher/Grupos-de-Proyeccion/:modulo', component: TablaComponent},
+  {path: 'teachers/:modulo', component: TablaComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'calendario', component: CalendarioComponent},
-  {path: 'users/Grupos-de-Proyeccion', component: GruposProyeccionComponent}
+  {path: 'calendario', component: CalendarioComponent}
 ];
 
 @NgModule({

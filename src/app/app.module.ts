@@ -26,7 +26,9 @@ import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
-import { GruposComponent } from './components/teacher/grupos/grupos.component';
+import { AudicionesComponent } from './components/teachers/audiciones/audiciones.component';
+import { MisGruposComponent } from './components/teachers/mis-grupos/mis-grupos.component';
+
 import { UsuariosService } from './services/usuarios.service';
 
 
@@ -46,7 +48,8 @@ import { UsuariosService } from './services/usuarios.service';
     CursosGruposComponent,
     ReservasAdminComponent,
     TablaComponent,
-    GruposComponent
+    AudicionesComponent,
+    MisGruposComponent
   ],
   imports: [
     BrowserModule,
