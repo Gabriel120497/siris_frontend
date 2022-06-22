@@ -29,6 +29,12 @@ export class TablaComponent implements OnInit {
       case 'Grupos-de-Proyeccion':
         this.headerTabla = ['Nombre', 'Descripción', 'Profesor', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
         break;
+        case 'Audiciones':
+          this.headerTabla = ['Solicitud', 'Nombre', 'Número de Contacto', 'Correo', 'Grupo Audición'];
+        break;
+        case 'MisGrupos':
+        this.headerTabla = ['Código', 'Nombre', 'Cupos Totales', 'Cupos Restantes'];
+        break;
 
       default:
         break;

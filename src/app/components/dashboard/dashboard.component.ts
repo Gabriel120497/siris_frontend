@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,17 +11,25 @@ export class DashboardComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
+    { nombre: 'Grupos de Proyeccion', tipoReserva: 'GruposProyeccion' },
     { nombre: 'Instrumentos', tipoReserva: 'Instrumentos' },
     { nombre: 'Equipos', tipoReserva: 'Equipos' },
-    { nombre: 'Salones', tipoReserva: 'Salones' },
-    { nombre: 'Grupos de Proyeccion', tipoReserva: 'GruposProyeccion' }
+    { nombre: 'Salones', tipoReserva: 'Salones' }
   ];
 
   start: number = 0;
   setSlidesVar: number = 0;
-  userRole: string = 'admin';
+  userRole: string;
+  identity: any;
+  token: string | null;
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private usuariosService: UsuariosService) {
+    this.identity = this.usuariosService.getIdentity();
+    if (this.identity) {
+      this.userRole = this.identity.rol; 
+    }
+    //this.token = usuariosService.getToken();
+  }
 
   ngOnInit(): void {
     this.setSlides(innerWidth);
@@ -58,7 +67,7 @@ export class DashboardComponent implements OnInit {
 
   verMas(tipoReserva: string) {
     switch (this.userRole) {
-      case 'admin':
+      case 'Admin':
         if (tipoReserva !== 'GruposProyeccion') {
           this.route.navigate(['/admin', tipoReserva]);
         } else {
@@ -66,11 +75,15 @@ export class DashboardComponent implements OnInit {
         }
         break;
 
-      case 'profesor':
-
+      case 'Profesor':
+        if (tipoReserva !== 'GruposProyeccion') {
+          this.route.navigate(['/users/reservas', tipoReserva]);
+        } else {
+          this.route.navigate(['/teacher/Grupos-de-Proyeccion']);
+        }
         break;
 
-      case 'comunidad':
+      case 'Comunidad':
         if (tipoReserva !== 'GruposProyeccion') {
           this.route.navigate(['/users/reservas', tipoReserva]);
         } else {

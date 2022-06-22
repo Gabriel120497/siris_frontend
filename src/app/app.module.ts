@@ -17,6 +17,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HttpClientModule } from "@angular/common/http";
 import { ReservaEquiposComponent } from './components/users/reservas/reserva-equipos/reserva-equipos.component';
 import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/grupos-proyeccion.component';
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
@@ -25,6 +26,8 @@ import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
+import { GruposComponent } from './components/teacher/grupos/grupos.component';
+import { UsuariosService } from './services/usuarios.service';
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-gr
     EquiposComponent,
     CursosGruposComponent,
     ReservasAdminComponent,
-    TablaComponent
+    TablaComponent,
+    GruposComponent
   ],
   imports: [
     BrowserModule,
@@ -58,8 +62,9 @@ import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-gr
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
