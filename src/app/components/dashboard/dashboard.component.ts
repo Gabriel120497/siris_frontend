@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
         }
         break;
 
-      case 'profesor':
+      case 'Profesor':
         if (tipoReserva !== 'GruposProyeccion') {
           this.route.navigate(['/users/reservas', tipoReserva]);
         } else {
@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
         if (tipoReserva !== 'GruposProyeccion') {
           this.route.navigate(['/users/reservas', tipoReserva]);
         } else {
-          this.route.navigate(['users/Grupos-de-Proyeccion']);
+          this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
         }
         break;
 

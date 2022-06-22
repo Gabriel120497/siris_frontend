@@ -2,12 +2,21 @@ body {
   background: radial-gradient(circle, #C8F7C5, #DADFE1);
 }
 
+.body {
+  color: #0e171c;
+  display: grid;
+  font: 300 100%/1.5em 'Lato', sans-serif;
+  margin-top: 3vh;
+  place-items: center;
+  margin-bottom: 3vh;
+}
+
 .slider {
   display: flex;
   width: 90%;
   height: auto;
   justify-content: center;
-  margin-top: 28vh;
+  margin-top: 20vh;
   margin-left: auto;
   margin-right: auto;
 }

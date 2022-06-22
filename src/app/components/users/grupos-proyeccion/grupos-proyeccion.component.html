@@ -1,5 +1,6 @@
 <app-header></app-header>
-<div class="row" *ngIf="role === 'profesor'">
+
+<div class="row" *ngIf="role === 'Profesor'">
   <div class="col">
     <button class="btn btn-success del-icon" (click)="redirigir('Audiciones')">
       Audiciones Pendientes
@@ -8,6 +9,9 @@
       Mis Grupos
     </button>
   </div>
+</div>
+<div class="body">
+  <h1>Grupos de Proyección</h1>
 </div>
 <div>
   <div class="slider" (window:resize)="onResize($event)">

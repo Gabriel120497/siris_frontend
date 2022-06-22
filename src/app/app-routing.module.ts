@@ -12,7 +12,6 @@ import { InstrumentosComponent } from './components/admin/instrumentos/instrumen
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { SalonesComponent } from './components/admin/salones/salones.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
-import { GruposComponent } from './components/teacher/grupos/grupos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
