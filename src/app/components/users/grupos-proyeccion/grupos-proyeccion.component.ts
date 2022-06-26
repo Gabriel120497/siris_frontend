@@ -10,10 +10,10 @@ export class GruposProyeccionComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { nombre: 'Chirimia', tipoReserva: 'Chirimia' },
-    { nombre: 'Banda de Rock', tipoReserva: 'BandaRock' },
-    { nombre: 'Teatro', tipoReserva: 'Teatro' },
-    { nombre: 'Coro', tipoReserva: 'Coro' }
+    { nombre: 'Chirimia', grupo: 'Chirimia' },
+    { nombre: 'Banda de Rock', grupo: 'BandaRock' },
+    { nombre: 'Teatro', grupo: 'Teatro' },
+    { nombre: 'Coro', grupo: 'Coro' }
   ];
 
   start: number = 0;
@@ -57,8 +57,8 @@ export class GruposProyeccionComponent implements OnInit {
     }
   }
 
-  audicionar(tipoReserva: string) {
-    console.log(`se manda correo al docente del grupo ${tipoReserva}`);
+  audicionar(grupo: string) {
+    console.log(`se manda correo al docente del grupo ${grupo}`);
   }
 
   redirigir(opc: string) {

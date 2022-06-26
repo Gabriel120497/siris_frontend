@@ -12,27 +12,34 @@ export class TablaComponent implements OnInit {
 
   modulo: any = this.router.snapshot.paramMap.get('modulo');
   headerTabla: string[];
+  nuevaReservaBtn: boolean;
 
   ngOnInit(): void {
     console.log(this.modulo);
     switch (this.modulo) {
       case 'Instrumentos':
+        this.nuevaReservaBtn = true;
         this.headerTabla = ['Placa', 'Nombre', 'Tipo', 'Estado', 'Descripción Estado', 'Status', 'Habilitado Para', 'Trasladable', 'Salón'];
         break;
 
       case 'Equipos':
+        this.nuevaReservaBtn = true;
         this.headerTabla = ['Placa', 'Nombre', 'Tipo', 'Estado', 'Descripción Estado'];
         break;
       case 'Salones':
+        this.nuevaReservaBtn = true;
         this.headerTabla = ['Ubicación'];
         break;
       case 'Grupos-de-Proyeccion':
+        this.nuevaReservaBtn = false;
         this.headerTabla = ['Nombre', 'Descripción', 'Profesor', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
         break;
       case 'Audiciones':
+        this.nuevaReservaBtn = false;
         this.headerTabla = ['Solicitud', 'Nombre', 'Número de Contacto', 'Correo', 'Grupo'];
         break;
       case 'Mis-Grupos':
+        this.nuevaReservaBtn = false;
         this.headerTabla = ['Código', 'Nombre', 'Descripción', 'Pre-Requisitos', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
         break;
 
@@ -40,11 +47,15 @@ export class TablaComponent implements OnInit {
         break;
     }
 
-    this.modulo = this.modulo.replaceAll('-',' ')
+    this.modulo = this.modulo.replaceAll('-', ' ')
 
   }
 
   redirigir() {
     this.route.navigate([`/admin/agregar/${this.modulo}`]);
+  }
+
+  nuevaReserva() {
+    this.route.navigate([`admin/reservas/${this.modulo}`]);
   }
 }

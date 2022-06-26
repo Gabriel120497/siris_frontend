@@ -42,7 +42,7 @@ export class CalendarioComponent implements OnInit {
   selectedDayViewDate: Date;
 
   @Output() bookingChange = new EventEmitter();
-  @Input() tipoReserva:string;
+  @Input() modulo:string;
 
   actionDelete = [
     {
@@ -77,7 +77,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   hourSegmentClicked(date: Date) {
-    console.log(this.tipoReserva);
+    console.log(this.modulo);
     
     if (this.tipoPrestamo === 'Implements') {
       this.implementos(date);

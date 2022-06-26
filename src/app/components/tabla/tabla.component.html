@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-success">Nueva Reserva</button>
+                <button type="button" class="btn btn-success" (click)="nuevaReserva()" *ngIf="nuevaReservaBtn">Nueva Reserva</button>
             </div> <!-- End of column -->
             <div class="col">
                 <button type="button" class="btn btn-success" (click)="redirigir()">Agregar {{modulo}}</button>

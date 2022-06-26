@@ -30,6 +30,7 @@ import { AudicionesComponent } from './components/teachers/audiciones/audiciones
 import { MisGruposComponent } from './components/teachers/mis-grupos/mis-grupos.component';
 
 import { UsuariosService } from './services/usuarios.service';
+import { EquiposService } from './services/equipos.service';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import { UsuariosService } from './services/usuarios.service';
     }),
     HttpClientModule
   ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, EquiposService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
