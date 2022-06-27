@@ -25,6 +25,7 @@ import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
+import { RolesComponent } from './components/admin/roles/roles.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-gr
     EquiposComponent,
     CursosGruposComponent,
     ReservasAdminComponent,
-    TablaComponent
+    TablaComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,

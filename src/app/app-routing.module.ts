@@ -12,6 +12,7 @@ import { InstrumentosComponent } from './components/admin/instrumentos/instrumen
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { SalonesComponent } from './components/admin/salones/salones.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
+import { RolesComponent } from './components/admin/roles/roles.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'users/reservas/:tipoReserva', component: ReservasComponent},
   {path: 'users/gruposdeproyeccion', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
+  {path: 'admin/roles', component: RolesComponent},
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
