@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-grupos-proyeccion',
@@ -9,21 +10,22 @@ export class GruposProyeccionComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { nombre: 'Chirimia', tipoReserva: 'Chirimia' },
-    { nombre: 'Banda de Rock', tipoReserva: 'BandaRock' },
-    { nombre: 'Teatro', tipoReserva: 'Teatro' },
-    { nombre: 'Coro', tipoReserva: 'Coro' }
+    { nombre: 'Chirimia', grupo: 'Chirimia' },
+    { nombre: 'Banda de Rock', grupo: 'BandaRock' },
+    { nombre: 'Teatro', grupo: 'Teatro' },
+    { nombre: 'Coro', grupo: 'Coro' }
   ];
 
   start: number = 0;
   setSlidesVar: number = 0;
 
-  constructor() { }
+  constructor(private route: Router, private router: ActivatedRoute) { }
+
+  role: any = this.router.snapshot.paramMap.get('role');
 
   ngOnInit(): void {
     this.setSlides(innerWidth);
   }
-
 
   moveLeft() {
     this.start = this.start - 1;
@@ -55,9 +57,12 @@ export class GruposProyeccionComponent implements OnInit {
     }
   }
 
-  audicionar(tipoReserva: string) {
-    console.log(`se manda correo al docente del grupo ${tipoReserva}`);
-    
+  audicionar(grupo: string) {
+    console.log(`se manda correo al docente del grupo ${grupo}`);
+  }
+
+  redirigir(opc: string) {
+    this.route.navigate(['/teachers', opc]);
   }
 
 }

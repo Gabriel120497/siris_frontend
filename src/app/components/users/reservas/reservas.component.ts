@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReservaEquiposModel } from 'src/app/models/reserva-equipos';
+import { ReservasModel } from 'src/app/models/reservas';
+import { InstrumentosService } from 'src/app/services/instrumentos.service';
+import { SalonesService } from 'src/app/services/salones.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,61 +10,47 @@ import Swal from 'sweetalert2';
   templateUrl: './reservas.component.html',
   styleUrls: ['./reservas.component.scss']
 })
-export class ReservasComponent {
+export class ReservasComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute) { }
-
-  tipoReserva: any = this.router.snapshot.paramMap.get('tipoReserva');
+  modulo: any = this.router.snapshot.paramMap.get('modulo');
   instrument!: string;
   open: boolean = false;
   disabled: boolean = true;
   searchTerm: string = '';
   selectedItem: any = [];
-  reserva: ReservaEquiposModel = new ReservaEquiposModel;
+  reserva: ReservasModel = new ReservasModel;
   reservaJson: any;
 
-  items =
-    [
-      { value: "1", field: "Teacher" },
-      { value: "2", field: "Technician" },
-      { value: "3", field: "Physician" },
-      { value: "4", field: "Engineering Technologist" },
-      { value: "5", field: "Mechanic" },
-      { value: "6", field: "Tradesman" },
-      { value: "7", field: "Electrician" },
-      { value: "8", field: "Machinist" },
-      { value: "9", field: "Radiographer" },
-      { value: "10", field: "Programmer" },
-      { value: "11", field: "Actuary" },
-      { value: "12", field: "Plumber" },
-      { value: "13", field: "Surveyor" },
-      { value: "14", field: "Welder" },
-      { value: "15", field: "Consultant" },
-      { value: "16", field: "Auto Mechanic" },
-      { value: "17", field: "Tailor" },
-      { value: "18", field: "Journalist" },
-      { value: "19", field: "Broker" },
-      { value: "20", field: "Lawyer" },
-      { value: "21", field: "Judge" },
-      { value: "22", field: "Barrister" },
-      { value: "23", field: "Solicitor" },
-      { value: "24", field: "Paramedic" },
-      { value: "25", field: "Dental Technician" },
-      { value: "26", field: "Quantity Surveyor" },
-      { value: "27", field: "Tailor" },
-      { value: "28", field: "Nurse" },
-      { value: "30", field: "Pharmacist" },
-      { value: "31", field: "Hairdresser" },
-      { value: "32", field: "Anesthesiology" },
-      { value: "33", field: "Engineer" },
-      { value: "34", field: "Actuary" },
-      { value: "35", field: "Electrician" },
-      { value: "36", field: "Machinist" },
-      { value: "37", field: "Tradesman" },
-      { value: "38", field: "Drafter" },
-      { value: "39", field: "Chef" },
-      { value: "40", field: "Bricklayer" }
-    ];
+  items: any = [];
+  status: string;
+
+  constructor(private router: ActivatedRoute, private instrumentosService: InstrumentosService,
+    private salonesService: SalonesService) { }
+
+  ngOnInit(): void {
+    if (this.modulo === 'Salones') {
+      this.salonesService.todosLosSalones(localStorage.getItem('token') || "[]").subscribe(
+        (response: any) => {
+          console.log(response.salones);
+
+          this.items = response.salones;
+
+        }, error => {
+          this.status = 'error';
+        })
+    } else {
+      this.instrumentosService.todosLosInstrumentos(localStorage.getItem('token') || "[]").subscribe(
+        (response: any) => {
+          console.log(response.instrumentos);
+
+          this.items = response.instrumentos;
+
+        }, error => {
+          this.status = 'error';
+        })
+    }
+
+  }
 
   toggleDropdown() {
     this.open = !this.open;
@@ -74,36 +62,34 @@ export class ReservasComponent {
     if (val.length === 0) {
       return 'Search and Select'
     } else {
-      return this.selectedItem.field;
+      return this.selectedItem.nombre || this.selectedItem.ubicacion;
     }
   }
-  
+
   itemClicked(index: any) {
     this.open = false;
     this.selectedItem = this.items[index];
     this.displayItem();
   }
 
-  hacerReserva(){
+  hacerReserva() {
     if (this.selectedItem.length !== 0 && this.reservaJson !== undefined) {
       console.log(this.reservaJson);
-
-      this.reserva.id = '1';
-      this.reserva.equipos = this.selectedItem;
+      this.reserva.items = this.selectedItem;
       this.reserva.fechaInicio = this.reservaJson[0].start;
       this.reserva.fechaInicio = this.reservaJson[0].end;
-      console.log(this.reserva);   
-    }else {
+      console.log(this.reserva);
+    } else {
       Swal.fire({
         title: 'Atención',
-        text: `No se a seleccionado ${this.tipoReserva} o fecha`,
+        text: `No se a seleccionado ${this.modulo} o fecha`,
         icon: 'warning',
         confirmButtonColor: '#009045'
       })
     }
   }
 
-  obtenerHora(e :any) {
+  obtenerHora(e: any) {
     this.reservaJson = JSON.parse(e)
   }
 

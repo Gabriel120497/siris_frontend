@@ -1,8 +1,7 @@
 import { EquiposModel } from './equipos';
 
-export class ReservaEquiposModel {
-    id: string;
-    equipos: EquiposModel[];
+export class ReservasModel {
+    items: any[];
     fechaInicio: string;
     fechaFin: string;
     descripcionNecesidad: string;

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EquiposModel } from 'src/app/models/equipos';
-import { ReservaEquiposModel } from "src/app/models/reserva-equipos";
+import { ReservasModel } from "src/app/models/reservas";
+import { EquiposService } from 'src/app/services/equipos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,65 +13,32 @@ import Swal from 'sweetalert2';
 export class ReservaEquiposComponent implements OnInit {
 
   itemsParaReservar: EquiposModel[] = [];
-  reserva: ReservaEquiposModel = new ReservaEquiposModel;
+  reserva: ReservasModel = new ReservasModel;
   reservaJson: any;
 
-  items =
-    [
-      { value: "1", field: "Teacher" },
-      { value: "2", field: "Technician" },
-      { value: "3", field: "Physician" },
-      { value: "4", field: "Engineering Technologist" },
-      { value: "5", field: "Mechanic" },
-      { value: "6", field: "Tradesman" },
-      { value: "7", field: "Electrician" },
-      { value: "8", field: "Machinist" },
-      { value: "9", field: "Radiographer" },
-      { value: "10", field: "Programmer" },
-      { value: "11", field: "Actuary" },
-      { value: "12", field: "Plumber" },
-      { value: "13", field: "Surveyor" },
-      { value: "14", field: "Welder" },
-      { value: "15", field: "Consultant" },
-      { value: "16", field: "Auto Mechanic" },
-      { value: "17", field: "Tailor" },
-      { value: "18", field: "Journalist" },
-      { value: "19", field: "Broker" },
-      { value: "20", field: "Lawyer" },
-      { value: "21", field: "Judge" },
-      { value: "22", field: "Barrister" },
-      { value: "23", field: "Solicitor" },
-      { value: "24", field: "Paramedic" },
-      { value: "25", field: "Dental Technician" },
-      { value: "26", field: "Quantity Surveyor" },
-      { value: "27", field: "Tailor" },
-      { value: "28", field: "Nurse" },
-      { value: "30", field: "Pharmacist" },
-      { value: "31", field: "Hairdresser" },
-      { value: "32", field: "Anesthesiology" },
-      { value: "33", field: "Engineer" },
-      { value: "34", field: "Actuary" },
-      { value: "35", field: "Electrician" },
-      { value: "36", field: "Machinist" },
-      { value: "37", field: "Tradesman" },
-      { value: "38", field: "Drafter" },
-      { value: "39", field: "Chef" },
-      { value: "40", field: "Bricklayer" }
-    ];
-
+  items: any = [];
+  status: string;
   inputVal: string;
   cantidad: number = 1;
-  descripcionNecesidad:string = '';
+  descripcionNecesidad: string = '';
   mostrarCalendario: boolean = true;
   open: boolean = false;
   disabled: boolean = true;
   searchTerm: string = '';
   selectedItem: any = [];
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private equiposService: EquiposService) { }
 
   ngOnInit(): void {
+    this.equiposService.todosLosEquipos(localStorage.getItem('token') || "[]").subscribe(
+      (response: any) => {
+        console.log(response.equipos);
 
+        this.items = response.equipos;
+
+      }, error => {
+        this.status = 'error';
+      })
   }
 
   toggleDropdown() {
@@ -83,10 +51,10 @@ export class ReservaEquiposComponent implements OnInit {
     if (val.length === 0) {
       return 'Seleccionar Equipo'
     } else {
-      return this.selectedItem.field;
+      return this.selectedItem.nombre;
     }
   }
-  
+
   itemClicked(index: any) {
     this.open = false;
     this.selectedItem = this.items[index];
@@ -98,8 +66,9 @@ export class ReservaEquiposComponent implements OnInit {
       console.log(this.itemsParaReservar);
 
       this.itemsParaReservar.push({
-        'id': this.selectedItem['value'],
-        'nombre': this.selectedItem['field'],
+        'id': this.selectedItem['id'],
+        'placa': this.selectedItem['placa'],
+        'nombre': this.selectedItem['nombre'],
         'cantidad': this.cantidad
       });
     }
@@ -151,8 +120,7 @@ export class ReservaEquiposComponent implements OnInit {
 
   hacerReserva() {
     if (this.itemsParaReservar.length !== 0 && this.descripcionNecesidad !== '') {
-      this.reserva.id = '1';
-      this.reserva.equipos = this.itemsParaReservar;
+      this.reserva.items = this.itemsParaReservar;
       this.reserva.fechaInicio = this.reservaJson[0].start;
       this.reserva.fechaFin = this.reservaJson[0].end;
       this.reserva.descripcionNecesidad = this.descripcionNecesidad

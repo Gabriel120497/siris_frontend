@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,17 +11,25 @@ export class DashboardComponent implements OnInit {
 
   slider: any[] = [];
   slides: any[] = [
-    { nombre: 'Instrumentos', tipoReserva: 'Instrumentos' },
-    { nombre: 'Equipos', tipoReserva: 'Equipos' },
-    { nombre: 'Salones', tipoReserva: 'Salones' },
-    { nombre: 'Grupos de Proyeccion', tipoReserva: 'GruposProyeccion' }
+    { nombre: 'Grupos de Proyeccion', modulo: 'GruposProyeccion' },
+    { nombre: 'Instrumentos', modulo: 'Instrumentos' },
+    { nombre: 'Equipos', modulo: 'Equipos' },
+    { nombre: 'Salones', modulo: 'Salones' }
   ];
 
   start: number = 0;
   setSlidesVar: number = 0;
-  userRole: string = 'admin';
+  userRole: string;
+  identity: any;
+  token: string | null;
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private usuariosService: UsuariosService) {
+    this.identity = this.usuariosService.getIdentity();
+    if (this.identity) {
+      this.userRole = this.identity.rol; 
+    }
+    //this.token = usuariosService.getToken();
+  }
 
   ngOnInit(): void {
     this.setSlides(innerWidth);
@@ -56,25 +65,29 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  verMas(tipoReserva: string) {
+  verMas(modulo: string) {
     switch (this.userRole) {
-      case 'admin':
-        if (tipoReserva !== 'GruposProyeccion') {
-          this.route.navigate(['/admin', tipoReserva]);
+      case 'Admin':
+        if (modulo !== 'GruposProyeccion') {
+          this.route.navigate(['/admin', modulo]);
         } else {
           this.route.navigate(['admin/Grupos-de-Proyeccion']);
         }
         break;
 
-      case 'profesor':
-
+      case 'Profesor':
+        if (modulo !== 'GruposProyeccion') {
+          this.route.navigate(['/users/reservas', modulo]);
+        } else {
+          this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
+        }
         break;
 
-      case 'comunidad':
-        if (tipoReserva !== 'GruposProyeccion') {
-          this.route.navigate(['/users/reservas', tipoReserva]);
+      case 'Comunidad':
+        if (modulo !== 'GruposProyeccion') {
+          this.route.navigate(['/users/reservas', modulo]);
         } else {
-          this.route.navigate(['users/Grupos-de-Proyeccion']);
+          this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
         }
         break;
 

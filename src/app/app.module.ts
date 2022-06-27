@@ -17,6 +17,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HttpClientModule } from "@angular/common/http";
 import { ReservaEquiposComponent } from './components/users/reservas/reserva-equipos/reserva-equipos.component';
 import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/grupos-proyeccion.component';
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
@@ -26,6 +27,11 @@ import { ReservasAdminComponent } from './components/admin/reservas-admin/reserv
 import { TablaComponent } from './components/tabla/tabla.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 import { RolesComponent } from './components/admin/roles/roles.component';
+import { AudicionesComponent } from './components/teachers/audiciones/audiciones.component';
+import { MisGruposComponent } from './components/teachers/mis-grupos/mis-grupos.component';
+
+import { UsuariosService } from './services/usuarios.service';
+import { EquiposService } from './services/equipos.service';
 
 
 @NgModule({
@@ -44,7 +50,9 @@ import { RolesComponent } from './components/admin/roles/roles.component';
     CursosGruposComponent,
     ReservasAdminComponent,
     TablaComponent,
-    RolesComponent
+    RolesComponent,
+    AudicionesComponent,
+    MisGruposComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +68,9 @@ import { RolesComponent } from './components/admin/roles/roles.component';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UsuariosService, EquiposService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

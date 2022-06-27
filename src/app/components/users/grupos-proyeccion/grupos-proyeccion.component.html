@@ -1,7 +1,20 @@
 <app-header></app-header>
 
-<div ng-app="slider">
-  <div class="slider" (window:resize)="onResize($event)">
+<div class="row" *ngIf="role === 'Profesor'">
+  <div class="col">
+    <button class="btn btn-success del-icon" (click)="redirigir('Audiciones')">
+      Audiciones Pendientes
+    </button>
+    <button class="btn btn-success" (click)="redirigir('Mis-Grupos')">
+      Mis Grupos
+    </button>
+  </div>
+</div>
+<div class="body">
+  <h1>Grupos de Proyección</h1>
+</div>
+<div>
+  <div class="slider2" (window:resize)="onResize($event)">
     <div class="left">
       <button (click)="moveLeft()" [disabled]="start==0">
         <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
@@ -31,7 +44,7 @@
               content.
             </span>
           </p>
-          <a (click)="audicionar(slide.tipoReserva)" class="btn btn-primary">Audicionar</a>
+          <a (click)="audicionar(slide.grupo)" class="btn btn-primary">Audicionar</a>
         </div>
       </div>
 

@@ -18,19 +18,19 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
 
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
-  {path: 'users/reservas/:tipoReserva', component: ReservasComponent},
-  {path: 'users/gruposdeproyeccion', component: GruposProyeccionComponent},
+  {path: 'users/reservas/:modulo', component: ReservasComponent},
+  {path: 'Grupos-de-Proyeccion/:role', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'admin/roles', component: RolesComponent},
+  {path: 'admin/reservas/:modulo', component: ReservasComponent},
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
   {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},
-  {path: 'admin/reservas/:modulo', component: ReservasAdminComponent},
+  {path: 'teachers/:modulo', component: TablaComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'calendario', component: CalendarioComponent},
-  {path: 'users/Grupos-de-Proyeccion', component: GruposProyeccionComponent}
+  {path: 'calendario', component: CalendarioComponent}
 ];
 
 @NgModule({
