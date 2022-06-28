@@ -13,6 +13,8 @@ import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { SalonesComponent } from './components/admin/salones/salones.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 import { RolesComponent } from './components/admin/roles/roles.component';
+import { ExternosComponent } from './components/externos/externos.component';
+import CargaArchivosComponent from './components/admin/carga-archivos/carga-archivos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,14 +23,16 @@ const routes: Routes = [
   {path: 'users/reservas/:modulo', component: ReservasComponent},
   {path: 'Grupos-de-Proyeccion/:role', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
-  {path: 'admin/roles', component: RolesComponent},
+  {path: 'admin/agregar/Roles', component: RolesComponent},
+  {path: 'admin/Carga-Archivos', component: CargaArchivosComponent},
   {path: 'admin/reservas/:modulo', component: ReservasComponent},
   {path: 'admin/:modulo', component: TablaComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
-  {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},
+  {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},  
   {path: 'teachers/:modulo', component: TablaComponent},
+  {path: 'externos/Audicion', component: ExternosComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent}
 ];

@@ -11,13 +11,15 @@ export class RolesComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private route: Router) { }
 
+  modulo: any = this.router.snapshot.url[2].path;
+
   ngOnInit(): void {
   }
 
   cancelar() {
     Swal.fire({
-      title: 'Está seguro que desea cancelar?',
-      text: `Será redirigido al inicio`,
+      title: '¿Está seguro que desea cancelar?',
+      text: `Será redirigido a ${this.modulo}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#009045',
@@ -26,7 +28,7 @@ export class RolesComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate([`dashboard`]);
+        this.route.navigate([`admin/${this.modulo}`]);
       }
     })
   }

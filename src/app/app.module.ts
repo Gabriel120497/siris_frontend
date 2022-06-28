@@ -32,6 +32,8 @@ import { MisGruposComponent } from './components/teachers/mis-grupos/mis-grupos.
 
 import { UsuariosService } from './services/usuarios.service';
 import { EquiposService } from './services/equipos.service';
+import { ExternosComponent } from './components/externos/externos.component';
+import CargaArchivosComponent from './components/admin/carga-archivos/carga-archivos.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { EquiposService } from './services/equipos.service';
     TablaComponent,
     RolesComponent,
     AudicionesComponent,
-    MisGruposComponent
+    MisGruposComponent,
+    ExternosComponent,
+    CargaArchivosComponent
   ],
   imports: [
     BrowserModule,

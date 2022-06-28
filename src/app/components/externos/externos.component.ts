@@ -3,23 +3,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-equipos',
-  templateUrl: './equipos.component.html',
-  styleUrls: ['../../../css/formularioAdminAgregar.component.css']
+  selector: 'app-externos',
+  templateUrl: './externos.component.html',
+  styleUrls: ['../../css/formularioAdminAgregar.component.css']
 })
-export class EquiposComponent implements OnInit {
+
+
+export class ExternosComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private route: Router) { }
 
-  modulo: any = this.router.snapshot.url[2].path;
-
-  ngOnInit(): void {
+    ngOnInit(): void {
   }
 
   cancelar() {
     Swal.fire({
       title: '¿Está seguro que desea cancelar?',
-      text: `Será redirigido a ${this.modulo}`,
+      text: `Será redirigido al Login`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#009045',
@@ -28,9 +28,8 @@ export class EquiposComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate([`admin/${this.modulo}`]);
+        this.route.navigate([`login`]);
       }
     })
   }
-
 }

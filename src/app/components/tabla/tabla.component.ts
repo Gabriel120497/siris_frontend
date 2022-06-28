@@ -42,6 +42,11 @@ export class TablaComponent implements OnInit {
         this.nuevaReservaBtn = false;
         this.headerTabla = ['Código', 'Nombre', 'Descripción', 'Pre-Requisitos', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
         break;
+      case 'Roles':
+        this.nuevaReservaBtn = false;
+        this.headerTabla = [ 'Rol','Nombre','Apellido', 'Tipo Documento', 'Número Documento', 'Número de contacto', 'Número de contacto 2', 'Correo'];
+        break;
+
 
       default:
         break;
