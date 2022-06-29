@@ -23,6 +23,7 @@ export class ReservasComponent implements OnInit {
 
   items: any = [];
   status: string;
+  show:boolean = false;
 
   constructor(private router: ActivatedRoute, private instrumentosService: InstrumentosService,
     private salonesService: SalonesService) { }
@@ -91,6 +92,7 @@ export class ReservasComponent implements OnInit {
 
   obtenerHora(e: any) {
     this.reservaJson = JSON.parse(e)
+    this.show = true;
   }
 
 }
