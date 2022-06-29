@@ -8,6 +8,10 @@ h1 {
 	text-align: center;
 }
 
+hr {
+	color: #009045;
+}
+
 .btn {
     margin: auto;
     display: block;

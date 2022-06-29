@@ -83,7 +83,7 @@ export class ReservaEquiposComponent implements OnInit {
 
   cancelar() {
     Swal.fire({
-      title: 'Está seguro que desea cancelar?',
+      title: '¿Está seguro que desea cancelar?',
       text: "Será redirigido al menú principal",
       icon: 'warning',
       showCancelButton: true,

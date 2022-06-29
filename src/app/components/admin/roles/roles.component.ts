@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-equipos',
-  templateUrl: './equipos.component.html',
+  selector: 'app-roles',
+  templateUrl: './roles.component.html',
   styleUrls: ['../../../css/formularioAdminAgregar.component.css']
 })
-export class EquiposComponent implements OnInit {
+export class RolesComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private route: Router) { }
 

@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container">
+    <div>
+        <!-- New -->
+        <form name="new" class="register">
+            <h1>Información para Audición</h1>
+           
+            <p align="center">La información solicitada acontinuación sera utilizada para que el profesor encargado del grupo de proyección del que estas interesado pueda contactarte para agendar la audición.
+            </p>
+       
+            <fieldset class="row1">
+                
+                <div class="form-group">
+                    <label>Nombre *</label>
+                    <input type="text" name="name" class="form-control">
+                    <label>Apellidos *</label>
+                    <input type="text" name="name" class="form-control">
+                    <label>Grupo de Proyección*</label>
+                    <select name="tipo" class="form-group2">
+                        <option value="Chirimia">Chirimia
+                        </option>
+                        <option value="Banda de Rock">Banda de Rock
+                        </option>
+                        <option value="anubis">Anubis
+                        </option>
+                    </select>
+                    <label>Tipo Documento *</label>
+                    <select name="tipoDocumenyo" class="form-group2">
+                        <option value="CC">CC - Cédula de ciudadania
+                        </option>
+                        <option value="TI">TI - Tarjeta de identidad
+                        </option>
+                        <option value="CE">CE -  Cédula de extranjeria
+                        </option>
+                        <option value="PASAPORTE">Pasaporte
+                        </option>                      
+                    </select>
+                    <label>Número de documento *</label>
+                    <input type="text" name="" class="form-control">
+                    <label>Número de contacto *</label>
+                    <input type="text" name="numerocontacto1" class="form-control">
+                    <label>Número de contacto (opcional)</label>
+                    <input type="text" name="numerocontacto2" class="form-control">
+                    <label>Correo</label>
+                    <input type="text" name="correo" class="form-control">
+                </div>
+
+
+            </fieldset>
+
+        </form>
+    </div>
+    <!-- Botones -->
+    <div class="col">
+        <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn btn-success">Guardar</button>
+    </div> <!-- End of row -->
+
+
+
+
+</div> <!-- /container -->

@@ -1,6 +1,24 @@
 <nav class="navbar">
   <div class="container-fluid nav">
     <a class="navbar-brand"><img class="img" src="../../assets/logoPoli.png"></a>
-    <a><i class="bi bi-person-circle icon"></i></a>
+    
+     
+    <div class="btn-group">
+      
+      <button type="button" class="btn dropdown-toggle dropdown-toggle-split" (click)="menu()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="bi bi-person-circle icon"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="admin/Carga-Archivos">Carga de Archivos</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div>
   </div>
+  
+
+  
 </nav>
+

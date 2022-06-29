@@ -10,7 +10,7 @@
                 <button type="button" class="btn btn-success" (click)="nuevaReserva()" *ngIf="nuevaReservaBtn">Nueva Reserva</button>
             </div> <!-- End of column -->
             <div class="col">
-                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar {{modulo}}</button>
+                <button type="button" class="btn btn-success" (click)="redirigir()" *ngIf="agregarBtn">Agregar {{modulo}}</button>
             </div> <!-- End of column -->
 
         </div> <!-- End of row -->
@@ -33,10 +33,26 @@
                             <tbody>
                                 <tr>
                                     <td *ngFor="let item of headerTabla">Lorem ipsum dolor sit</td>
-                                    <td class="text-center"><button class="btn btn-outline-danger del-icon"><span><i
-                                                    class="bi bi-trash"></i></span></button> <button
-                                            class="btn btn-outline-success"><span><i
-                                                    class="bi bi-pencil"></i></span></button>
+                                    <td class="text-center">
+                                        <button  class="btn btn-outline-success" *ngIf="editarBtn">
+                                            <span><i class="bi bi-pencil">
+                                            </i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger del-icon" *ngIf="eliminarBtn">
+                                            <span><i class="bi bi-trash">
+                                            </i></span>
+                                        </button> 
+                                        <button  class="btn btn-outline-success" *ngIf="aceptarBtn">
+                                            <span><i class="bi bi-check-lg">
+                                            </i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger del-icon" *ngIf="rechazarBtn">
+                                            <span><i class="bi bi-x-lg">
+                                            </i></span>
+                                        </button> 
+
+                                        <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="713" height="300" style="display: block; height: 334px; width: 793px;"></canvas>
+                                        
                                     </td>
                                 </tr>
                             </tbody>

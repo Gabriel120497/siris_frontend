@@ -19,7 +19,7 @@ export class InstrumentosComponent implements OnInit {
 
   cancelar() {
     Swal.fire({
-      title: 'Está seguro que desea cancelar?',
+      title: '¿Está seguro que desea cancelar?',
       text: `Será redirigido a ${this.modulo}`,
       icon: 'warning',
       showCancelButton: true,
