@@ -2,7 +2,10 @@
 
 <div class="body">
     <h1>{{ modulo }}</h1>
-    <div id="inputSearch" class="container">
+</div>
+<app-calendario [modulo]="displayItem()" (bookingChange)="obtenerHora($event)"></app-calendario>
+<div class="body">
+    <div id="inputSearch" class="container" *ngIf="show">
         <div class="form-group">
             <div class="link-dropdown form-control">
                 <div class="link-dropdown-search">
@@ -26,8 +29,5 @@
         </div>
     </div>
     <br>
-</div>
-<app-calendario [modulo]="displayItem()" (bookingChange)="obtenerHora($event)"></app-calendario>
-<div class="body">
     <button type="button" class="btn btn-success" [disabled]="" (click)="hacerReserva()">Hacer Reserva</button>
 </div>
