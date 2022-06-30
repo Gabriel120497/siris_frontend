@@ -30,7 +30,7 @@ export class ReservasComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.modulo === 'Salones') {
-      this.salonesService.todosLosSalones(localStorage.getItem('token') || "[]").subscribe(
+      this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
         (response: any) => {
           console.log(response.salones);
 
@@ -40,7 +40,7 @@ export class ReservasComponent implements OnInit {
           this.status = 'error';
         })
     } else {
-      this.instrumentosService.todosLosInstrumentos(localStorage.getItem('token') || "[]").subscribe(
+      this.instrumentosService.getInstrumentos(localStorage.getItem('token') || "[]").subscribe(
         (response: any) => {
           console.log(response.instrumentos);
 

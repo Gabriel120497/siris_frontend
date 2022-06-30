@@ -18,4 +18,8 @@ export class GruposService {
 
     return this.http.post(this.url + 'nuevoGrupo', grupo, { headers: headers });
   }
+
+  grupos(){
+    return this.http.get(this.url+'grupos');
+  }
 }

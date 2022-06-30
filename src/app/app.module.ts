@@ -34,6 +34,10 @@ import { UsuariosService } from './services/usuarios.service';
 import { EquiposService } from './services/equipos.service';
 import { ExternosComponent } from './components/externos/externos.component';
 import CargaArchivosComponent from './components/admin/carga-archivos/carga-archivos.component';
+import { TablaGruposComponent } from './components/tabla/tabla-grupos/tabla-grupos.component';
+import { TablaSalonesComponent } from './components/tabla/tabla-salones/tabla-salones.component';
+import { TablaEquiposComponent } from './components/tabla/tabla-equipos/tabla-equipos.component';
+import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumentos/tabla-instrumentos.component';
 
 
 @NgModule({
@@ -56,7 +60,11 @@ import CargaArchivosComponent from './components/admin/carga-archivos/carga-arch
     AudicionesComponent,
     MisGruposComponent,
     ExternosComponent,
-    CargaArchivosComponent
+    CargaArchivosComponent,
+    TablaGruposComponent,
+    TablaSalonesComponent,
+    TablaEquiposComponent,
+    TablaInstrumentosComponent
   ],
   imports: [
     BrowserModule,

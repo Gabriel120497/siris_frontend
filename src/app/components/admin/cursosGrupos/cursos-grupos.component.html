@@ -91,9 +91,7 @@
                         <div class="col2">
                             <label>Salón *</label>
                             <select formControlName="id_salon_clase" class="form-group2">
-                                <option value="1">P56-105
-                                </option>
-                                <option value="2">P56-106
+                                <option *ngFor="let item of profesores" value={{item.id}}> {{item.ubicacion}}
                                 </option>
                             </select>
                         </div>

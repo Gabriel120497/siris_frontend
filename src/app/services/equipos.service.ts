@@ -14,7 +14,7 @@ export class EquiposService {
     this.url = global.url;
   }
 
-  todosLosEquipos(token: string|[]){
+  getEquipos(token: string|[]){
     let headers = new HttpHeaders().set('Authorization', token);
 
     return this.http.get(this.url + 'equipos', { headers: headers });

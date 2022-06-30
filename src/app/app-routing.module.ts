@@ -15,6 +15,10 @@ import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-gr
 import { RolesComponent } from './components/admin/roles/roles.component';
 import { ExternosComponent } from './components/externos/externos.component';
 import CargaArchivosComponent from './components/admin/carga-archivos/carga-archivos.component';
+import { TablaGruposComponent } from './components/tabla/tabla-grupos/tabla-grupos.component';
+import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumentos/tabla-instrumentos.component';
+import { TablaEquiposComponent } from './components/tabla/tabla-equipos/tabla-equipos.component';
+import { TablaSalonesComponent } from './components/tabla/tabla-salones/tabla-salones.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,7 +30,10 @@ const routes: Routes = [
   {path: 'admin/agregar/Roles', component: RolesComponent},
   {path: 'admin/Carga-Archivos', component: CargaArchivosComponent},
   {path: 'admin/reservas/:modulo', component: ReservasComponent},
-  {path: 'admin/:modulo', component: TablaComponent},
+  {path: 'admin/Grupos-de-Proyeccion', component: TablaGruposComponent},
+  {path: 'admin/Instrumentos', component: TablaInstrumentosComponent},
+  {path: 'admin/Equipos', component: TablaEquiposComponent},
+  {path: 'admin/Salones', component: TablaSalonesComponent},
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},

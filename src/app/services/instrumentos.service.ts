@@ -14,9 +14,8 @@ export class InstrumentosService {
     this.url = global.url;
   }
 
-  todosLosInstrumentos(token: string|[]){
+  getInstrumentos(token: string|[]){
     let headers = new HttpHeaders().set('Authorization', token);
-
     return this.http.get(this.url + 'instrumentos', { headers: headers });
 
   }

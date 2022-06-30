@@ -13,9 +13,8 @@ export class SalonesService {
     this.url = global.url;
   }
 
-  todosLosSalones(token: string|[]){
+  getSalones(token: string|[]){
     let headers = new HttpHeaders().set('Authorization', token);
-
     return this.http.get(this.url + 'salones', { headers: headers });
 
   }

@@ -1,18 +1,17 @@
 <app-header></app-header>
 <div class="body">
-    <h1>{{modulo}}</h1>
+    <h1>Instrumentos</h1>
 </div>
 <div class="page-content-wrapper">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-success" (click)="nuevaReserva()" *ngIf="nuevaReservaBtn">Nueva
+                <button type="button" class="btn btn-success" (click)="nuevaReserva()">Nueva
                     Reserva</button>
             </div> <!-- End of column -->
             <div class="col">
-                <button type="button" class="btn btn-success" (click)="redirigir()" *ngIf="agregarBtn">Agregar
-                    {{modulo}}</button>
+                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar
+                    Instrumento</button>
             </div> <!-- End of column -->
 
         </div> <!-- End of row -->
@@ -33,8 +32,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of grupos, let i = index">
-                                    <td *ngFor="let n of headerTabla">{{item.nombre}}</td>
+                                <tr key="i" *ngFor="let item of instrumentos, let i = index">
+                                    <td>{{item.placa}}</td>
+
+                                    <td>{{item.nombre}}</td>
+
+                                    <td>{{item.tipo}}</td>
+
+                                    <td>{{item.estado}}</td>
+
+                                    <td>{{item.descripcion_estado}}</td>
+
+                                    <td>{{item.estatus}}</td>
+                                    <td>{{item.habilitado_para}}</td>
+                                    <td>{{item.trasladable}}</td>
+                                    <td>{{item.salon}}</td>
                                     <td class="text-center">
                                         <button class="btn btn-outline-success">
                                             <span><i class={{verdeBtn}}>

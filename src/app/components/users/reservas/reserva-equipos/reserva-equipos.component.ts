@@ -30,7 +30,7 @@ export class ReservaEquiposComponent implements OnInit {
   constructor(private route: Router, private equiposService: EquiposService) { }
 
   ngOnInit(): void {
-    this.equiposService.todosLosEquipos(localStorage.getItem('token') || "[]").subscribe(
+    this.equiposService.getEquipos(localStorage.getItem('token') || "[]").subscribe(
       (response: any) => {
         console.log(response.equipos);
 

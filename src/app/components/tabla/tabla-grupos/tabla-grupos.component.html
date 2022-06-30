@@ -1,18 +1,13 @@
 <app-header></app-header>
 <div class="body">
-    <h1>{{modulo}}</h1>
+    <h1>Grupos de Proyección</h1>
 </div>
 <div class="page-content-wrapper">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-success" (click)="nuevaReserva()" *ngIf="nuevaReservaBtn">Nueva
-                    Reserva</button>
-            </div> <!-- End of column -->
-            <div class="col">
-                <button type="button" class="btn btn-success" (click)="redirigir()" *ngIf="agregarBtn">Agregar
-                    {{modulo}}</button>
+                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar Grupo de
+                    Proyección</button>
             </div> <!-- End of column -->
 
         </div> <!-- End of row -->
@@ -34,7 +29,17 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of grupos, let i = index">
-                                    <td *ngFor="let n of headerTabla">{{item.nombre}}</td>
+                                    <td>{{item.nombre}}</td>
+
+                                    <td>{{item.descripcion}}</td>
+
+                                    <td>{{item.profesor}}</td>
+
+                                    <td>{{item.cupos_totales}}</td>
+
+                                    <td>{{item.cupos_restantes}}</td>
+
+                                    <td>{{item.horario|json}}</td>
                                     <td class="text-center">
                                         <button class="btn btn-outline-success">
                                             <span><i class={{verdeBtn}}>

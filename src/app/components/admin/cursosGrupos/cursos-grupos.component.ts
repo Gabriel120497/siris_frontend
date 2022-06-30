@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GruposModel } from 'src/app/models/grupos';
 import { GruposService } from 'src/app/services/grupos.service';
+import { SalonesService } from 'src/app/services/salones.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -14,10 +15,12 @@ import Swal from 'sweetalert2';
 export class CursosGruposComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private route: Router,
-    private usuariosService: UsuariosService, private gruposService: GruposService) { }
+    private usuariosService: UsuariosService, private gruposService: GruposService,
+    private salonesService:SalonesService) { }
 
   modulo: any = this.router.snapshot.url[2].path;
   profesores: any = [];
+  salones: any = [];
   status: string;
   nuevoGrupoForm: any;
   nuevoGrupoRequest: GruposModel = new GruposModel;
@@ -39,6 +42,7 @@ export class CursosGruposComponent implements OnInit {
       dia: new FormControl(''),
       id_salon_clase: new FormControl('', Validators.required),
     });
+
     this.usuariosService.profesores(localStorage.getItem('token') || "[]").subscribe(
       (response: any) => {
         console.log(response.profesores);
@@ -46,6 +50,14 @@ export class CursosGruposComponent implements OnInit {
       }, error => {
         this.status = 'error';
       });
+
+      this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
+        (response: any) => {
+          console.log(response.salones);
+          this.salones = response.salones;
+        }, error => {
+          this.status = 'error';
+        });
   }
 
   cancelar() {
@@ -69,7 +81,7 @@ export class CursosGruposComponent implements OnInit {
     if (this.dias.length < 6) {
       this.dias.push({
         'dia': this.nuevoGrupoForm.value.dia,
-        'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.hour,
+        'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
         'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
       });
       this.nuevoGrupoForm.value.dia = '';
@@ -101,7 +113,7 @@ export class CursosGruposComponent implements OnInit {
           confirmButtonText: 'Confirmar'
         }).then((result) => {
           if (result.isConfirmed) {
-            this.nuevoGrupoForm.reset();
+            this.route.navigate(['admin/Grupos-de-Proyeccion']);
           }
         })
 
@@ -123,7 +135,7 @@ export class CursosGruposComponent implements OnInit {
     if (this.dias.length < 6) {
       this.dias.push({
         'dia': this.nuevoGrupoForm.value.dia,
-        'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.hour,
+        'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
         'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
       });
       this.nuevoGrupoForm.value.dia = '';

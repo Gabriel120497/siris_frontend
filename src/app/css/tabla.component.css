@@ -24,3 +24,7 @@
   padding: 0.1rem 0.4rem;
   font-size: medium;
 }
+
+tbody{
+  vertical-align: middle;
+}
