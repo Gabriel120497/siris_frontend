@@ -102,7 +102,7 @@ export class ReservaEquiposComponent implements OnInit {
     console.log(this.cantidad);
     this.itemsParaReservar[index].cantidad = this.cantidad
     console.log(this.itemsParaReservar);
-    this.cantidad = 0
+    this.cantidad = 1
   }
 
   siguiente() {

@@ -45,4 +45,9 @@ export class UsuariosService {
     }
     return this.token;
   }
+
+  profesores(token: string|[]){
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(this.url + 'usuario/profesores', { headers: headers });
+  }
 }

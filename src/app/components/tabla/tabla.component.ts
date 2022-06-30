@@ -137,6 +137,7 @@ export class TablaComponent implements OnInit {
   }
 
   redirigir() {
+    this.modulo = this.modulo.replaceAll(' ', '-')
     this.route.navigate([`/admin/agregar/${this.modulo}`]);
   }
 
