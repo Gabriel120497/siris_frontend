@@ -1,24 +1,40 @@
 <nav class="navbar">
   <div class="container-fluid nav">
     <a class="navbar-brand"><img class="img" src="../../assets/logoPoli.png"></a>
-    
-     
-    <div class="btn-group">
-      
-      <button type="button" class="btn dropdown-toggle dropdown-toggle-split" (click)="menu()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+    <!--div class="btn-group">
+      <button type="button" class="btn dropdown-toggle dropdown-toggle-split" (click)="menu()" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
         <span class="bi bi-person-circle icon"></span>
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="admin/Carga-Archivos">Carga de Archivos</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
+    </div-->
+
+
+    <div class="navbar-toggler dropstart" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span class="bi bi-person-circle icon"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Roles']">Nuevo Colaborador</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Instrumentos']">Nuevo Instrumento</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/', 'teachers','Mis-Grupos']">Mis Grupos</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/', 'teachers','Audiciones']">Audiciones Pendientes</a></li>
+            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
+
+
   </div>
-  
 
-  
+
+
 </nav>
-

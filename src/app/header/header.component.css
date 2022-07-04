@@ -17,3 +17,11 @@
     flex-wrap: nowrap;
     background-color: #009045;
 }
+
+.dropdown-menu.show {
+    display: grid;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
