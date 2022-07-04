@@ -14,7 +14,8 @@ export class DashboardComponent implements OnInit {
     { nombre: 'Grupos de Proyeccion', modulo: 'GruposProyeccion' },
     { nombre: 'Instrumentos', modulo: 'Instrumentos' },
     { nombre: 'Equipos', modulo: 'Equipos' },
-    { nombre: 'Salones', modulo: 'Salones' }
+    { nombre: 'Salones', modulo: 'Salones' },
+    { nombre: 'Cursos', modulo: 'Cursos' }
   ];
 
   start: number = 0;
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnInit {
   constructor(private route: Router, private usuariosService: UsuariosService) {
     this.identity = this.usuariosService.getIdentity();
     if (this.identity) {
-      this.userRole = this.identity.rol; 
+      this.userRole = this.identity.rol;
     }
     //this.token = usuariosService.getToken();
   }
@@ -68,10 +69,13 @@ export class DashboardComponent implements OnInit {
   verMas(modulo: string) {
     switch (this.userRole) {
       case 'Admin':
-        if (modulo !== 'GruposProyeccion') {
-          this.route.navigate(['/admin', modulo]);
-        } else {
+        if (modulo == 'GruposProyeccion') {
           this.route.navigate(['admin/Grupos-de-Proyeccion']);
+        } else if (modulo == 'Cursos') {
+          window.location.href='http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
+          
+        } else {
+          this.route.navigate(['/admin', modulo]);
         }
         break;
 
@@ -84,11 +88,17 @@ export class DashboardComponent implements OnInit {
         break;
 
       case 'Comunidad':
-        if (modulo !== 'GruposProyeccion') {
-          this.route.navigate(['/users/reservas', modulo]);
-        } else {
+        if (modulo == 'GruposProyeccion') {
           this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
+        } else if (modulo == 'Cursos') {
+          this.route.navigateByUrl('http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php')
+        } else {
+          this.route.navigate(['/users/reservas', modulo]);
         }
+        break;
+
+      case 'Cursos':
+        this.route.navigate(['http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php']);
         break;
 
       default:

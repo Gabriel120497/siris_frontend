@@ -23,36 +23,6 @@ export class TablaComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.modulo);
     switch (this.modulo) {
-      case 'Instrumentos':
-        this.nuevaReservaBtn = true;
-        this.agregarBtn = true;
-        this.verdeBtn = "bi bi-pencil";
-        this.rojoBtn = "bi bi-trash";
-        this.headerTabla = ['Placa', 'Nombre', 'Tipo', 'Estado', 'Descripción Estado', 'Status', 'Habilitado Para', 'Trasladable', 'Salón'];
-        break;
-
-      case 'Equipos':
-        this.nuevaReservaBtn = true;
-        this.agregarBtn = true;
-        this.verdeBtn = "bi bi-pencil";
-        this.rojoBtn = "bi bi-trash";
-        this.headerTabla = ['Placa', 'Nombre', 'Tipo', 'Estado', 'Descripción Estado'];
-        break;
-      case 'Salones':
-        this.nuevaReservaBtn = true;
-        this.agregarBtn = true;
-        this.verdeBtn = "bi bi-pencil";
-        this.rojoBtn = "bi bi-trash";
-        this.headerTabla = ['Ubicación'];
-        break;
-      case 'Grupos-de-Proyeccion':
-        this.getGrupos();
-        this.nuevaReservaBtn = false;
-        this.agregarBtn = true;
-        this.verdeBtn = "bi bi-pencil";
-        this.rojoBtn = "bi bi-trash";
-        this.headerTabla = ['Nombre', 'Descripción', 'Profesor', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
-        break;
       case 'Audiciones':
         this.nuevaReservaBtn = false;
         this.agregarBtn = false;

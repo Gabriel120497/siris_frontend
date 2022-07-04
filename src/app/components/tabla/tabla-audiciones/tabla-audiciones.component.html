@@ -1,17 +1,13 @@
 <app-header></app-header>
 <div class="body">
-    <h1>Instrumentos</h1>
+    <h1>Audiciones Pendientes</h1>
 </div>
 <div class="page-content-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-success" (click)="nuevaReserva()">Nueva
-                    Reserva</button>
-            </div> <!-- End of column -->
-            <div class="col">
-                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar
-                    Instrumento</button>
+                <button type="button" class="btn btn-success" (click)="nuevaAudicion()">Nueva
+                    Audición</button>
             </div> <!-- End of column -->
 
         </div> <!-- End of row -->
@@ -32,27 +28,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr key="i" *ngFor="let item of instrumentos, let i = index">
-                                    <td>{{item.placa}}</td>
-
+                                <tr key="i" *ngFor="let item of audiciones, let i = index">
+                                    <td>{{item.id}}</td>
                                     <td>{{item.nombre}}</td>
+                                    <td>{{item.celular}}</td>
+                                    <td>{{item.correo}}</td>
+                                    <td>{{item.grupo}}</td>
 
-                                    <td>{{item.tipo}}</td>
-
-                                    <td>{{item.estado}}</td>
-
-                                    <td>{{item.descripcion_estado}}</td>
-
-                                    <td>{{item.estatus}}</td>
-                                    <td>{{item.habilitado_para}}</td>
-                                    <td>{{item.trasladable}}</td>
-                                    <td>{{item.salon}}</td>
                                     <td class="text-center">
                                         <button class="btn btn-outline-success">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
-                                        <button class="btn btn-outline-danger del-icon" (click)="deshabilitar(i)">
+                                        <button class="btn btn-outline-danger del-icon">
                                             <span><i class={{rojoBtn}}>
                                                 </i></span>
                                         </button>

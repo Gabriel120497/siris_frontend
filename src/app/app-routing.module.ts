@@ -19,6 +19,7 @@ import { TablaGruposComponent } from './components/tabla/tabla-grupos/tabla-grup
 import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumentos/tabla-instrumentos.component';
 import { TablaEquiposComponent } from './components/tabla/tabla-equipos/tabla-equipos.component';
 import { TablaSalonesComponent } from './components/tabla/tabla-salones/tabla-salones.component';
+import { TablaAudicionesComponent } from './components/tabla/tabla-audiciones/tabla-audiciones.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -38,8 +39,10 @@ const routes: Routes = [
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
   {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},  
+  {path: 'teachers/Audiciones', component: TablaAudicionesComponent},
+  {path: 'teachers/NuevaAudicion', component: ExternosComponent},
   {path: 'teachers/:modulo', component: TablaComponent},
-  {path: 'externos/Audicion', component: ExternosComponent},
+  {path: 'externos/Audicion/:grupo', component: ExternosComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent}
 ];

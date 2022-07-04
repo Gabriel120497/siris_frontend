@@ -13,13 +13,19 @@ export class GruposService {
     this.url = global.url;
   }
 
-  nuevoGrupo(grupo:any, token: string|[]){
+  nuevoGrupo(grupo: any, token: string | []) {
     let headers = new HttpHeaders().set('Authorization', token);
 
     return this.http.post(this.url + 'nuevoGrupo', grupo, { headers: headers });
   }
 
-  grupos(){
-    return this.http.get(this.url+'grupos');
+  grupos() {
+    return this.http.get(this.url + 'grupos');
+  }
+
+  getAudicionesPendientes(profesor: any, token: string) {
+    console.log(profesor);
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.post(this.url + `audicionesPendientes`, profesor, { headers: headers });
   }
 }

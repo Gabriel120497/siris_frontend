@@ -2,39 +2,22 @@
 <div class="container">
     <div>
         <!-- New -->
-        <form name="newInstrumento" class="register">
+        <form name="newInstrumento" class="register" [formGroup]="nuevoInstrumentoForm" (ngSubmit)="nuevoInstrumento()">
             <h1>Nuevo Instrumento</h1>
             <fieldset class="row1">
                 <!-- PLACA -->
                 <div class="form-group">
                     <label>Placa*</label>
-                    <input type="text" name="placa" class="form-control">
-                    <label>Placa *</label>
-                    <input type="text" name="userRepeatplaca" class="form-control">
+                    <input type="text" formControlName="placa" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label>Nombre*</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" formControlName="nombre" class="form-control">
                     <div class="row">
                         <div class="col2">
-                            <label>Tipo*</label>
-                            <select name="tipo" class="form-group2">
-                                <option value="tipo 1">Tipo 01
-                                </option>
-                                <option value="tipo 2">Tipo 02
-                                </option>
-                                <option value="tipo 3">Tipo 03
-                                </option>
-                                <option value="tipo 4">Tipo 04
-                                </option>
-                                <option value="tipo 5">Tipo 05
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col2">
                             <label>Estado*</label>
-                            <select name="estado" class="form-group2">
+                            <select formControlName="estado" class="form-control">
                                 <option value="excelente">Excelente
                                 </option>
                                 <option value="bueno">Bueno
@@ -47,51 +30,52 @@
                         </div>
                         <div class="col2">
                             <label>Trasladable*</label>
-                            <select name="trasladable" class="form-group2">
-                                <option value="si">Si
+                            <select formControlName="trasladable" class="form-control">
+                                <option value="Si">Si
                                 </option>
-                                <option value="no">No
+                                <option value="No">No
                                 </option>
                             </select>
                         </div>
                         <div class="col2">
                             <label>Salón</label>
-                            <select name="salon" class="form-group2">
-                                <option value="no aplica">No Aplica
+                            <select formControlName="id_salon" class="form-control">
+                                <option value=null>No Aplica
                                 </option>
-                                <option value="salon">Salón 101
+                                <option *ngFor="let item of salones" value={{item.id}}> {{item.ubicacion}}
                                 </option>
                             </select>
                         </div>
                         <div class="col2">
-                            <label>Status</label>
-                            <select name="status" class="form-group2">
-                                <option value="activo">Activo
+                            <label>Estatus</label>
+                            <select formControlName="estatus" class="form-control">
+                                <option value="Habilitado">Habilitado
                                 </option>
-                                <option value="inactivo">Inactivo
+                                <option value="Desahabilitado">Desahabilitado
                                 </option>
-                                <option value="reparacion">Reparacion
+                                <option value="Reparacion">Reparación
                                 </option>
                             </select>
                         </div>
                     </div>
                     <label>Descripción</label>
-                    <textarea name="descripcionEstado" class="form-control"></textarea>
+                    <textarea formControlName="descripcion_estado" class="form-control"></textarea>
                     <label>Habilitado para</label>
-                    <input type="text" name="anabled" class="form-control">
+                    <select formControlName="habilitado_para" class="form-control">
+                        <option value="Comunidad">Comunidad
+                        </option>
+                        <option value="Profesor">Profesores
+                        </option>
+                    </select>
                 </div>
 
             </fieldset>
-
+            <!-- Botones -->
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!nuevoInstrumentoForm.valid">Guardar</button>
+            </div> <!-- End of row -->
         </form>
     </div>
-    <!-- Botones -->
-    <div class="col">
-        <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div> <!-- End of row -->
-
-
-
 
 </div> <!-- /container -->

@@ -38,6 +38,7 @@ import { TablaGruposComponent } from './components/tabla/tabla-grupos/tabla-grup
 import { TablaSalonesComponent } from './components/tabla/tabla-salones/tabla-salones.component';
 import { TablaEquiposComponent } from './components/tabla/tabla-equipos/tabla-equipos.component';
 import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumentos/tabla-instrumentos.component';
+import { TablaAudicionesComponent } from './components/tabla/tabla-audiciones/tabla-audiciones.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumento
     TablaGruposComponent,
     TablaSalonesComponent,
     TablaEquiposComponent,
-    TablaInstrumentosComponent
+    TablaInstrumentosComponent,
+    TablaAudicionesComponent
   ],
   imports: [
     BrowserModule,
