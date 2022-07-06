@@ -2,17 +2,17 @@
 <div class="container">
     <div>
         <!-- New -->
-        <form name="new" class="register">
+        <form name="new" class="register" [formGroup]="nuevoColaboradorForm" (ngSubmit)="guardar()">
             <h1>Nuevo Colaborador</h1>
             <fieldset class="row1">
-                
+
                 <div class="form-group">
                     <label>Nombre *</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" formControlName="nombre" class="form-control">
                     <label>Apellidos *</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" formControlName="apellido" class="form-control">
                     <label>Rol*</label>
-                    <select name="tipo" class="form-group2">
+                    <select formControlName="rol" class="form-group2">
                         <option value="colaborador">Colaborador
                         </option>
                         <option value="profesor">Profesor
@@ -21,38 +21,31 @@
                         </option>
                     </select>
                     <label>Tipo Documento *</label>
-                    <select name="tipoDocumenyo" class="form-group2">
+                    <select formControlName="tipo_documento" class="form-group2">
                         <option value="CC">CC - Cédula de ciudadania
                         </option>
                         <option value="TI">TI - Tarjeta de identidad
                         </option>
-                        <option value="CE">CE -  Cédula de extranjeria
+                        <option value="CE">CE - Cédula de extranjeria
                         </option>
                         <option value="PASAPORTE">Pasaporte
-                        </option>                      
+                        </option>
                     </select>
                     <label>Número de documento *</label>
-                    <input type="text" name="" class="form-control">
+                    <input type="text" formControlName="numero_documento" class="form-control">
                     <label>Número de contacto *</label>
-                    <input type="text" name="numerocontacto1" class="form-control">
-                    <label>Número de contacto (opcional)</label>
-                    <input type="text" name="numerocontacto2" class="form-control">
+                    <input type="text" formControlName="celular" class="form-control">
                     <label>Correo</label>
-                    <input type="text" name="correo" class="form-control">
+                    <input type="email" formControlName="correo" class="form-control">
                 </div>
 
 
             </fieldset>
-
+            <!-- Botones -->
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!nuevoColaboradorForm.valid">Guardar</button>
+            </div> <!-- End of row -->
         </form>
     </div>
-    <!-- Botones -->
-    <div class="col">
-        <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div> <!-- End of row -->
-
-
-
-
 </div> <!-- /container -->

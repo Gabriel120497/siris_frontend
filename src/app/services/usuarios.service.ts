@@ -86,4 +86,9 @@ export class UsuariosService {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(this.url + 'usuario/profesores', { headers: headers });
   }
+
+  nuevoUsuario(usuario:any, token:string){
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.post(this.url + 'usuario/nuevoUsuario', usuario, { headers: headers });
+  }
 }
