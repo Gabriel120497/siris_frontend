@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { InstrumentosService } from 'src/app/services/instrumentos.service';
+
 import Swal from 'sweetalert2';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-tabla',
@@ -10,12 +14,16 @@ import Swal from 'sweetalert2';
 })
 export class TablaInstrumentosComponent implements OnInit {
 
-  constructor(private route: Router, private instrumentosService: InstrumentosService) { }
+  constructor(private route: Router, private instrumentosService: InstrumentosService,
+    private modalService: NgbModal, private usuariosService: UsuariosService) { }
 
-  headerTabla: string[] = ['Placa', 'Nombre', 'Tipo', 'Estado', 'Descripción Estado', 'Estatus', 'Habilitado Para', 'Trasladable', 'Salón'];
+  headerTabla: string[] = ['Placa', 'Nombre', 'Estado', 'Descripción Estado', 'Estatus', 'Habilitado Para'];
   instrumentos: any[];
   verdeBtn: string = "bi bi-pencil";
   rojoBtn: string = "bi bi-trash";
+  instrumentoForm: FormGroup;
+
+  closeResult: string = '';
 
   ngOnInit(): void {
     this.getInstrumentos();
@@ -42,8 +50,8 @@ export class TablaInstrumentosComponent implements OnInit {
       if (result.isConfirmed) {
         this.instrumentos[index].estatus = 'Desahabilitado';
         console.log(this.instrumentos[index]);
-        
-        this.instrumentosService.deshabilitarInstrumento(localStorage.getItem('token') || [], this.instrumentos[index]).subscribe(
+
+        this.instrumentosService.deshabilitarInstrumento(this.usuariosService.getToken(), this.instrumentos[index]).subscribe(
           (response: any) => {
             console.log(response);
             Swal.fire({
@@ -69,12 +77,69 @@ export class TablaInstrumentosComponent implements OnInit {
 
           })
       }
-    })
+    });
 
   }
 
+  editar(index: number, content: any) {
+    console.log(this.instrumentos[index]);
+    this.instrumentoForm = new FormGroup({
+      nombre: new FormControl(this.instrumentos[index].nombre, Validators.required),
+      placa: new FormControl(this.instrumentos[index].placa, Validators.required),
+      estado: new FormControl(this.instrumentos[index].estado, Validators.required),
+      estatus: new FormControl(this.instrumentos[index].estatus, Validators.required),
+      descripcion_estado: new FormControl(this.instrumentos[index].descripcion_estado),
+      habilitado_para: new FormControl(this.instrumentos[index].habilitado_para, Validators.required),
+    });
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      //console.log('prueba', this.instrumentoForm.valueChanges);
+      if (result == 'Guardar') {
+        this.instrumentosService.actualizarInstrumento(this.usuariosService.getToken(), this.instrumentoForm.value).subscribe(
+          (response: any) => {
+            console.log(response);
+            Swal.fire({
+              title: 'Éxito',
+              text: 'El instrumento se ha actualizado con éxito',
+              icon: 'success',
+              confirmButtonColor: '#009045',
+              confirmButtonText: 'Confirmar'
+            });
+            this.getInstrumentos();
+          }, error => {
+            console.log(error.error.message.nombre);
+            Swal.fire({
+              title: 'Fallido',
+              text: error.error.message.nombre,
+              icon: 'error',
+              confirmButtonColor: '#009045',
+              confirmButtonText: 'Confirmar'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.getInstrumentos();
+              }
+            })
+          });
+      }
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      console.log(this.closeResult);
+    });
+
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   getInstrumentos() {
-    this.instrumentosService.getInstrumentos(localStorage.getItem('token') || []).subscribe(
+    this.instrumentosService.getInstrumentos(this.usuariosService.getToken()).subscribe(
       (response: any) => {
         console.log(response.instrumentos);
         this.instrumentos = response.instrumentos;

@@ -37,18 +37,14 @@
 
                                     <td>{{item.nombre}}</td>
 
-                                    <td>{{item.tipo}}</td>
-
                                     <td>{{item.estado}}</td>
 
                                     <td>{{item.descripcion_estado}}</td>
 
                                     <td>{{item.estatus}}</td>
                                     <td>{{item.habilitado_para}}</td>
-                                    <td>{{item.trasladable}}</td>
-                                    <td>{{item.salon}}</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-success del-icon">
+                                        <button class="btn btn-outline-success del-icon" (click)="editar(i, mymodal)">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
@@ -67,3 +63,70 @@
 
     </div> <!-- /container -->
 </div> <!-- ENd of page content wrapper -->
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form name="instrumento" class="register" [formGroup]="instrumentoForm">
+            
+            <fieldset class="row1">
+                <!-- PLACA -->
+                <div class="form-group">
+                    <label>Placa*</label>
+                    <input type="text" formControlName="placa" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre*</label>
+                    <input type="text" formControlName="nombre" class="form-control">
+                    <div class="row">
+                        <div class="col2">
+                            <label>Estado*</label>
+                            <select formControlName="estado" class="form-control">
+                                <option value="Excelente">Excelente
+                                </option>
+                                <option value="Bueno">Bueno
+                                </option>
+                                <option value="Regular">Regular
+                                </option>
+                                <option value="Aceptable">Aceptable
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col2">
+                            <label>Estatus</label>
+                            <select formControlName="estatus" class="form-control">
+                                <option value="Disponible">Disponible
+                                </option>
+                                <option value="Desahabilitado">Desahabilitado
+                                </option>
+                                <option value="Reparacion">Reparación
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <label>Descripción</label>
+                    <textarea formControlName="descripcion_estado" class="form-control"></textarea>
+                    <label>Habilitado para</label>
+                    <select formControlName="habilitado_para" class="form-control">
+                        <option value="Comunidad">Comunidad
+                        </option>
+                        <option value="Profesor">Profesores
+                        </option>
+                    </select>
+                </div>
+
+            </fieldset>
+            <!-- Botones -->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancelar')">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Guardar')">Guardar</button>
+    </div>
+</ng-template>

@@ -40,4 +40,9 @@ export class GruposService {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.delete(this.url + `eliminarGrupo/${id}`, { headers: headers });
   }
+
+  actualizarGrupo(token: string, grupo:any){
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.put(this.url + 'actualizarGrupo', grupo, { headers: headers });
+  }
 }

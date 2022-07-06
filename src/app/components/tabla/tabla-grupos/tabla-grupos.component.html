@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr key = "i" *ngFor="let item of grupos, let i = index">
+                                <tr key="i" *ngFor="let item of grupos, let i = index">
                                     <td>{{item.nombre}}</td>
 
                                     <td>{{item.descripcion}}</td>
@@ -39,10 +39,10 @@
 
                                     <td>{{item.cupos_restantes}}</td>
 
-                                    <!--td>{{item.horario|json}}</td-->
+                                    <td>{{item.ubicacion}}</td>
 
                                     <td style="width:150px;">
-                                        <table class="table cust-table">
+                                        <table class="table cust-table ">
                                             <thead>
                                                 <tr>
                                                     <th>Día</th>
@@ -63,7 +63,7 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <button class="btn btn-outline-success del-icon">
+                                        <button class="btn btn-outline-success del-icon" (click)="editar(i, mymodal)">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
@@ -82,3 +82,38 @@
 
     </div> <!-- /container -->
 </div> <!-- ENd of page content wrapper -->
+
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form name="instrumento" class="register" [formGroup]="gruposForm">
+
+            <fieldset class="row1">
+                <!-- PLACA -->
+                <div class="form-group">
+                    <label>Nombre *</label>
+                    <input type="text" formControlName="nombre" class="form-control">
+                    <label>Descripción *</label>
+                    <input type="text" formControlName="descripcion" class="form-control">
+                    <label>Profesor *</label>
+                    <input formControlName="profesor" class="form-control">
+                    <label>Cupos Totales*</label>
+                    <input type="text" formControlName="cupos_totales" class="form-control">
+                    <label>Prerequisitos *</label>
+                    <input type="text" formControlName="prerequisitos" class="form-control">
+                </div>
+            </fieldset>
+            <!-- Botones -->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancelar')">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Guardar')">Guardar</button>
+    </div>
+</ng-template>

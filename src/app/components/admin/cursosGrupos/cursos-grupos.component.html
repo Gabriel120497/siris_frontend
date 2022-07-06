@@ -12,7 +12,7 @@
                     <label>Descripción *</label>
                     <input type="text" formControlName="descripcion" class="form-control">
                     <label>Profesor *</label>
-                    <select formControlName="profesor" class="form-group2">
+                    <select formControlName="profesor" class="form-control">
                         <option></option>
                         <option *ngFor="let item of profesores" value={{item.id}}> {{item.nombre + ' ' + item.apellido}}
                         </option>
@@ -25,7 +25,7 @@
                     <div class="row" key="index" *ngFor="let item of dias, let i = index">
                         <div class="col2">
                             <label>Día*</label>
-                            <select formControlName="dia" class="form-group2">
+                            <select formControlName="dia" class="form-control">
                                 <option value="Lunes">Lunes
                                 </option>
                                 <option value="Martes">Martes
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col2">
                             <label>Salón *</label>
-                            <select formControlName="id_salon_clase" class="form-group2">
+                            <select formControlName="id_salon_clase" class="form-control">
                                 <option *ngFor="let item of salones" value={{item.id}}> {{item.ubicacion}}
                                 </option>
                             </select>

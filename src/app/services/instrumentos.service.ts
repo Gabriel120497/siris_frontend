@@ -19,12 +19,12 @@ export class InstrumentosService {
     return this.http.get(this.url + 'instrumentosDisponibles', { headers: headers });
   }
 
-  getInstrumentos(token: string|[]){
+  getInstrumentos(token: string){
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(this.url + 'instrumentos', { headers: headers });
   }
 
-  deshabilitarInstrumento(token: string|[], instrumento:any){
+  deshabilitarInstrumento(token: string, instrumento:any){
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.put(this.url + 'deshabilitarInstrumento', instrumento, { headers: headers });
   }
@@ -32,6 +32,11 @@ export class InstrumentosService {
   nuevoInstrumento(token: string|[], instrumento:any){
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.post(this.url + 'nuevoInstrumento', instrumento, { headers: headers });
+  }
+
+  actualizarInstrumento(token: string, instrumento:any){
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.put(this.url + 'actualizarInstrumento', instrumento, { headers: headers });
   }
 
 }
