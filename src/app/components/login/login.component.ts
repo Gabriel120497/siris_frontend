@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
 
           this.usuarioService.login(this.usuarioRequest, true).subscribe(
             response => {
+              console.log(response);
+              
               this.identity = response;
               //Peristir datos del usuario
               localStorage.setItem('token', this.token);

@@ -23,20 +23,6 @@ export class TablaComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.modulo);
     switch (this.modulo) {
-      case 'Audiciones':
-        this.nuevaReservaBtn = false;
-        this.agregarBtn = false;
-        this.verdeBtn = "bi bi-check-lg";
-        this.rojoBtn = "bi bi-x-lg";
-        this.headerTabla = ['Solicitud', 'Nombre', 'Número de Contacto', 'Correo', 'Grupo'];
-        break;
-      case 'Mis-Grupos':
-        this.nuevaReservaBtn = false;
-        this.agregarBtn = false;
-        this.verdeBtn = "bi bi-pencil";
-        this.rojoBtn = "bi bi-trash";
-        this.headerTabla = ['Código', 'Nombre', 'Descripción', 'Pre-Requisitos', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
-        break;
       case 'Roles':
         this.nuevaReservaBtn = false;
         this.agregarBtn = true;

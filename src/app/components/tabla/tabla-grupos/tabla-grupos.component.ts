@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { GruposService } from 'src/app/services/grupos.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class TablaGruposComponent implements OnInit {
 
-  constructor(private route: Router, private gruposService: GruposService) { }
+  constructor(private route: Router, private gruposService: GruposService, private usuariosService: UsuariosService) { }
 
   headerTabla: string[] = ['Nombre', 'Descripción', 'Profesor', 'Cupos Totales', 'Cupos Disponibles', 'Horario'];
   grupos: any[];
@@ -41,4 +42,28 @@ export class TablaGruposComponent implements OnInit {
         })
       });
   }
+
+  eliminarGrupo(index: number) {
+    console.log(this.grupos[index].id);
+    this.gruposService.eliminarGrupo(this.grupos[index].id, this.usuariosService.getToken()).subscribe(
+      (response: any) => {
+        console.log(response.grupo);
+        Swal.fire({
+          title: 'Éxito',
+          text: `El grupo ${response.grupo.nombre} ha sido eliminado`,
+          icon: 'success',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Confirmar'
+        })
+      }, error => {
+        Swal.fire({
+          title: 'Audiciones',
+          text: error.error.message,
+          icon: 'warning',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Confirmar'
+        })
+      });
+  }
+
 }

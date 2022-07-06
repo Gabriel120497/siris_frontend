@@ -19,14 +19,14 @@
             <span class="bi bi-person-circle icon"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Roles']">Nuevo Colaborador</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Instrumentos']">Nuevo Instrumento</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/', 'teachers','Mis-Grupos']">Mis Grupos</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/', 'teachers','Audiciones']">Audiciones Pendientes</a></li>
-            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Roles']">Nuevo Colaborador</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Instrumentos']">Nuevo Instrumento</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
+            <li><a class="dropdown-item" *ngIf="profesor" [routerLink]="['/', 'teachers','Mis-Grupos']">Mis Grupos</a></li>
+            <li><a class="dropdown-item" *ngIf="profesor"[routerLink]="['/', 'teachers','Audiciones']">Audiciones Pendientes</a></li>
+            <li><a class="dropdown-item" >Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>

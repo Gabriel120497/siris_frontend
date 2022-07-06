@@ -13,10 +13,8 @@ export class ReservasService {
     this.url = global.url;
   }
 
-  nuevaReserva(token: string|[], reserva:any){
-    console.log('hola');
-    
+  nuevaReserva(token: string, reserva:any){    
     let headers = new HttpHeaders().set('Authorization', token);
-    return this.http.post(this.url + 'reservas/nueva', reserva,{ headers: headers });
+    return this.http.post(this.url + 'nuevaReserva', reserva, { headers: headers });
   }
 }

@@ -20,6 +20,7 @@ import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumento
 import { TablaEquiposComponent } from './components/tabla/tabla-equipos/tabla-equipos.component';
 import { TablaSalonesComponent } from './components/tabla/tabla-salones/tabla-salones.component';
 import { TablaAudicionesComponent } from './components/tabla/tabla-audiciones/tabla-audiciones.component';
+import { TablaMisgruposComponent } from './components/tabla/tabla-misgrupos/tabla-misgrupos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -38,10 +39,13 @@ const routes: Routes = [
   {path: 'admin/agregar/Instrumentos', component: InstrumentosComponent},
   {path: 'admin/agregar/Equipos', component: EquiposComponent},
   {path: 'admin/agregar/Salones', component: SalonesComponent},
-  {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},  
+  {path: 'admin/agregar/Grupos-de-Proyeccion', component: CursosGruposComponent},
+  {path: 'teachers/Mis-Grupos', component: TablaMisgruposComponent},  
   {path: 'teachers/Audiciones', component: TablaAudicionesComponent},
   {path: 'teachers/NuevaAudicion', component: ExternosComponent},
   {path: 'teachers/:modulo', component: TablaComponent},
+  {path: 'teachers/reservas/Equipos', component: ReservaEquiposComponent},
+  {path: 'teachers/reservas/:modulo', component: ReservasComponent},
   {path: 'externos/Audicion/:grupo', component: ExternosComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calendario', component: CalendarioComponent}

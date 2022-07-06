@@ -33,7 +33,7 @@ export class TablaInstrumentosComponent implements OnInit {
     console.log(this.instrumentos[index]);
     Swal.fire({
       title: 'Importante',
-      text: 'Está seguro que desea deshabilitar este instrumento?',
+      text: '¿Está seguro que desea deshabilitar este instrumento?',
       icon: 'warning',
       confirmButtonColor: '#009045',
       confirmButtonText: 'Si',

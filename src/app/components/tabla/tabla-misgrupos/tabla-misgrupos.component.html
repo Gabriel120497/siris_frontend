@@ -1,18 +1,9 @@
 <app-header></app-header>
 <div class="body">
-    <h1>Grupos de Proyección</h1>
+    <h1>Mis Grupos</h1>
 </div>
 <div class="page-content-wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-success" (click)="redirigir()">Agregar Grupo de
-                    Proyección</button>
-            </div> <!-- End of column -->
-
-        </div> <!-- End of row -->
-        <br />
-
         <!-- Listing table -->
         <div class="row">
             <div class="col-sm-12">
@@ -28,19 +19,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr key = "i" *ngFor="let item of grupos, let i = index">
+                                <tr key="i" *ngFor="let item of mis_grupos, let i = index">
+                                    <td>{{item.id}}</td>
                                     <td>{{item.nombre}}</td>
-
                                     <td>{{item.descripcion}}</td>
-
-                                    <td>{{item.profesor}}</td>
-
+                                    <td>{{item.prerequisitos}}</td>
                                     <td>{{item.cupos_totales}}</td>
-
                                     <td>{{item.cupos_restantes}}</td>
-
-                                    <!--td>{{item.horario|json}}</td-->
-
+                                    <td>{{item.ubicacion}}</td>
                                     <td style="width:150px;">
                                         <table class="table cust-table">
                                             <thead>
@@ -52,22 +38,27 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let item2 of item.horario">
-                                                    <td>{{item2['dia']}}</td>
-                                                    <td>{{item2['hora_inicio']}}</td>
+                                                <tr *ngFor="let horario of item.horario, let i = index">
+                                                    <td>{{horario.dia}}</td>
+                                                    <td>{{horario.hora_inicio}}</td>
                                                     <td></td>
-                                                    <td>{{item2['hora_fin']}}</td>
+                                                    <td>{{horario.hora_fin}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </td>
+                                    
 
                                     <td class="text-center">
+                                        <button class="btn btn-outline-secondary del-icon">
+                                            <span><i class="bi bi-eye">
+                                                </i></span>
+                                        </button>
                                         <button class="btn btn-outline-success del-icon">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
-                                        <button class="btn btn-outline-danger del-icon" (click)="eliminarGrupo(i)">
+                                        <button class="btn btn-outline-danger del-icon">
                                             <span><i class={{rojoBtn}}>
                                                 </i></span>
                                         </button>

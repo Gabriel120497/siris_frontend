@@ -15,17 +15,29 @@ export class GruposService {
 
   nuevoGrupo(grupo: any, token: string | []) {
     let headers = new HttpHeaders().set('Authorization', token);
-
     return this.http.post(this.url + 'nuevoGrupo', grupo, { headers: headers });
   }
 
   grupos() {
-    return this.http.get(this.url + 'grupos');
+    let headers = new HttpHeaders().set('Authorization', '');
+    return this.http.get(this.url + 'grupos', { headers: headers });
   }
 
   getAudicionesPendientes(profesor: any, token: string) {
     console.log(profesor);
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.post(this.url + `audicionesPendientes`, profesor, { headers: headers });
+  }
+
+  getMisGrupos(profesor: string, token: string){
+    console.log('profesor: ', profesor);
+    
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(this.url + `misGrupos/${profesor}`, { headers: headers });
+  }
+
+  eliminarGrupo(id:number, token:string){
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.delete(this.url + `eliminarGrupo/${id}`, { headers: headers });
   }
 }

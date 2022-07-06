@@ -4,6 +4,7 @@ import { ReservasModel } from 'src/app/models/reservas';
 import { InstrumentosService } from 'src/app/services/instrumentos.service';
 import { ReservasService } from 'src/app/services/reservas.service';
 import { SalonesService } from 'src/app/services/salones.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -27,7 +28,8 @@ export class ReservasComponent implements OnInit {
   show: boolean = false;
 
   constructor(private router: ActivatedRoute, private instrumentosService: InstrumentosService,
-    private salonesService: SalonesService, private reservasServices: ReservasService, private route: Router) { }
+    private salonesService: SalonesService, private reservasServices: ReservasService, private route: Router,
+    private usuariosService:UsuariosService) { }
 
   ngOnInit(): void {
 
@@ -56,19 +58,19 @@ export class ReservasComponent implements OnInit {
   hacerReserva() {
     if (this.selectedItem.length !== 0 && this.reservaJson !== undefined) {
       //console.log(localStorage.getItem('identity'));
-      this.reserva.id_usuario = JSON.parse(localStorage.getItem('identity') || '');
+      this.reserva.id_usuario = this.usuariosService.getId();
       this.reserva.estado = 'aprobada';
-      this.reserva.item = this.selectedItem.nombre;
+      this.reserva.item = this.selectedItem.nombre || this.selectedItem.ubicacion;
       this.reserva.tipo_item = this.modulo;
       this.reserva.fecha_inicio = this.reservaJson.fecha_inicio;
       this.reserva.fecha_fin = this.reservaJson.fecha_fin;
       console.log(this.reserva);
-      this.reservasServices.nuevaReserva(localStorage.getItem('identity') || '', this.reserva).subscribe((response: any) => {
+      this.reservasServices.nuevaReserva(this.usuariosService.getToken(), this.reserva).subscribe((response: any) => {
         console.log(response);
 
         Swal.fire({
           title: 'Éxitoso',
-          text: `Se ha creado la reserva con códgigo ${response.reserva.id} de manera exitosa`,
+          text: `Se ha creado la reserva con código ${response.reserva.id} de manera exitosa`,
           icon: 'success',
           confirmButtonColor: '#009045'
         }).then((result) => {
@@ -99,7 +101,7 @@ export class ReservasComponent implements OnInit {
 
     this.show = true;
     if (this.modulo === 'Salones') {
-      this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
+      this.salonesService.getSalones(this.usuariosService.getToken()).subscribe(
         (response: any) => {
           console.log(response.salones);
 
@@ -109,7 +111,7 @@ export class ReservasComponent implements OnInit {
           this.status = 'error';
         })
     } else {
-      this.instrumentosService.getInstrumentosDisponibles(localStorage.getItem('token') || "[]").subscribe(
+      this.instrumentosService.getInstrumentosDisponibles(this.usuariosService.getToken()).subscribe(
         (response: any) => {
           console.log(response);
           this.items = response.instrumentos;

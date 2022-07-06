@@ -72,18 +72,21 @@ export class DashboardComponent implements OnInit {
         if (modulo == 'GruposProyeccion') {
           this.route.navigate(['admin/Grupos-de-Proyeccion']);
         } else if (modulo == 'Cursos') {
-          window.location.href='http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
-          
+          window.location.href = 'http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
+
         } else {
           this.route.navigate(['/admin', modulo]);
         }
         break;
 
       case 'Profesor':
-        if (modulo !== 'GruposProyeccion') {
-          this.route.navigate(['/users/reservas', modulo]);
-        } else {
+        if (modulo == 'GruposProyeccion') {
           this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
+
+        } else if (modulo == 'Cursos') {
+          window.location.href = 'http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
+        } else {
+          this.route.navigate(['/teachers/reservas', modulo]);
         }
         break;
 
@@ -91,7 +94,7 @@ export class DashboardComponent implements OnInit {
         if (modulo == 'GruposProyeccion') {
           this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
         } else if (modulo == 'Cursos') {
-          this.route.navigateByUrl('http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php')
+          window.location.href = 'http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
         } else {
           this.route.navigate(['/users/reservas', modulo]);
         }

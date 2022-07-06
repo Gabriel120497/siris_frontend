@@ -25,3 +25,11 @@
 .navbar-nav .dropdown-menu {
     position: absolute;
 }
+
+.nav-link {
+    color: #009045;
+}
+
+.nav-link::hover{
+    color: #009045;
+}

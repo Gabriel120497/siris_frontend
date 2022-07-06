@@ -16,7 +16,7 @@ export class CursosGruposComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private route: Router,
     private usuariosService: UsuariosService, private gruposService: GruposService,
-    private salonesService:SalonesService) { }
+    private salonesService: SalonesService) { }
 
   modulo: any = this.router.snapshot.url[2].path;
   profesores: any = [];
@@ -39,7 +39,7 @@ export class CursosGruposComponent implements OnInit {
 
       horaInicio: new FormControl('', Validators.required),
       horaFin: new FormControl('', Validators.required),
-      dia: new FormControl(''),
+      dia: new FormControl('', Validators.required),
       id_salon_clase: new FormControl('', Validators.required),
     });
 
@@ -51,13 +51,13 @@ export class CursosGruposComponent implements OnInit {
         this.status = 'error';
       });
 
-      this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
-        (response: any) => {
-          console.log(response.salones);
-          this.salones = response.salones;
-        }, error => {
-          this.status = 'error';
-        });
+    this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
+      (response: any) => {
+        console.log(response.salones);
+        this.salones = response.salones;
+      }, error => {
+        this.status = 'error';
+      });
   }
 
   cancelar() {
@@ -79,68 +79,90 @@ export class CursosGruposComponent implements OnInit {
 
   guardar() {
     if (this.dias.length < 6) {
-      this.dias.push({
-        'dia': this.nuevoGrupoForm.value.dia,
-        'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
-        'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
-      });
-      this.nuevoGrupoForm.value.dia = '';
-      this.nuevoGrupoForm.value.horaInicio = '';
-      this.nuevoGrupoForm.value.horaFin = '';
+      if (this.horaInicial.hour < this.horaFinal.hour) {
+        this.dias.push({
+          'dia': this.nuevoGrupoForm.value.dia,
+          'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
+          'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
+        });
+        this.nuevoGrupoForm.value.dia = '';
+        this.nuevoGrupoForm.value.horaInicio = '';
+        this.nuevoGrupoForm.value.horaFin = '';
+        let profesor = this.profesores.filter((profesor: { id: any; }) => profesor.id = this.nuevoGrupoForm.value.profesor);
+        this.nuevoGrupoRequest.nombre = this.nuevoGrupoForm.value.nombre;
+        this.nuevoGrupoRequest.descripcion = this.nuevoGrupoForm.value.descripcion;
+        this.nuevoGrupoRequest.profesor = profesor[0].nombre + ' ' + profesor[0].apellido
+        this.nuevoGrupoRequest.cupos_totales = this.nuevoGrupoForm.value.cupos_totales;
+        this.nuevoGrupoRequest.cupos_restantes = this.nuevoGrupoForm.value.cupos_totales;
+        this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos;
+        this.nuevoGrupoRequest.horario = this.dias;
+        this.nuevoGrupoRequest.id_salon_clases = this.nuevoGrupoForm.value.id_salon_clase;
+        console.log(this.nuevoGrupoRequest);
+
+        this.gruposService.nuevoGrupo(this.nuevoGrupoRequest, localStorage.getItem('token') || "[]").subscribe(
+          (response: any) => {
+            console.log(response.grupo);
+
+            Swal.fire({
+              title: 'Éxito',
+              text: `Grupo de Proyección creado exitosamente`,
+              icon: 'success',
+              confirmButtonColor: '#009045',
+              confirmButtonText: 'Confirmar'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.route.navigate(['admin/Grupos-de-Proyeccion']);
+              }
+            })
+
+          }, error => {
+            this.status = 'error';
+            console.log(error.error.message.nombre);
+            Swal.fire({
+              title: 'Fallido',
+              text: error.error.message.nombre,
+              icon: 'error',
+              confirmButtonColor: '#009045',
+              confirmButtonText: 'Confirmar'
+            })
+          });
+      } else {
+        Swal.fire({
+          title: 'Importante',
+          text: 'La hora de inicio no puede ser mayor o igual a la hora final',
+          icon: 'warning',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Ok'
+        })
+      }
+
     } else {
       this.agregar = true;
     }
-    let profesor = this.profesores.filter((profesor: { id: any; }) => profesor.id = this.nuevoGrupoForm.value.profesor);
-    this.nuevoGrupoRequest.nombre = this.nuevoGrupoForm.value.nombre;
-    this.nuevoGrupoRequest.descripcion = this.nuevoGrupoForm.value.descripcion;
-    this.nuevoGrupoRequest.profesor = profesor[0].nombre + ' ' + profesor[0].apellido
-    this.nuevoGrupoRequest.cupos_totales = this.nuevoGrupoForm.value.cupos_totales;
-    this.nuevoGrupoRequest.cupos_restantes = this.nuevoGrupoForm.value.cupos_totales;
-    this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos;
-    this.nuevoGrupoRequest.horario = this.dias;
-    this.nuevoGrupoRequest.id_salon_clases = this.nuevoGrupoForm.value.id_salon_clase;
-    console.log(this.nuevoGrupoRequest);
-
-    this.gruposService.nuevoGrupo(this.nuevoGrupoRequest, localStorage.getItem('token') || "[]").subscribe(
-      (response: any) => {
-        console.log(response.grupo);
-
-        Swal.fire({
-          title: 'Éxito',
-          text: `Grupo creado exitosamente`,
-          icon: 'success',
-          confirmButtonColor: '#009045',
-          confirmButtonText: 'Confirmar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.route.navigate(['admin/Grupos-de-Proyeccion']);
-          }
-        })
-
-      }, error => {
-        this.status = 'error';
-        console.log(error.error.message.nombre);
-        Swal.fire({
-          title: 'Fallido',
-          text: error.error.message.nombre,
-          icon: 'error',
-          confirmButtonColor: '#009045',
-          confirmButtonText: 'Confirmar'
-        })
-      });
   }
 
   agregarDia() {
     console.log(this.dias);
     if (this.dias.length < 6) {
-      this.dias.push({
-        'dia': this.nuevoGrupoForm.value.dia,
-        'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
-        'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
-      });
-      this.nuevoGrupoForm.value.dia = '';
-      this.nuevoGrupoForm.value.horaInicio = '';
-      this.nuevoGrupoForm.value.horaFin = '';
+      if (this.horaInicial.hour < this.horaFinal.hour) {
+        this.dias.push({
+          'dia': this.nuevoGrupoForm.value.dia,
+          'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
+          'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
+        });
+        this.nuevoGrupoForm.value.dia = '';
+        this.nuevoGrupoForm.value.horaInicio = '';
+        this.nuevoGrupoForm.value.horaFin = '';
+      } else {
+        Swal.fire({
+          title: 'Importante',
+          text: 'La hora de inicio no puede ser mayor o igual a la hora final',
+          icon: 'warning',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Ok'
+        })
+      }
+
     } else {
       this.agregar = true;
     }

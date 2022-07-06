@@ -16,7 +16,19 @@
                     <input type="text" name="name" class="form-control">
                     <label>Apellidos *</label>
                     <input type="text" name="name" class="form-control">
-                    <label>Grupo de Proyección*</label>
+                    <div *ngIf="teacher">
+                        <label>Grupo de Proyección*</label>
+                        <select name="grupo" class="form-group2">
+                            <option value="CC">CC - Cédula de ciudadania
+                            </option>
+                            <option value="TI">TI - Tarjeta de identidad
+                            </option>
+                            <option value="CE">CE - Cédula de extranjeria
+                            </option>
+                            <option value="PASAPORTE">Pasaporte
+                            </option>
+                        </select>
+                    </div>
                     <label>Tipo Documento *</label>
                     <select name="tipoDocumenyo" class="form-group2">
                         <option value="CC">CC - Cédula de ciudadania

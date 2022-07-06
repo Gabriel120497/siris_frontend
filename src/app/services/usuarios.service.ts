@@ -11,7 +11,10 @@ import { UsuariosModel } from '../models/usuario';
 export class UsuariosService {
   private url: string
   identity: string | null;
-  token: string | null;
+  token: string;
+  rol: string;
+  sub: string;
+  nombre: string;
   constructor(public http: HttpClient) {
     this.url = global.url;
   }
@@ -27,8 +30,40 @@ export class UsuariosService {
     return this.http.post(this.url + 'login', params, { headers: headers });
   }
 
-  getIdentity() {
+  getRol() {
     let identity = JSON.parse(localStorage.getItem('identity') || "[]");
+    if (identity && (identity != undefined || identity != 'undefined')) {
+      this.rol = identity.rol;
+    } else {
+      this.rol = '';
+    }
+    return this.rol;
+  }
+
+  getId() {
+    let identity = JSON.parse(localStorage.getItem('identity') || '');
+    if (identity && (identity != undefined || identity != 'undefined')) {
+      this.sub = identity.sub;
+    } else {
+      this.sub = '';
+    }
+    return this.sub;
+  }
+
+  getNombre() {
+    let identity = JSON.parse(localStorage.getItem('identity') || '');
+    console.log('nombre: ', identity.nombre);
+    
+    if (identity && (identity != undefined || identity != 'undefined')) {
+      this.nombre = identity.nombre;
+    } else {
+      this.nombre = '';
+    }
+    return this.nombre;
+  }
+
+  getIdentity() {
+    let identity = JSON.parse(localStorage.getItem('identity') || '');
     if (identity && (identity != undefined || identity != 'undefined')) {
       this.identity = identity;
     } else {
@@ -36,17 +71,18 @@ export class UsuariosService {
     }
     return this.identity;
   }
+
   getToken() {
-    let token = JSON.parse(localStorage.getItem('token') || "[]");
+    let token = localStorage.getItem('token') || '';
     if (token && (token != undefined || token != 'undefined')) {
       this.token = token;
     } else {
-      this.token = null;
+      this.token = '';
     }
     return this.token;
   }
 
-  profesores(token: string|[]){
+  profesores(token: string | []) {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(this.url + 'usuario/profesores', { headers: headers });
   }
