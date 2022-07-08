@@ -32,6 +32,7 @@ const routes: Routes = [
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'users/reservas/:modulo', component: ReservasComponent},
   {path: 'Grupos-de-Proyeccion', component: GruposProyeccionComponent},
+  {path: 'Grupos-de-Proyeccion/Externos', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'admin/agregar/Roles', component: RolesComponent},
   {path: 'admin/Carga-Archivos', component: CargaArchivosComponent},

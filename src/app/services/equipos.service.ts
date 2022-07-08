@@ -16,7 +16,6 @@ export class EquiposService {
 
   getEquipos(token: string|[]){
     let headers = new HttpHeaders().set('Authorization', token);
-
     return this.http.get(this.url + 'equipos', { headers: headers });
 
   }

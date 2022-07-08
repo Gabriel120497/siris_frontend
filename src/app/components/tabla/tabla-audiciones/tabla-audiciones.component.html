@@ -36,11 +36,11 @@
                                     <td>{{item.grupo}}</td>
 
                                     <td class="text-center">
-                                        <button class="btn btn-outline-success del-icon">
+                                        <button class="btn btn-outline-success del-icon" (click)="aceptarAudicion(i)">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
-                                        <button class="btn btn-outline-danger del-icon">
+                                        <button class="btn btn-outline-danger del-icon" (click)="rechazarAudicion(i)">
                                             <span><i class={{rojoBtn}}>
                                                 </i></span>
                                         </button>

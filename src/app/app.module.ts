@@ -26,7 +26,6 @@ import { EquiposComponent } from './components/admin/equipos/equipos.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 import { RolesComponent } from './components/admin/roles/roles.component';
-import { AudicionesComponent } from './components/teachers/audiciones/audiciones.component';
 import { MisGruposComponent } from './components/teachers/mis-grupos/mis-grupos.component';
 
 import { UsuariosService } from './services/usuarios.service';
@@ -64,7 +63,6 @@ import { TablaColaboradoresComponent } from './components/tabla/tabla-colaborado
     CursosGruposComponent,
     TablaComponent,
     RolesComponent,
-    AudicionesComponent,
     MisGruposComponent,
     ExternosComponent,
     CargaArchivosComponent,

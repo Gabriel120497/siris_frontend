@@ -71,7 +71,9 @@ export class GruposProyeccionComponent implements OnInit {
   }
 
   audicionar(grupo: string) {
-    if (this.role != 'Externos') {
+    console.log('entré', this.role);
+  
+    if (this.role != 'Externos' && this.role != 'undefined' && this.role != undefined) {
       console.log(`se manda correo al docente del grupo ${grupo}`);
     } else {
       this.route.navigate(['externos/Audicion', grupo]);

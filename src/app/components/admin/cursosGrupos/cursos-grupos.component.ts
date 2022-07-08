@@ -26,8 +26,9 @@ export class CursosGruposComponent implements OnInit {
   nuevoGrupoRequest: GruposModel = new GruposModel;
   dias: any = [];
   agregar: boolean = false;
-  horaInicial: any = { hour: 13, minute: 0 };
-  horaFinal: any = { hour: 14, minute: 0 };
+  hora = new Date;
+  horaInicial: any = { hour: this.hora.getHours(), minute: this.hora.getMinutes() };
+  horaFinal: any = { hour: this.hora.getHours() + 1, minute: this.hora.getMinutes() };
   cargando: boolean = false;
 
   ngOnInit(): void {
@@ -85,17 +86,14 @@ export class CursosGruposComponent implements OnInit {
           'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
           'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
         });
-        
-        this.nuevoGrupoForm.value.dia = '';
-        this.nuevoGrupoForm.value.horaInicio = '';
-        this.nuevoGrupoForm.value.horaFin = '';
+        this.dias.splice(0, 1);
         let profesor = this.profesores.filter((profesor: { id: any; }) => profesor.id = this.nuevoGrupoForm.value.profesor);
         this.nuevoGrupoRequest.nombre = this.nuevoGrupoForm.value.nombre;
         this.nuevoGrupoRequest.descripcion = this.nuevoGrupoForm.value.descripcion;
         this.nuevoGrupoRequest.profesor = profesor[0].nombre + ' ' + profesor[0].apellido
         this.nuevoGrupoRequest.cupos_totales = this.nuevoGrupoForm.value.cupos_totales;
         this.nuevoGrupoRequest.cupos_restantes = this.nuevoGrupoForm.value.cupos_totales;
-        this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos != ''? this.nuevoGrupoForm.value.prerequisitos : 'N/A' ;
+        this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos != '' ? this.nuevoGrupoForm.value.prerequisitos : 'N/A';
         this.nuevoGrupoRequest.horario = this.dias;
         this.nuevoGrupoRequest.id_salon_clases = this.nuevoGrupoForm.value.id_salon_clase;
         console.log(this.nuevoGrupoRequest);
@@ -121,7 +119,7 @@ export class CursosGruposComponent implements OnInit {
             this.status = 'error';
             this.cargando = false;
 
-            console.log(error.error.message);
+            console.log(error.error.message.nombre);
             Swal.fire({
               title: 'Fallido',
               text: error.error.message,
@@ -156,9 +154,13 @@ export class CursosGruposComponent implements OnInit {
           'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
           'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
         });
-        this.nuevoGrupoForm.value.dia = '';
-        this.nuevoGrupoForm.value.horaInicio = '';
-        this.nuevoGrupoForm.value.horaFin = '';
+        if (this.dias.length == 2) {
+          this.dias[0] = {
+            'dia': this.nuevoGrupoForm.value.dia,
+            'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
+            'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
+          }
+        }
       } else {
         Swal.fire({
           title: 'Importante',

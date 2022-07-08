@@ -26,8 +26,8 @@
                     <input type="text" formControlName="numero_documento" class="form-control">
                     <label>Número de contacto *</label>
                     <input type="text" formControlName="celular" class="form-control">
-                    <label>Correo</label>
-                    <input type="text" formControlName="correo" class="form-control"
+                    <label>Correo *</label>
+                    <input type="email" formControlName="correo" class="form-control"
                         [ngClass]="{'is-invalid':!nuevoUsuarioForm.get('correo').valid && nuevoUsuarioForm.get('correo').touched}">
                     <div *ngIf="!nuevoUsuarioForm.get('correo').valid && nuevoUsuarioForm.get('correo').touched"
                         class="form-control-feedback col-12">

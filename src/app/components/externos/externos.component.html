@@ -1,3 +1,4 @@
+<app-cargando *ngIf="cargando"></app-cargando>
 <app-header></app-header>
 <div class="container">
     <div>
@@ -16,22 +17,8 @@
                     <input type="text" formControlName="nombre" class="form-control">
                     <label>Apellidos *</label>
                     <input type="text" formControlName="apellido" class="form-control">
-                    <div *ngIf="teacher">
-                        <label>Grupo de Proyección*</label>
-                        <!--Hacer llamado a la bd-->
-                        <select formControlName="grupo" class="form-group2">
-                            <option value="CC">CC - Cédula de ciudadania
-                            </option>
-                            <option value="TI">TI - Tarjeta de identidad
-                            </option>
-                            <option value="CE">CE - Cédula de extranjeria
-                            </option>
-                            <option value="PASAPORTE">Pasaporte
-                            </option>
-                        </select>
-                    </div>
                     <label>Tipo Documento *</label>
-                    <select formControlName="tipo_documento" class="form-group2">
+                    <select formControlName="tipo_documento" class="form-control">
                         <option value="CC">CC - Cédula de ciudadania
                         </option>
                         <option value="TI">TI - Tarjeta de identidad
@@ -45,14 +32,23 @@
                     <input type="text" formControlName="numero_documento" class="form-control">
                     <label>Número de contacto *</label>
                     <input type="text" formControlName="celular" class="form-control">
-                    <label>Correo</label>
-                    <input type="text" formControlName="correo" class="form-control">
+                    <label>Correo *</label>
+                    <input type="email" formControlName="correo" class="form-control">
+                    <div *ngIf="teacher">
+                        <label>Grupo de Proyección*</label>
+                        <!--Hacer llamado a la bd-->
+                        <select formControlName="grupo" class="form-control">
+                            <option key="i" *ngFor="let item of grupos, let i = index" value={{item.id}}>
+                                {{item.nombre}}
+                            </option>
+                        </select>
+                    </div>
                 </div>
             </fieldset>
             <!-- Botones -->
             <div class="col">
                 <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
-                <button type="submit" class="btn btn-success">Guardar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!nuevaAudicionForm.valid">Guardar</button>
             </div> <!-- End of row -->
         </form>
     </div>
