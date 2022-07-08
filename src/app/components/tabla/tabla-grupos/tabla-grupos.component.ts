@@ -5,7 +5,7 @@ import { GruposService } from 'src/app/services/grupos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 import Swal from 'sweetalert2';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabla',
@@ -71,6 +71,7 @@ export class TablaGruposComponent implements OnInit {
               confirmButtonColor: '#009045',
               confirmButtonText: 'Confirmar'
             })
+            this.getGrupos();
           }, error => {
             Swal.fire({
               title: 'Fallido',

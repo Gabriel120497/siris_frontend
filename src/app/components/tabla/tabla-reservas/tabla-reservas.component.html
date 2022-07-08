@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<nav >
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+    <button class="nav-link active" id="nav-activas-tab" data-bs-toggle="tab" data-bs-target="#nav-activas" type="button"
+      role="tab" aria-controls="nav-activas" aria-selected="true">Reservas Activas</button>
+
+    <button *ngIf="admin" class="nav-link" id="nav-pendientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pendientes"
+      type="button" role="tab" aria-controls="nav-pendientes" aria-selected="false">Reservas Pendientes</button>
+
+    <button class="nav-link" id="nav-aprobadas-tab" data-bs-toggle="tab" data-bs-target="#nav-aprobadas" type="button"
+      role="tab" aria-controls="nav-aprobadas" aria-selected="false">Reservas Aprobadas</button>
+
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+
+  <div class="tab-pane fade show active" id="nav-activas" role="tabpanel" aria-labelledby="nav-activas-tab">
+    <app-tabla-reservas-activas [instrumentos] = "instrumentosActivos" [salones] = "salonesActivos" [equipos] = "equiposActivos"></app-tabla-reservas-activas>
+  </div>
+
+  <div class="tab-pane fade" id="nav-pendientes" role="tabpanel" aria-labelledby="nav-pendientes-tab">
+    <app-tabla-reservas-pendientes [instrumentos] = "instrumentosPendientes" [salones] = "salonesPendientes" [equipos] = "equiposPendientes"></app-tabla-reservas-pendientes>
+  </div>
+
+  <div class="tab-pane fade" id="nav-aprobadas" role="tabpanel" aria-labelledby="nav-aprobadas-tab">
+    <app-tabla-reservas-aprobadas [instrumentos] = "instrumentosAprobados" [salones] = "salonesAprobados" [equipos] = "equiposAprobados"></app-tabla-reservas-aprobadas>
+  </div>
+
+</div>
+
+<!--ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Reservas Activas</a>
+    <app-tabla-reservas-pendientes></app-tabla-reservas-pendientes>
+  </li>
+    <li class="nav-item">
+      <a class="nav-link" *ngIf="admin" aria-current="page" href="#">Reservas Pendientes</a>
+      <app-tabla-reservas-pendientes></app-tabla-reservas-pendientes>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Reservas Aprobadas</a>
+      <app-tabla-reservas-pendientes></app-tabla-reservas-pendientes>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Reservas Rechazadas</a>
+      <app-tabla-reservas-pendientes></app-tabla-reservas-pendientes>
+    </li>
+  </ul-->

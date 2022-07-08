@@ -13,9 +13,14 @@ export class SalonesService {
     this.url = global.url;
   }
 
-  getSalones(token: string|[]){
+  getSalones(token: string){
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(this.url + 'salones', { headers: headers });
-
   }
+
+  eliminarSalon(id:number, token:string){
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.delete(this.url + `eliminarSalon/${id}`, { headers: headers });
+  }
+
 }

@@ -1,0 +1,78 @@
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <!-- Listing table -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="cust-table-cont">
+                    <div class="table-responsive">
+                        <table class="table cust-table">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let item of headerTabla">{{item}}</th>
+                                    <th style="width:150px;" class="text-center">
+                                        <i class="bi bi-gear-fill"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr key="i" *ngFor="let item of instrumentos, let i = index">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.placa + ' ' + item.instrumento}}</td>
+                                    <td>{{item.nombre + ' ' + item.apellido}}</td>
+                                    <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-success del-icon" (click)="reclamarReserva(item.id)">
+                                            <span><i class={{verdeBtn}}>
+                                                </i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger del-icon" (click)="devolverReserva(item.id)">
+                                            <span><i class={{rojoBtn}}>
+                                                </i></span>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr key="i" *ngFor="let item of salones, let i = index">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.ubicacion}}</td>
+                                    <td>{{item.nombre + ' ' + item.apellido}}</td>
+                                    <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
+
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-success del-icon" (click)="reclamarReserva(item.id)">
+                                            <span><i class={{verdeBtn}}>
+                                                </i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger del-icon" (click)="devolverReserva(item.id)">
+                                            <span><i class={{rojoBtn}}>
+                                                </i></span>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr key="i" *ngFor="let item of equipos, let i = index">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.placa + ' ' + item.equipo}}</td>
+                                    <td>{{item.nombre + ' ' + item.apellido}}</td>
+                                    <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
+
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-success del-icon" (click)="reclamarReserva(item.id)">
+                                            <span><i class={{verdeBtn}}>
+                                                </i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger del-icon" (click)="devolverReserva(item.id)">
+                                            <span><i class={{rojoBtn}}>
+                                                </i></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- End of cust-table-cont block -->
+            </div>
+        </div> <!-- ENd of row -->
+
+    </div> <!-- /container -->
+</div> <!-- ENd of page content wrapper -->

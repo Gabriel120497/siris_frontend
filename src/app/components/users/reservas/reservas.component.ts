@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservasModel } from 'src/app/models/reservas';
 import { InstrumentosService } from 'src/app/services/instrumentos.service';
 import { ReservasService } from 'src/app/services/reservas.service';
 import { SalonesService } from 'src/app/services/salones.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -93,9 +94,11 @@ export class ReservasComponent implements OnInit {
   }
 
   obtenerHora(e: any) {
+   let pipe = new DatePipe('en-US');
+   
     this.reservaJson = {
-      'fecha_inicio': JSON.parse(e)[0].start,
-      'fecha_fin': JSON.parse(e)[0].end
+      'fecha_inicio': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss'),
+      'fecha_fin': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss')
     }
     console.log(this.reservaJson);
 

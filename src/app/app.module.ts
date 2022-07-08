@@ -40,6 +40,10 @@ import { TablaEquiposComponent } from './components/tabla/tabla-equipos/tabla-eq
 import { TablaInstrumentosComponent } from './components/tabla/tabla-instrumentos/tabla-instrumentos.component';
 import { TablaAudicionesComponent } from './components/tabla/tabla-audiciones/tabla-audiciones.component';
 import { TablaMisgruposComponent } from './components/tabla/tabla-misgrupos/tabla-misgrupos.component';
+import { TablaReservasPendientesComponent } from './components/tabla/tabla-reservas/tabla-reservas-pendientes/tabla-reservas-pendientes.component';
+import { TablaReservasComponent } from './components/tabla/tabla-reservas/tabla-reservas.component';
+import { TablaReservasAprobadasComponent } from './components/tabla/tabla-reservas/tabla-reservas-aprobadas/tabla-reservas-aprobadas.component';
+import { TablaReservasActivasComponent } from './components/tabla/tabla-reservas/tabla-reservas-activas/tabla-reservas-activas.component';
 
 
 @NgModule({
@@ -68,7 +72,11 @@ import { TablaMisgruposComponent } from './components/tabla/tabla-misgrupos/tabl
     TablaEquiposComponent,
     TablaInstrumentosComponent,
     TablaAudicionesComponent,
-    TablaMisgruposComponent
+    TablaMisgruposComponent,
+    TablaReservasComponent,
+    TablaReservasPendientesComponent,
+    TablaReservasAprobadasComponent,
+    TablaReservasActivasComponent
   ],
   imports: [
     BrowserModule,
