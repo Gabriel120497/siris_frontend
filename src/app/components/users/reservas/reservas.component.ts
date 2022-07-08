@@ -27,10 +27,11 @@ export class ReservasComponent implements OnInit {
   items: any = [];
   status: string;
   show: boolean = false;
+  cargando: boolean = false;
 
   constructor(private router: ActivatedRoute, private instrumentosService: InstrumentosService,
     private salonesService: SalonesService, private reservasServices: ReservasService, private route: Router,
-    private usuariosService:UsuariosService) { }
+    private usuariosService: UsuariosService) { }
 
   ngOnInit(): void {
 
@@ -57,6 +58,7 @@ export class ReservasComponent implements OnInit {
   }
 
   hacerReserva() {
+    this.cargando = true;
     if (this.selectedItem.length !== 0 && this.reservaJson !== undefined) {
       this.reserva.id_usuario = this.usuariosService.getId();
       this.reserva.estado = 'aprobada';
@@ -65,22 +67,23 @@ export class ReservasComponent implements OnInit {
       this.reserva.fecha_inicio = this.reservaJson.fecha_inicio;
       this.reserva.fecha_fin = this.reservaJson.fecha_fin;
       this.reserva.correo = this.usuariosService.getCorreo();
-      this.reservasServices.nuevaReserva(this.usuariosService.getToken(), this.reserva).subscribe((response: any) => {
+      this.reservasServices.nuevaReserva(this.usuariosService.getToken(), this.reserva).subscribe(
+        (response: any) => {
+          this.cargando = false;
+          Swal.fire({
+            title: 'Éxitoso',
+            text: `Se ha creado la reserva con código ${response.reserva.id} de manera exitosa`,
+            icon: 'success',
+            confirmButtonColor: '#009045'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.route.navigate(['dashboard']);
+            }
+          })
 
-        Swal.fire({
-          title: 'Éxitoso',
-          text: `Se ha creado la reserva con código ${response.reserva.id} de manera exitosa`,
-          icon: 'success',
-          confirmButtonColor: '#009045'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.route.navigate(['dashboard']);
-          }
-        })
-
-      }, error => {
-        this.status = 'error';
-      })
+        }, error => {
+          this.status = 'error';
+        });
     } else {
       Swal.fire({
         title: 'Atención',
@@ -92,19 +95,20 @@ export class ReservasComponent implements OnInit {
   }
 
   obtenerHora(e: any) {
-   let pipe = new DatePipe('en-US');
-   
+    let pipe = new DatePipe('en-US');
+
     this.reservaJson = {
       'fecha_inicio': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss'),
       'fecha_fin': pipe.transform(JSON.parse(e)[0].end, 'dd-MM-yyyy HH:mm:ss')
     }
 
-    this.show = true;
+    this.show = true; this.cargando = true;
     if (this.modulo === 'Salones') {
       this.salonesService.getSalones(this.usuariosService.getToken()).subscribe(
         (response: any) => {
 
           this.items = response.salones;
+          this.cargando = false;
 
         }, error => {
           this.status = 'error';
@@ -112,16 +116,20 @@ export class ReservasComponent implements OnInit {
     } else {
       this.instrumentosService.getInstrumentosDisponibles(this.usuariosService.getToken()).subscribe(
         (response: any) => {
+
           this.items = response.instrumentos;
+          this.cargando = false;
+
         }, error => {
           this.status = 'error';
+          this.cargando = false;
           Swal.fire({
             title: 'Atención',
             text: `No se pudieron obtener los instrumentos.\nIntentlo mas tarde`,
             icon: 'error',
             confirmButtonColor: '#009045'
           })
-        })
+        });
     }
 
   }

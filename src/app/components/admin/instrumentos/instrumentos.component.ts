@@ -15,6 +15,7 @@ export class InstrumentosComponent implements OnInit {
   nuevoInstrumentoForm: any;
   salones: any = [];
   status: string;
+  cargando: boolean = false;
 
   constructor(private router: ActivatedRoute, private route: Router,
     private salonesService: SalonesService, private instrumentosService: InstrumentosService) { }
@@ -32,11 +33,14 @@ export class InstrumentosComponent implements OnInit {
       descripcion_estado: new FormControl(''),
       habilitado_para: new FormControl('', Validators.required),
     });
+    this.cargando = true;
     this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
       (response: any) => {
         this.salones = response.salones;
+        this.cargando = false;
       }, error => {
         this.status = 'error';
+        this.cargando = false;
       });
   }
 
@@ -58,6 +62,7 @@ export class InstrumentosComponent implements OnInit {
   }
 
   nuevoInstrumento() {
+    this.cargando = true;
     let instrumento = {
       placa: this.nuevoInstrumentoForm.value.placa,
       nombre: this.nuevoInstrumentoForm.value.nombre,
@@ -74,6 +79,8 @@ export class InstrumentosComponent implements OnInit {
 
     this.instrumentosService.nuevoInstrumento(localStorage.getItem('token') || "[]", instrumento).subscribe(
       (response: any) => {
+        this.cargando = false;
+
         Swal.fire({
           title: 'Éxito',
           text: 'El Instrumento se ha registrado correctamente',
@@ -86,6 +93,8 @@ export class InstrumentosComponent implements OnInit {
           }
         })
       }, error => {
+        this.cargando = false;
+
         this.status = 'error';
         Swal.fire({
           title: 'Importante',
@@ -95,7 +104,6 @@ export class InstrumentosComponent implements OnInit {
           confirmButtonText: 'Ok'
         })
       });
-
   }
 
 }

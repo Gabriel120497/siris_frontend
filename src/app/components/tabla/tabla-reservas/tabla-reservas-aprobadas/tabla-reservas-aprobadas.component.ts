@@ -23,11 +23,11 @@ export class TablaReservasAprobadasComponent implements OnInit {
   rojoBtn: string = "bi bi-stop-fill";
 
   ngOnInit(): void {
-    
+
   }
 
-  reclamarReserva(idReserva: number) {}
-   /* console.log(idReserva);
+  reclamarReserva(idReserva: number) {
+    console.log(idReserva);
     let reserva = {
       id: idReserva,
       estado: 'ACTIVA'
@@ -42,7 +42,7 @@ export class TablaReservasAprobadasComponent implements OnInit {
           confirmButtonColor: '#009045',
           confirmButtonText: 'Confirmar'
         });
-        this.getReservasAprobadas();
+        //this.getReservasAprobadas();
         //this.route.navigate(["admin/Reservas"], { skipLocationChange: true })
       }, error => {
         console.log(error.error.message);
@@ -58,11 +58,9 @@ export class TablaReservasAprobadasComponent implements OnInit {
           }
         })
       });
-  }*/
+  }
 
-  devolverReserva(index: number) { }
-
-  /*getReservasAprobadas() {
+  getReservasAprobadas() {
     this.reservasService.getReservasAprobadas(this.usuariosService.getToken()).subscribe(
       (response: any) => {
         this.instrumentos = response.instrumentos;
@@ -78,23 +76,5 @@ export class TablaReservasAprobadasComponent implements OnInit {
         })
       });
   }
-
-  getReservasActivas() {
-    this.reservasService.getReservasActivas(this.usuariosService.getToken()).subscribe(
-      (response: any) => {
-        console.log(response.instrumentos);
-        this.instrumentos = response.instrumentos;
-        this.salones = response.salones;
-        this.equipos = response.equipos;
-      }, error => {
-        Swal.fire({
-          title: 'Reservas',
-          text: error.error.message,
-          icon: 'warning',
-          confirmButtonColor: '#009045',
-          confirmButtonText: 'Confirmar'
-        })
-      });
-  }*/
 
 }

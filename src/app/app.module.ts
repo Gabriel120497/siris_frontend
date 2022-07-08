@@ -44,6 +44,8 @@ import { TablaReservasComponent } from './components/tabla/tabla-reservas/tabla-
 import { TablaReservasAprobadasComponent } from './components/tabla/tabla-reservas/tabla-reservas-aprobadas/tabla-reservas-aprobadas.component';
 import { TablaReservasActivasComponent } from './components/tabla/tabla-reservas/tabla-reservas-activas/tabla-reservas-activas.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { CargandoComponent } from './components/cargando/cargando.component';
+import { TablaColaboradoresComponent } from './components/tabla/tabla-colaboradores/tabla-colaboradores.component';
 
 
 @NgModule({
@@ -76,7 +78,9 @@ import { RegistroComponent } from './components/registro/registro.component';
     TablaReservasPendientesComponent,
     TablaReservasAprobadasComponent,
     TablaReservasActivasComponent,
-    RegistroComponent
+    RegistroComponent,
+    CargandoComponent,
+    TablaColaboradoresComponent
   ],
   imports: [
     BrowserModule,

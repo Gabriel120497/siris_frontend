@@ -1,27 +1,28 @@
+<app-cargando *ngIf="cargando"></app-cargando>
 <app-header></app-header>
 <div class="container">
     <div>
         <!-- New -->
-        <form name="newSalon" class="register">
+        <form name="newSalon" class="register" [formGroup]="nuevoSalonForm" (ngSubmit)="nuevoSalon()">
             <h1>Nuevo Salón</h1>
             <fieldset class="row1">
 
                 <div class="form-group">
-                    <label>Ubicación *</label>
-                    <input type="text" name="ubicacion" class="form-control">
+                    <label>Ubicación (Bloque) *</label>
+                    <input type="text" formControlName="ubicacion" class="form-control">
                     <label>Número Salón *</label>
-                    <input type="text" name="numeroSalon" class="form-control">
+                    <input type="text" formControlName="numeroSalon" class="form-control">
                 </div>
 
             </fieldset>
-
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div> <!-- End of row -->
         </form>
     </div>
     <!-- Botones -->
-    <div class="col">
-        <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div> <!-- End of row -->
+
 
 
 

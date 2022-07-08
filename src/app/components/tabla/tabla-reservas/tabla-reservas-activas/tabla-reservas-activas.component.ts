@@ -14,7 +14,7 @@ export class TablaReservasActivasComponent implements OnInit {
 
   constructor(private route: Router, private reservasService: ReservasService,
     private usuariosService: UsuariosService) { }
-  
+
   headerTabla: string[] = ['ID Reserva', 'Usuario', 'Item', 'Documeto Usuario'];
   @Input() salones: any[];
   @Input() instrumentos: any[];
@@ -23,17 +23,46 @@ export class TablaReservasActivasComponent implements OnInit {
   rojoBtn: string = "bi bi-stop-fill";
 
   ngOnInit(): void {
-    
+
   }
 
-  reclamarReserva(index: number) { }
-
-  devolverReserva(index: number) { }
-
-  getReservasActivas() {}
-    /*this.reservasService.getReservasActivas(this.usuariosService.getToken()).subscribe(
+  devolverReserva(idReserva: number) {
+    console.log(idReserva);
+    let reserva = {
+      id: idReserva,
+      estado: 'TERMINADA'
+    };
+    this.reservasService.actualizarReserva(this.usuariosService.getToken(), reserva).subscribe(
       (response: any) => {
-        console.log(response.instrumentos);
+        console.log(response);
+        Swal.fire({
+          title: 'Éxito',
+          text: 'La reserva se ha activado con éxito',
+          icon: 'success',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Confirmar'
+        });
+        this.getReservasActivas();
+        //this.route.navigate(["admin/Reservas"], { skipLocationChange: true })
+      }, error => {
+        console.log(error.error.message);
+        Swal.fire({
+          title: 'Fallido',
+          text: error.error,
+          icon: 'error',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Confirmar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.getReservasActivas();
+          }
+        })
+      });
+  }
+
+  getReservasActivas() {
+    this.reservasService.getReservasAprobadas(this.usuariosService.getToken()).subscribe(
+      (response: any) => {
         this.instrumentos = response.instrumentos;
         this.salones = response.salones;
         this.equipos = response.equipos;
@@ -46,5 +75,6 @@ export class TablaReservasActivasComponent implements OnInit {
           confirmButtonText: 'Confirmar'
         })
       });
-  }*/
+  }
+
 }

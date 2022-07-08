@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UsuariosModel } from 'src/app/models/usuario';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -13,15 +13,16 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private route: Router, private usuarioService: UsuariosService) { }
+  constructor(private route: Router, private activatedRouter: ActivatedRoute, private usuarioService: UsuariosService) { }
 
   loginForm: any;
   usuarioRequest: UsuariosModel = new UsuariosModel;
   status: string;
-  token: string;
-  identity: string;
+  token: any;
+  identity: string | null;
 
   ngOnInit(): void {
+    this.logout();
     this.loginForm = new FormGroup({
       usuario: new FormControl('', Validators.required),
       clave: new FormControl('', Validators.required)
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
 
           this.usuarioService.login(this.usuarioRequest, true).subscribe(
             response => {
-              
+
               this.identity = response;
               //Peristir datos del usuario
               localStorage.setItem('token', this.token);
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
               } else {
                 this.route.navigate(['/Grupos-de-Proyeccion']);
               }
-              
+
             }, error => {
               this.status = 'error';
             }
@@ -63,6 +64,20 @@ export class LoginComponent implements OnInit {
         this.status = 'error';
       }
     )
+  }
+
+  logout() {
+    this.activatedRouter.params.subscribe(params => {
+      let logout = +params['sure'];
+      if (logout == 1) {
+        localStorage.removeItem('identity');
+        localStorage.removeItem('token');
+        this.identity = null;
+        this.token = null;
+
+        this.route.navigate(['login']);
+      }
+    });
   }
 
   get usuario() { return this.loginForm.get('usuario'); }

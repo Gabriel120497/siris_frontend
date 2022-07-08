@@ -9,6 +9,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class DashboardComponent implements OnInit {
 
+  cargando: boolean = false;
   slider: any[] = [];
   slides: any[] = [
     { nombre: 'Grupos de Proyeccion', modulo: 'GruposProyeccion' },
@@ -33,7 +34,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargando = true;
     this.setSlides(innerWidth);
+    this.cargando = false;
   }
 
   moveLeft() {
@@ -76,7 +79,7 @@ export class DashboardComponent implements OnInit {
 
       case 'Profesor':
         if (modulo == 'GruposProyeccion') {
-          this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
+          this.route.navigate(['Grupos-de-Proyeccion']);
 
         } else if (modulo == 'Cursos') {
           window.location.href = 'http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
@@ -87,7 +90,7 @@ export class DashboardComponent implements OnInit {
 
       case 'Comunidad':
         if (modulo == 'GruposProyeccion') {
-          this.route.navigate(['Grupos-de-Proyeccion/', this.userRole]);
+          this.route.navigate(['Grupos-de-Proyeccion']);
         } else if (modulo == 'Cursos') {
           window.location.href = 'http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
         } else {

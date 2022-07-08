@@ -25,9 +25,10 @@
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','Reservas']">Reservas</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','Colaboradores']">Colaboradores</a></li>
             <li><a class="dropdown-item" *ngIf="profesor" [routerLink]="['/', 'teachers','Mis-Grupos']">Mis Grupos</a></li>
             <li><a class="dropdown-item" *ngIf="profesor"[routerLink]="['/', 'teachers','Audiciones']">Audiciones Pendientes</a></li>
-            <li><a class="dropdown-item" >Cerrar Sesión</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/','logout', 1]">Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>

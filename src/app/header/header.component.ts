@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
   }
 
   redirigir(){
-    if (this.usuariosService.identity == null) {
+    if (this.usuariosService.getIdentity() == null) {
       this.route.navigate(['/login']);
     } else {
       this.route.navigate(['/dashboard']);

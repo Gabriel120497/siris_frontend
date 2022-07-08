@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuariosService } from './services/usuarios.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SIRIS';
+  /*identity: string | null;
+  token: string;
+
+  constructor(public usuariosService: UsuariosService) {
+    this.identity = this.usuariosService.getIdentity();
+  }*/
+
+
 }

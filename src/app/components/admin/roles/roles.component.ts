@@ -16,6 +16,7 @@ export class RolesComponent implements OnInit {
   modulo: any = this.router.snapshot.url[2].path;
   nuevoColaboradorForm: FormGroup;
   nuevoColaborador: any;
+  cargando: boolean = false;
 
   ngOnInit(): void {
     this.nuevoColaboradorForm = new FormGroup({
@@ -30,6 +31,7 @@ export class RolesComponent implements OnInit {
   }
 
   guardar() {
+    this.cargando = true;
     this.nuevoColaborador = {
       nombre: this.nuevoColaboradorForm.value.nombre,
       apellido: this.nuevoColaboradorForm.value.apellido,
@@ -41,6 +43,7 @@ export class RolesComponent implements OnInit {
     }
     this.usuariosService.nuevoUsuario(this.nuevoColaborador, this.usuariosService.getToken()).subscribe(
       (response: any) => {
+        this.cargando = false;
         Swal.fire({
           title: 'Éxito',
           text: `El usuario ${response.usuario.nombre} ${response.usuario.apellido} se ha creado exitosamente`,
@@ -53,6 +56,7 @@ export class RolesComponent implements OnInit {
           }
         })
       }, error => {
+        this.cargando = false;
         Swal.fire({
           title: 'Importante',
           text: error.error.message,

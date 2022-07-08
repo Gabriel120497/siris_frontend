@@ -28,6 +28,7 @@ export class CursosGruposComponent implements OnInit {
   agregar: boolean = false;
   horaInicial: any = { hour: 13, minute: 0 };
   horaFinal: any = { hour: 14, minute: 0 };
+  cargando: boolean = false;
 
   ngOnInit(): void {
     this.nuevoGrupoForm = new FormGroup({
@@ -76,6 +77,7 @@ export class CursosGruposComponent implements OnInit {
   }
 
   guardar() {
+    this.cargando = true;
     if (this.dias.length < 6) {
       if (this.horaInicial.hour < this.horaFinal.hour) {
         this.dias.push({
@@ -101,6 +103,7 @@ export class CursosGruposComponent implements OnInit {
         this.gruposService.nuevoGrupo(this.nuevoGrupoRequest, this.usuariosService.getToken()).subscribe(
           (response: any) => {
             console.log(response.grupo);
+            this.cargando = false;
 
             Swal.fire({
               title: 'Éxito',
@@ -116,16 +119,20 @@ export class CursosGruposComponent implements OnInit {
 
           }, error => {
             this.status = 'error';
-            console.log(error.error.message.nombre);
+            this.cargando = false;
+
+            console.log(error.error.message);
             Swal.fire({
               title: 'Fallido',
-              text: error.error.message.nombre,
+              text: error.error.message,
               icon: 'error',
               confirmButtonColor: '#009045',
               confirmButtonText: 'Confirmar'
             })
           });
       } else {
+        this.cargando = false;
+
         Swal.fire({
           title: 'Importante',
           text: 'La hora de inicio no puede ser mayor o igual a la hora final',

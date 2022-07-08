@@ -1,3 +1,4 @@
+<app-cargando  *ngIf="cargando"></app-cargando>
 <app-header></app-header>
 <div class="container">
     <div>
@@ -12,7 +13,7 @@
                     <label>Apellidos *</label>
                     <input type="text" formControlName="apellido" class="form-control">
                     <label>Rol*</label>
-                    <select formControlName="rol" class="form-group2">
+                    <select formControlName="rol" class="form-control">
                         <option value="Colaborador">Colaborador
                         </option>
                         <option value="Profesor">Profesor
@@ -21,7 +22,7 @@
                         </option>
                     </select>
                     <label>Tipo Documento *</label>
-                    <select formControlName="tipo_documento" class="form-group2">
+                    <select formControlName="tipo_documento" class="form-control">
                         <option value="CC">CC - Cédula de ciudadania
                         </option>
                         <option value="TI">TI - Tarjeta de identidad

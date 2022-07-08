@@ -13,6 +13,7 @@ export class GruposProyeccionComponent implements OnInit {
 
   slider: any[] = [];
   grupos: any[] = [];
+  cargando: boolean = false;
 
   start: number = 0;
   setSlidesVar: number = 0;
@@ -23,8 +24,10 @@ export class GruposProyeccionComponent implements OnInit {
   role: any = this.usuariosService.getRol();//this.router.snapshot.paramMap.get('role');
 
   ngOnInit(): void {
+    this.cargando = true;
     this.getGrupos();
     this.setSlides(innerWidth);
+    this.cargando = false;
   }
 
   moveLeft() {

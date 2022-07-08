@@ -22,10 +22,12 @@ import { TablaAudicionesComponent } from './components/tabla/tabla-audiciones/ta
 import { TablaMisgruposComponent } from './components/tabla/tabla-misgrupos/tabla-misgrupos.component';
 import { TablaReservasComponent } from './components/tabla/tabla-reservas/tabla-reservas.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { TablaColaboradoresComponent } from './components/tabla/tabla-colaboradores/tabla-colaboradores.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
+  {path: 'logout/:sure', component: LoginComponent},
 
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'users/reservas/:modulo', component: ReservasComponent},
@@ -36,6 +38,7 @@ const routes: Routes = [
   {path: 'admin/Reservas', component: TablaReservasComponent},
   {path: 'admin/reservas/:modulo', component: ReservasComponent},
   {path: 'admin/Grupos-de-Proyeccion', component: TablaGruposComponent},
+  {path: 'admin/Colaboradores', component: TablaColaboradoresComponent},
   {path: 'admin/Instrumentos', component: TablaInstrumentosComponent},
   {path: 'admin/Equipos', component: TablaEquiposComponent},
   {path: 'admin/Salones', component: TablaSalonesComponent},

@@ -13,6 +13,7 @@ export class RegistroComponent implements OnInit {
 
   nuevoUsuarioForm: any;
   claveIgual: boolean;
+  cargando: boolean = false;
 
   constructor(private route: Router, private usuariosService: UsuariosService) { }
 
@@ -31,6 +32,7 @@ export class RegistroComponent implements OnInit {
   }
 
   nuevoUsuario() {
+    this.cargando = true;
     if (!this.nuevoUsuarioForm.value.correo.includes('@elpoli.edu.co')) {
       //Perfil Externo
       this.nuevoUsuarioForm.value.rol = 'Externo'
@@ -61,7 +63,7 @@ export class RegistroComponent implements OnInit {
           confirmButtonText: 'Confirmar'
         })
       });
-
+      this.cargando = false;
   }
 
   verificacion() {

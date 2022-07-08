@@ -1,0 +1,97 @@
+<app-cargando *ngIf="cargando"></app-cargando>
+<app-header></app-header>
+<div class="body">
+    <h1>Colaboradores</h1>
+</div>
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-success" (click)="nuevoColaborador()">Nuevo
+                    Colaborador</button>
+            </div> <!-- End of column -->
+
+        </div> <!-- End of row -->
+        <br />
+
+        <!-- Listing table -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="cust-table-cont">
+                    <div class="table-responsive">
+                        <table class="table cust-table">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let item of headerTabla">{{item}}</th>
+                                    <th style="width:150px;" class="text-center">
+                                        <i class="bi bi-gear-fill"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr key="i" *ngFor="let item of colaboradores, let i = index">
+
+                                    <td>{{item.nombre + ' ' + item.apellido}}</td>
+                                    <td>{{item.rol}}</td>
+                                    <td>{{item.celular}}</td>
+                                    <td>{{item.correo}}</td>
+
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-success del-icon" (click)="editar(i, mymodal)">
+                                            <span><i class={{verdeBtn}}>
+                                                </i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger del-icon" (click)="eliminar(i)">
+                                            <span><i class={{rojoBtn}}>
+                                                </i></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- End of cust-table-cont block -->
+            </div>
+        </div> <!-- ENd of row -->
+
+    </div> <!-- /container -->
+</div> <!-- ENd of page content wrapper -->
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Editar Grupo de Proyección</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form name="instrumento" class="register" [formGroup]="colaboradoresForm">
+
+            <fieldset class="row1">
+                <!-- PLACA -->
+                <div class="form-group">
+                    <label>Nombre *</label>
+                    <input type="text" formControlName="nombre" class="form-control">
+                    <label>Perfil *</label>
+                    <select formControlName="rol" class="form-control">
+                        <option value="Colaborador">Colaborador
+                        </option>
+                        <option value="Profesor">Profesor
+                        </option>
+                        <option value="Admin">Admin
+                        </option>
+                    </select>
+                    <label>Número Contacto *</label>
+                    <input formControlName="celular" class="form-control">
+                    <label>Correo*</label>
+                    <input type="text" formControlName="correo" class="form-control">
+                </div>
+            </fieldset>
+            <!-- Botones -->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancelar')">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Guardar')">Guardar</button>
+    </div>
+</ng-template>
