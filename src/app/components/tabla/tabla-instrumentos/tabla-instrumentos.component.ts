@@ -38,7 +38,6 @@ export class TablaInstrumentosComponent implements OnInit {
   }
 
   deshabilitar(index: any) {
-    console.log(this.instrumentos[index]);
     Swal.fire({
       title: 'Importante',
       text: '¿Está seguro que desea deshabilitar este instrumento?',
@@ -49,11 +48,9 @@ export class TablaInstrumentosComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.instrumentos[index].estatus = 'Desahabilitado';
-        console.log(this.instrumentos[index]);
 
         this.instrumentosService.deshabilitarInstrumento(this.usuariosService.getToken(), this.instrumentos[index]).subscribe(
           (response: any) => {
-            console.log(response);
             Swal.fire({
               title: 'Éxito',
               text: 'El instrumento se ha deshabilitado con éxito y ya no se podrá reservar más',
@@ -62,7 +59,6 @@ export class TablaInstrumentosComponent implements OnInit {
               confirmButtonText: 'Confirmar'
             })
           }, error => {
-            console.log(error.error.message.nombre);
             Swal.fire({
               title: 'Fallido',
               text: error.error.message.nombre,
@@ -82,7 +78,6 @@ export class TablaInstrumentosComponent implements OnInit {
   }
 
   editar(index: number, content: any) {
-    console.log(this.instrumentos[index]);
     this.instrumentoForm = new FormGroup({
       nombre: new FormControl(this.instrumentos[index].nombre, Validators.required),
       placa: new FormControl(this.instrumentos[index].placa, Validators.required),
@@ -93,11 +88,9 @@ export class TablaInstrumentosComponent implements OnInit {
     });
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      //console.log('prueba', this.instrumentoForm.valueChanges);
       if (result == 'Guardar') {
         this.instrumentosService.actualizarInstrumento(this.usuariosService.getToken(), this.instrumentoForm.value).subscribe(
           (response: any) => {
-            console.log(response);
             Swal.fire({
               title: 'Éxito',
               text: 'El instrumento se ha actualizado con éxito',
@@ -107,10 +100,9 @@ export class TablaInstrumentosComponent implements OnInit {
             });
             this.getInstrumentos();
           }, error => {
-            console.log(error.error.message.nombre);
             Swal.fire({
               title: 'Fallido',
-              text: error.error.message.nombre,
+              text: error.error.message,
               icon: 'error',
               confirmButtonColor: '#009045',
               confirmButtonText: 'Confirmar'
@@ -123,7 +115,6 @@ export class TablaInstrumentosComponent implements OnInit {
       }
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      console.log(this.closeResult);
     });
 
   }
@@ -141,13 +132,11 @@ export class TablaInstrumentosComponent implements OnInit {
   getInstrumentos() {
     this.instrumentosService.getInstrumentos(this.usuariosService.getToken()).subscribe(
       (response: any) => {
-        console.log(response.instrumentos);
         this.instrumentos = response.instrumentos;
       }, error => {
-        console.log(error.error.message.nombre);
         Swal.fire({
           title: 'Fallido',
-          text: error.error.message.nombre,
+          text: error.error.message,
           icon: 'error',
           confirmButtonColor: '#009045',
           confirmButtonText: 'Confirmar'

@@ -35,10 +35,10 @@ export class TablaEquiposComponent implements OnInit {
         console.log(response.equipos);
         this.equipos = response.equipos;
       }, error => {
-        console.log(error.error.message.nombre);
+        console.log(error.error.message);
         Swal.fire({
           title: 'Fallido',
-          text: error.error.message.nombre,
+          text: error.error.message,
           icon: 'error',
           confirmButtonColor: '#009045',
           confirmButtonText: 'Confirmar'

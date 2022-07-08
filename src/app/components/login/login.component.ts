@@ -33,20 +33,23 @@ export class LoginComponent implements OnInit {
     this.usuarioRequest.clave = this.loginForm.value.clave;
     this.usuarioService.login(this.usuarioRequest).subscribe(
       response => {
-        console.log(response);
         if (response.status != 'error') {
           this.status = 'success';
           this.token = response;
 
           this.usuarioService.login(this.usuarioRequest, true).subscribe(
             response => {
-              console.log(response);
               
               this.identity = response;
               //Peristir datos del usuario
               localStorage.setItem('token', this.token);
               localStorage.setItem('identity', JSON.stringify(this.identity));
-              this.route.navigate(['/dashboard']);
+              if (this.usuarioService.getRol() != 'Externo') {
+                this.route.navigate(['/dashboard']);
+              } else {
+                this.route.navigate(['/Grupos-de-Proyeccion']);
+              }
+              
             }, error => {
               this.status = 'error';
             }

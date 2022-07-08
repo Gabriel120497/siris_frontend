@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="container-fluid nav">
-    <a class="navbar-brand"><img class="img" src="../../assets/logoPoli.png"></a>
+    <a class="navbar-brand" (click)="redirigir()"><img class="img" src="../../assets/logoPoli.png"></a>
 
 
     <!--div class="btn-group">
@@ -24,6 +24,7 @@
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
+            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','Reservas']">Reservas</a></li>
             <li><a class="dropdown-item" *ngIf="profesor" [routerLink]="['/', 'teachers','Mis-Grupos']">Mis Grupos</a></li>
             <li><a class="dropdown-item" *ngIf="profesor"[routerLink]="['/', 'teachers','Audiciones']">Audiciones Pendientes</a></li>
             <li><a class="dropdown-item" >Cerrar Sesión</a></li>

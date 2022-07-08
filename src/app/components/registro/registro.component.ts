@@ -1,45 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-roles',
-  templateUrl: './roles.component.html',
-  styleUrls: ['../../../css/formularioAdminAgregar.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['../../css/formularioAdminAgregar.component.css']
 })
-export class RolesComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private route: Router, private usuariosService: UsuariosService) { }
+  nuevoUsuarioForm: any;
+  claveIgual: boolean;
 
-  modulo: any = this.router.snapshot.url[2].path;
-  nuevoColaboradorForm: FormGroup;
-  nuevoColaborador: any;
+  constructor(private route: Router, private usuariosService: UsuariosService) { }
 
   ngOnInit(): void {
-    this.nuevoColaboradorForm = new FormGroup({
+    this.nuevoUsuarioForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
-      rol: new FormControl('', Validators.required),
       tipo_documento: new FormControl('', Validators.required),
       numero_documento: new FormControl('', Validators.required),
       celular: new FormControl('', Validators.required),
-      correo: new FormControl('', [Validators.required, Validators.email])
+      correo: new FormControl('', [Validators.required, Validators.email]),
+      clave: new FormControl('', Validators.required),
+      confirmarClave: new FormControl('', Validators.required),
+      rol: new FormControl('')
     });
   }
 
-  guardar() {
-    this.nuevoColaborador = {
-      nombre: this.nuevoColaboradorForm.value.nombre,
-      apellido: this.nuevoColaboradorForm.value.apellido,
-      rol: this.nuevoColaboradorForm.value.rol,
-      tipo_documento: this.nuevoColaboradorForm.value.tipo_documento,
-      numero_documento: this.nuevoColaboradorForm.value.numero_documento,
-      celular: this.nuevoColaboradorForm.value.celular,
-      correo: this.nuevoColaboradorForm.value.correo
+  nuevoUsuario() {
+    if (!this.nuevoUsuarioForm.value.correo.includes('@elpoli.edu.co')) {
+      //Perfil Externo
+      this.nuevoUsuarioForm.value.rol = 'Externo'
+    } else {
+      //Perfil Comunidad
+      this.nuevoUsuarioForm.value.rol = 'Comunidad'
     }
-    this.usuariosService.nuevoUsuario(this.nuevoColaborador, this.usuariosService.getToken()).subscribe(
+
+    this.usuariosService.nuevoUsuario(this.nuevoUsuarioForm.value, this.usuariosService.getToken()).subscribe(
       (response: any) => {
         Swal.fire({
           title: 'Éxito',
@@ -49,7 +49,7 @@ export class RolesComponent implements OnInit {
           confirmButtonText: 'Confirmar'
         }).then((result) => {
           if (result.isConfirmed) {
-            this.route.navigate(['dashboard']);
+            this.route.navigate(['login']);
           }
         })
       }, error => {
@@ -61,12 +61,21 @@ export class RolesComponent implements OnInit {
           confirmButtonText: 'Confirmar'
         })
       });
+
+  }
+
+  verificacion() {
+    if (this.nuevoUsuarioForm.value.clave !== this.nuevoUsuarioForm.value.confirmarClave) {
+      this.claveIgual = false;
+    } else {
+      this.claveIgual = true;
+    }
   }
 
   cancelar() {
     Swal.fire({
       title: '¿Está seguro que desea cancelar?',
-      text: `Será redirigido al menú principal`,
+      text: `Será redirigido al inicio de sesión`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#009045',
@@ -75,7 +84,7 @@ export class RolesComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate(['dashboard']);
+        this.route.navigate(['login']);
       }
     })
   }

@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     let rol = this.usuariosService.getRol();
-    console.log(rol);
     switch (rol) {
       case 'Admin':
         this.admin = true;
@@ -38,6 +37,15 @@ export class HeaderComponent implements OnInit {
 
       default:
         break;
+    }
+  }
+
+  redirigir(){
+    if (this.usuariosService.identity == null) {
+      this.route.navigate(['/login']);
+    } else {
+      this.route.navigate(['/dashboard']);
+      
     }
   }
 

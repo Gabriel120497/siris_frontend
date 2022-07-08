@@ -15,6 +15,7 @@ export class UsuariosService {
   rol: string;
   sub: string;
   nombre: string;
+  correo: string;
   constructor(public http: HttpClient) {
     this.url = global.url;
   }
@@ -52,8 +53,6 @@ export class UsuariosService {
 
   getNombre() {
     let identity = JSON.parse(localStorage.getItem('identity') || '');
-    console.log('nombre: ', identity.nombre);
-    
     if (identity && (identity != undefined || identity != 'undefined')) {
       this.nombre = identity.nombre;
     } else {
@@ -61,6 +60,17 @@ export class UsuariosService {
     }
     return this.nombre;
   }
+
+  getCorreo() {
+    let identity = JSON.parse(localStorage.getItem('identity') || '');
+    if (identity && (identity != undefined || identity != 'undefined')) {
+      this.correo = identity.correo;
+    } else {
+      this.correo = '';
+    }
+    return this.correo;
+  }
+
 
   getIdentity() {
     let identity = JSON.parse(localStorage.getItem('identity') || '');
@@ -87,7 +97,7 @@ export class UsuariosService {
     return this.http.get(this.url + 'usuario/profesores', { headers: headers });
   }
 
-  nuevoUsuario(usuario:any, token:string){
+  nuevoUsuario(usuario: any, token: string) {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.post(this.url + 'usuario/nuevoUsuario', usuario, { headers: headers });
   }

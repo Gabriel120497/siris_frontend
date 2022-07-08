@@ -43,17 +43,15 @@ export class CursosGruposComponent implements OnInit {
       id_salon_clase: new FormControl('', Validators.required),
     });
 
-    this.usuariosService.profesores(localStorage.getItem('token') || "[]").subscribe(
+    this.usuariosService.profesores(this.usuariosService.getToken()).subscribe(
       (response: any) => {
-        console.log(response.profesores);
         this.profesores = response.profesores;
       }, error => {
         this.status = 'error';
       });
 
-    this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
+    this.salonesService.getSalones(this.usuariosService.getToken()).subscribe(
       (response: any) => {
-        console.log(response.salones);
         this.salones = response.salones;
       }, error => {
         this.status = 'error';
@@ -85,6 +83,7 @@ export class CursosGruposComponent implements OnInit {
           'hora_inicio': this.horaInicial.hour + ':' + this.horaInicial.minute,
           'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
         });
+        
         this.nuevoGrupoForm.value.dia = '';
         this.nuevoGrupoForm.value.horaInicio = '';
         this.nuevoGrupoForm.value.horaFin = '';
@@ -94,12 +93,12 @@ export class CursosGruposComponent implements OnInit {
         this.nuevoGrupoRequest.profesor = profesor[0].nombre + ' ' + profesor[0].apellido
         this.nuevoGrupoRequest.cupos_totales = this.nuevoGrupoForm.value.cupos_totales;
         this.nuevoGrupoRequest.cupos_restantes = this.nuevoGrupoForm.value.cupos_totales;
-        this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos;
+        this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos != ''? this.nuevoGrupoForm.value.prerequisitos : 'N/A' ;
         this.nuevoGrupoRequest.horario = this.dias;
         this.nuevoGrupoRequest.id_salon_clases = this.nuevoGrupoForm.value.id_salon_clase;
         console.log(this.nuevoGrupoRequest);
 
-        this.gruposService.nuevoGrupo(this.nuevoGrupoRequest, localStorage.getItem('token') || "[]").subscribe(
+        this.gruposService.nuevoGrupo(this.nuevoGrupoRequest, this.usuariosService.getToken()).subscribe(
           (response: any) => {
             console.log(response.grupo);
 

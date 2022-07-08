@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GruposService } from 'src/app/services/grupos.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-grupos-proyeccion',
@@ -9,52 +12,59 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class GruposProyeccionComponent implements OnInit {
 
   slider: any[] = [];
-  slides: any[] = [
-    { nombre: 'Chirimia', grupo: 'Chirimia' },
-    { nombre: 'Banda de Rock', grupo: 'BandaRock' },
-    { nombre: 'Teatro', grupo: 'Teatro' },
-    { nombre: 'Coro', grupo: 'Coro' }
-  ];
+  grupos: any[] = [];
 
   start: number = 0;
   setSlidesVar: number = 0;
 
-  constructor(private route: Router, private router: ActivatedRoute) { }
+  constructor(private route: Router, private router: ActivatedRoute,
+    private gruposService: GruposService, private usuariosService: UsuariosService) { }
 
-  role: any = this.router.snapshot.paramMap.get('role');
+  role: any = this.usuariosService.getRol();//this.router.snapshot.paramMap.get('role');
 
   ngOnInit(): void {
+    this.getGrupos();
     this.setSlides(innerWidth);
   }
 
   moveLeft() {
     this.start = this.start - 1;
     this.setSlidesVar = this.setSlidesVar - 1;
-    console.log('left');
 
   }
 
   moveRight() {
     this.start = this.start + 1;
     this.setSlidesVar = this.setSlidesVar + 1;
-    console.log('right');
   }
 
   onResize(event: any) {
-    console.log(event.srcElement);
     this.setSlides(event.srcElement.innerWidth);
     //this.setSlides(event.)
   }
 
   setSlides(value: number) {
-    console.log(value);
-
     if (value < 700) { this.setSlidesVar = 1; }
     else if (value >= 700 && value < 1300) { this.setSlidesVar = 2; }
     else if (value >= 1300 && value < 1600) { this.setSlidesVar = 3; }
     else {
       this.setSlidesVar = 4
     }
+  }
+
+  getGrupos() {
+    this.gruposService.grupos().subscribe(
+      (response: any) => {
+        this.grupos = response.grupos;
+      }, error => {
+        Swal.fire({
+          title: 'Importante',
+          text: error.error.message,
+          icon: 'warning',
+          confirmButtonColor: '#009045',
+          confirmButtonText: 'Confirmar'
+        })
+      });
   }
 
   audicionar(grupo: string) {

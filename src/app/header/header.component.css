@@ -3,6 +3,10 @@
     height: auto;
 }
 
+.img:hover{
+    cursor: pointer;
+}
+
 .icon {
     color: white;
     font-size: calc(1vw + 1vh + 0.5vmin);

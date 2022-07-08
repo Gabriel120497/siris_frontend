@@ -58,16 +58,14 @@ export class ReservasComponent implements OnInit {
 
   hacerReserva() {
     if (this.selectedItem.length !== 0 && this.reservaJson !== undefined) {
-      //console.log(localStorage.getItem('identity'));
       this.reserva.id_usuario = this.usuariosService.getId();
       this.reserva.estado = 'aprobada';
       this.reserva.item = this.selectedItem.nombre || this.selectedItem.ubicacion;
       this.reserva.tipo_item = this.modulo;
       this.reserva.fecha_inicio = this.reservaJson.fecha_inicio;
       this.reserva.fecha_fin = this.reservaJson.fecha_fin;
-      console.log(this.reserva);
+      this.reserva.correo = this.usuariosService.getCorreo();
       this.reservasServices.nuevaReserva(this.usuariosService.getToken(), this.reserva).subscribe((response: any) => {
-        console.log(response);
 
         Swal.fire({
           title: 'Éxitoso',
@@ -98,15 +96,13 @@ export class ReservasComponent implements OnInit {
    
     this.reservaJson = {
       'fecha_inicio': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss'),
-      'fecha_fin': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss')
+      'fecha_fin': pipe.transform(JSON.parse(e)[0].end, 'dd-MM-yyyy HH:mm:ss')
     }
-    console.log(this.reservaJson);
 
     this.show = true;
     if (this.modulo === 'Salones') {
       this.salonesService.getSalones(this.usuariosService.getToken()).subscribe(
         (response: any) => {
-          console.log(response.salones);
 
           this.items = response.salones;
 
@@ -116,7 +112,6 @@ export class ReservasComponent implements OnInit {
     } else {
       this.instrumentosService.getInstrumentosDisponibles(this.usuariosService.getToken()).subscribe(
         (response: any) => {
-          console.log(response);
           this.items = response.instrumentos;
         }, error => {
           this.status = 'error';

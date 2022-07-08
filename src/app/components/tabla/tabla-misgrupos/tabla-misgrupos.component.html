@@ -47,19 +47,10 @@
                                             </tbody>
                                         </table>
                                     </td>
-                                    
-
                                     <td class="text-center">
-                                        <button class="btn btn-outline-secondary del-icon">
+                                        <button class="btn btn-outline-secondary del-icon"
+                                            (click)="getEstudiantes(i, estudiantesmodal)">
                                             <span><i class="bi bi-eye">
-                                                </i></span>
-                                        </button>
-                                        <button class="btn btn-outline-success del-icon">
-                                            <span><i class={{verdeBtn}}>
-                                                </i></span>
-                                        </button>
-                                        <button class="btn btn-outline-danger del-icon">
-                                            <span><i class={{rojoBtn}}>
                                                 </i></span>
                                         </button>
                                     </td>
@@ -73,3 +64,58 @@
 
     </div> <!-- /container -->
 </div> <!-- ENd of page content wrapper -->
+
+<!--MODAL LISTA ESTUDIANTES-->
+<ng-template #estudiantesmodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Estudiantes</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <!-- Listing table -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="cust-table-cont">
+                            <div class="table-responsive">
+                                <table class="table cust-table">
+                                    <thead>
+                                        <tr>
+                                            <th *ngFor="let item of headerTablaEstudiantes">{{item}}</th>
+                                            <th style="width:150px;" class="text-center">
+                                                <i class="bi bi-gear-fill"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr key="i" *ngFor="let item of estudiantes, let i = index">
+
+                                            <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
+                                            <td>{{item.nombre + ' ' + item.apellido}}</td>
+                                            <td>{{item.celular}}</td>
+                                            <td>{{item.correo}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-danger del-icon">
+                                                    <span><i class={{rojoBtn}}>
+                                                        </i></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> <!-- End of cust-table-cont block -->
+                    </div>
+                </div> <!-- ENd of row -->
+
+            </div> <!-- /container -->
+        </div> <!-- ENd of page content wrapper -->
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
+    </div>
+</ng-template>

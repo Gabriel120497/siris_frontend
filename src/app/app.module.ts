@@ -23,7 +23,6 @@ import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
 import { SalonesComponent } from './components/admin/salones/salones.component';
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
-import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { CursosGruposComponent } from './components/admin/cursosGrupos/cursos-grupos.component';
 import { RolesComponent } from './components/admin/roles/roles.component';
@@ -44,6 +43,7 @@ import { TablaReservasPendientesComponent } from './components/tabla/tabla-reser
 import { TablaReservasComponent } from './components/tabla/tabla-reservas/tabla-reservas.component';
 import { TablaReservasAprobadasComponent } from './components/tabla/tabla-reservas/tabla-reservas-aprobadas/tabla-reservas-aprobadas.component';
 import { TablaReservasActivasComponent } from './components/tabla/tabla-reservas/tabla-reservas-activas/tabla-reservas-activas.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -60,7 +60,6 @@ import { TablaReservasActivasComponent } from './components/tabla/tabla-reservas
     SalonesComponent,
     EquiposComponent,
     CursosGruposComponent,
-    ReservasAdminComponent,
     TablaComponent,
     RolesComponent,
     AudicionesComponent,
@@ -76,7 +75,8 @@ import { TablaReservasActivasComponent } from './components/tabla/tabla-reservas
     TablaReservasComponent,
     TablaReservasPendientesComponent,
     TablaReservasAprobadasComponent,
-    TablaReservasActivasComponent
+    TablaReservasActivasComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

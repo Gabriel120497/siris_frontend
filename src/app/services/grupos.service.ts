@@ -24,25 +24,26 @@ export class GruposService {
   }
 
   getAudicionesPendientes(profesor: any, token: string) {
-    console.log(profesor);
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.post(this.url + `audicionesPendientes`, profesor, { headers: headers });
   }
 
-  getMisGrupos(profesor: string, token: string){
-    console.log('profesor: ', profesor);
-    
+  getMisGrupos(profesor: string, token: string) {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(this.url + `misGrupos/${profesor}`, { headers: headers });
   }
 
-  eliminarGrupo(id:number, token:string){
+  eliminarGrupo(id: number, token: string) {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.delete(this.url + `eliminarGrupo/${id}`, { headers: headers });
   }
 
-  actualizarGrupo(token: string, grupo:any){
+  actualizarGrupo(token: string, grupo: any) {
     let headers = new HttpHeaders().set('Authorization', token);
     return this.http.put(this.url + 'actualizarGrupo', grupo, { headers: headers });
+  }
+  getEstudiantes(token: string, idGrupo: number) {
+    let headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(this.url + `estudiantes/${idGrupo}`, { headers: headers });
   }
 }

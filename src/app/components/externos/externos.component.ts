@@ -22,7 +22,6 @@ export class ExternosComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.router.snapshot.url[0].path);
     if (this.router.snapshot.url[0].path == 'teachers') {
       this.teacher = true;
     }

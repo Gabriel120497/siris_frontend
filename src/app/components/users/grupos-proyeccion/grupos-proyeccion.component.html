@@ -21,12 +21,20 @@
       </button>
     </div>
 
-    <div class="card2" *ngFor="let slide of slides; let i = index" [hidden]="!(i >= start && i <= setSlidesVar-1)">
+    <div class="card2" *ngFor="let grupo of grupos; let i = index" [hidden]="!(i >= start && i <= setSlidesVar-1)">
 
       <div class="card">
         <img src="../../../assets/img-01.png" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">{{slide.nombre}}</h5>
+          <h5 class="card-title">{{grupo.nombre}}</h5>
+          <p class="card-text">
+            <span class="txt1">
+              Descripción
+            </span>
+            <span class="txt2">
+              {{grupo.descripcion}}
+            </span>
+          </p>
           <p class="card-text">
             <span class="txt1">
               Horario:
@@ -37,20 +45,19 @@
           </p>
           <p class="card-text">
             <span class="txt1">
-              Requisitos o Pre Requisitos:
+              Pre-Requisitos:
             </span>
             <span class="txt2">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
+              {{grupo.prerequisitos}}
             </span>
           </p>
-          <a (click)="audicionar(slide.grupo)" class="btn btn-primary">Audicionar</a>
+          <a (click)="audicionar(grupo.nombre)" class="btn btn-primary">Audicionar</a>
         </div>
       </div>
 
     </div>
     <div class="right">
-      <button (click)="moveRight()" [disabled]="setSlidesVar==slides.length">
+      <button (click)="moveRight()" [disabled]="setSlidesVar==grupos.length">
         <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
       </button>
     </div>

@@ -1,8 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EquiposModel } from 'src/app/models/equipos';
 import { ReservasModel } from "src/app/models/reservas";
 import { EquiposService } from 'src/app/services/equipos.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,7 +15,7 @@ import Swal from 'sweetalert2';
 export class ReservaEquiposComponent implements OnInit {
 
   itemsParaReservar: EquiposModel[] = [];
-  reserva: ReservasModel = new ReservasModel;
+  reserva: any;
   reservaJson: any;
 
   items: any = [];
@@ -27,7 +29,8 @@ export class ReservaEquiposComponent implements OnInit {
   searchTerm: string = '';
   selectedItem: any = [];
 
-  constructor(private route: Router, private equiposService: EquiposService) { }
+  constructor(private route: Router, private equiposService: EquiposService,
+    private usuariosService: UsuariosService) { }
 
   ngOnInit(): void {
     this.equiposService.getEquipos(localStorage.getItem('token') || "[]").subscribe(
@@ -123,7 +126,9 @@ export class ReservaEquiposComponent implements OnInit {
       this.reserva.items = this.itemsParaReservar;
       this.reserva.fechaInicio = this.reservaJson[0].start;
       this.reserva.fechaFin = this.reservaJson[0].end;
-      this.reserva.descripcionNecesidad = this.descripcionNecesidad
+      this.reserva.descripcionNecesidad = this.descripcionNecesidad,
+        this.reserva.correo = this.usuariosService.getCorreo();
+
       console.log(this.reserva);
     } else {
       Swal.fire({
@@ -138,7 +143,11 @@ export class ReservaEquiposComponent implements OnInit {
   }
 
   obtenerHora(e: any) {
-    this.reservaJson = JSON.parse(e);
+    let pipe = new DatePipe('en-US');
+    this.reservaJson = {
+      'fecha_inicio': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss'),
+      'fecha_fin': pipe.transform(JSON.parse(e)[0].end, 'dd-MM-yyyy HH:mm:ss')
+    }
   }
 
 }

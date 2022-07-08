@@ -35,10 +35,8 @@ export class TablaGruposComponent implements OnInit {
   getGrupos() {
     this.gruposService.grupos().subscribe(
       (response: any) => {
-        console.log(response.grupos);
         this.grupos = response.grupos;
       }, error => {
-        console.log(error.error.message.nombre);
         Swal.fire({
           title: 'Fallido',
           text: error.error.message.nombre,
@@ -50,7 +48,6 @@ export class TablaGruposComponent implements OnInit {
   }
 
   eliminarGrupo(index: number) {
-    console.log(this.grupos[index].id);
 
     Swal.fire({
       title: 'Importante',
@@ -63,7 +60,6 @@ export class TablaGruposComponent implements OnInit {
       if (result.isConfirmed) {
         this.gruposService.eliminarGrupo(this.grupos[index].id, this.usuariosService.getToken()).subscribe(
           (response: any) => {
-            console.log(response.grupo);
             Swal.fire({
               title: 'Éxito',
               text: `El grupo ${response.grupo.nombre} ha sido eliminado`,
@@ -93,18 +89,16 @@ export class TablaGruposComponent implements OnInit {
 
     this.usuariosService.profesores(this.usuariosService.getToken()).subscribe(
       (response: any) => {
-        console.log(response.profesores);
         this.profesores = response.profesores;
       }, error => {
       });
 
-    console.log(this.grupos[index]);
     let cantidadEstudiantes = this.grupos[index].cupos_totales - this.grupos[index].cupos_restantes
     this.gruposForm = new FormGroup({
       id: new FormControl(this.grupos[index].id),
       nombre: new FormControl(this.grupos[index].nombre, Validators.required),
       descripcion: new FormControl(this.grupos[index].descripcion),
-      profesor: new FormControl({value: this.grupos[index].profesor, disabled: true},Validators.required),
+      profesor: new FormControl({ value: this.grupos[index].profesor, disabled: true }, Validators.required),
       cupos_totales: new FormControl(this.grupos[index].cupos_totales, Validators.required),
       cupos_restantes: new FormControl(''),
       prerequisitos: new FormControl(this.grupos[index].prerequisitos)
@@ -112,11 +106,9 @@ export class TablaGruposComponent implements OnInit {
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.gruposForm.value.cupos_restantes = this.gruposForm.value.cupos_totales - cantidadEstudiantes;
-      console.log(this.gruposForm.value);
       if (result == 'Guardar') {
         this.gruposService.actualizarGrupo(this.usuariosService.getToken(), this.gruposForm.value).subscribe(
           (response: any) => {
-            console.log(response);
             Swal.fire({
               title: 'Éxito',
               text: 'El instrumento se ha actualizado con éxito',
@@ -126,7 +118,6 @@ export class TablaGruposComponent implements OnInit {
             });
             this.getGrupos();
           }, error => {
-            console.log(error.error.message.nombre);
             Swal.fire({
               title: 'Fallido',
               text: error.error.message,

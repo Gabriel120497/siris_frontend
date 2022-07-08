@@ -31,7 +31,6 @@ export class TablaSalonesComponent implements OnInit {
   }
 
   eliminarSalon(index: number) {
-    console.log(this.salones[index].id);
     Swal.fire({
       title: 'Importante',
       text: '¿Está seguro que desea eliminar este salón?',
@@ -43,7 +42,6 @@ export class TablaSalonesComponent implements OnInit {
       if (result.isConfirmed) {
         this.salonesService.eliminarSalon(this.salones[index].id, this.usuariosService.getToken()).subscribe(
           (response: any) => {
-            console.log(response.salon);
             Swal.fire({
               title: 'Éxito',
               text: `El grupo ${response.salon.ubicacion} ha sido eliminado`,
@@ -72,10 +70,8 @@ export class TablaSalonesComponent implements OnInit {
   getSalones() {
     this.salonesService.getSalones(this.usuariosService.getToken()).subscribe(
       (response: any) => {
-        console.log(response.salones);
         this.salones = response.salones;
       }, error => {
-        console.log(error.error.message.nombre);
         Swal.fire({
           title: 'Fallido',
           text: error.error.message.nombre,

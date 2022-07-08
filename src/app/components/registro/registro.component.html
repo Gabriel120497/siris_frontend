@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+    <div>
+        <!-- New -->
+        <form name="newInstrumento" class="register" [formGroup]="nuevoUsuarioForm" (ngSubmit)="nuevoUsuario()">
+            <fieldset class="row1">
+                <div class="form-group">
+                    <label>Nombre *</label>
+                    <input type="text" formControlName="nombre" class="form-control">
+                    <label>Apellidos *</label>
+                    <input type="text" formControlName="apellido" class="form-control">
+                    <label>Tipo Documento *</label>
+                    <select formControlName="tipo_documento" class="form-group2">
+                        <option value="CC">CC - Cédula de ciudadania
+                        </option>
+                        <option value="TI">TI - Tarjeta de identidad
+                        </option>
+                        <option value="CE">CE - Cédula de extranjeria
+                        </option>
+                        <option value="PASAPORTE">Pasaporte
+                        </option>
+                    </select>
+                    <label>Número de documento *</label>
+                    <input type="text" formControlName="numero_documento" class="form-control">
+                    <label>Número de contacto *</label>
+                    <input type="text" formControlName="celular" class="form-control">
+                    <label>Correo</label>
+                    <input type="text" formControlName="correo" class="form-control"
+                        [ngClass]="{'is-invalid':!nuevoUsuarioForm.get('correo').valid && nuevoUsuarioForm.get('correo').touched}">
+                    <div *ngIf="!nuevoUsuarioForm.get('correo').valid && nuevoUsuarioForm.get('correo').touched"
+                        class="form-control-feedback col-12">
+                        Ingresa un correo válido.
+                    </div>
+                    <label>Clave</label>
+                    <input type="password" formControlName="clave" class="form-control" (change)="verificacion()"
+                        (keyup)="verificacion()" autocomplete="off"
+                        [ngClass]="{'is-invalid':!nuevoUsuarioForm.get('clave').valid && nuevoUsuarioForm.get('clave').touched}">
+                    <label>Confirmar Clave</label>
+                    <input type="password" formControlName="confirmarClave" class="form-control"
+                        (change)="verificacion()" (keyup)="verificacion()" autocomplete="off"
+                        [ngClass]="{'is-invalid':!nuevoUsuarioForm.get('confirmarClave').valid && nuevoUsuarioForm.get('confirmarClave').touched}">
+                    <div *ngIf="!nuevoUsuarioForm.controls['clave'].errors?.required && !claveIgual && nuevoUsuarioForm.get('confirmarClave').touched"
+                        class="form-control-feedback col-12">
+                        Las contraseñas no coinciden
+                    </div>
+                </div>
+            </fieldset>
+            <!-- Botones -->
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!nuevoUsuarioForm.valid">Guardar</button>
+            </div> <!-- End of row -->
+        </form>
+    </div>
+
+</div> <!-- /container -->

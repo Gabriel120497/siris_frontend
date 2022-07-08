@@ -6,7 +6,6 @@ import { LoginComponent } from './components/login/login.component';
 import { GruposProyeccionComponent } from './components/users/grupos-proyeccion/grupos-proyeccion.component';
 import { ReservaEquiposComponent } from './components/users/reservas/reserva-equipos/reserva-equipos.component';
 import { ReservasComponent } from './components/users/reservas/reservas.component';
-import { ReservasAdminComponent } from './components/admin/reservas-admin/reservas-admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { InstrumentosComponent } from './components/admin/instrumentos/instrumentos.component';
 import { EquiposComponent } from './components/admin/equipos/equipos.component';
@@ -22,13 +21,15 @@ import { TablaSalonesComponent } from './components/tabla/tabla-salones/tabla-sa
 import { TablaAudicionesComponent } from './components/tabla/tabla-audiciones/tabla-audiciones.component';
 import { TablaMisgruposComponent } from './components/tabla/tabla-misgrupos/tabla-misgrupos.component';
 import { TablaReservasComponent } from './components/tabla/tabla-reservas/tabla-reservas.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
 
   {path: 'users/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'users/reservas/:modulo', component: ReservasComponent},
-  {path: 'Grupos-de-Proyeccion/:role', component: GruposProyeccionComponent},
+  {path: 'Grupos-de-Proyeccion', component: GruposProyeccionComponent},
   {path: 'admin/reservas/Equipos', component: ReservaEquiposComponent},
   {path: 'admin/agregar/Roles', component: RolesComponent},
   {path: 'admin/Carga-Archivos', component: CargaArchivosComponent},

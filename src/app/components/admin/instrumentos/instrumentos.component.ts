@@ -22,7 +22,6 @@ export class InstrumentosComponent implements OnInit {
   modulo: any = this.router.snapshot.url[2].path;
 
   ngOnInit(): void {
-    console.log(this.router.snapshot.url[2].path);
     this.nuevoInstrumentoForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
       placa: new FormControl('', Validators.required),
@@ -35,7 +34,6 @@ export class InstrumentosComponent implements OnInit {
     });
     this.salonesService.getSalones(localStorage.getItem('token') || "[]").subscribe(
       (response: any) => {
-        console.log(response.salones);
         this.salones = response.salones;
       }, error => {
         this.status = 'error';
@@ -60,7 +58,6 @@ export class InstrumentosComponent implements OnInit {
   }
 
   nuevoInstrumento() {
-    console.log(this.nuevoInstrumentoForm.value);
     let instrumento = {
       placa: this.nuevoInstrumentoForm.value.placa,
       nombre: this.nuevoInstrumentoForm.value.nombre,
@@ -77,7 +74,6 @@ export class InstrumentosComponent implements OnInit {
 
     this.instrumentosService.nuevoInstrumento(localStorage.getItem('token') || "[]", instrumento).subscribe(
       (response: any) => {
-        console.log(response);
         Swal.fire({
           title: 'Éxito',
           text: 'El Instrumento se ha registrado correctamente',
