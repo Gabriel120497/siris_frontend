@@ -56,15 +56,15 @@
             <textarea name="description" id="descriptionBox" [(ngModel)]="descripcionNecesidad"></textarea>
         </div>
         <div>
-            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-success" (click)="cancelar()">Cancelar</button>
-            <button type="button" class="btn btn-success" (click)="hacerReserva()">Guardar</button>
+            <button *ngIf="itemsParaReservar.length > 0" type="button" class="btn btn-outline-danger" (click)="cancelar()">Cancelar</button>
+            <button type="button" class="btn btn-outline-success" (click)="hacerReserva()">Guardar</button>
         </div>
     </div>
 </div>
     <div *ngIf="mostrarCalendario">
         <app-calendario (bookingChange)="obtenerHora($event)"></app-calendario>
         <div class="body">
-            <button type="button" class="btn btn-success" (click)="siguiente()">Siguiente</button>
+            <button type="button" class="btn btn-outline-success" (click)="siguiente()">Siguiente</button>
         </div>
         <br>
     </div>
