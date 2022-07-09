@@ -98,6 +98,16 @@ export class DashboardComponent implements OnInit {
         }
         break;
 
+      case 'Colaborador':
+        if (modulo == 'GruposProyeccion') {
+          this.route.navigate(['Grupos-de-Proyeccion']);
+        } else if (modulo == 'Cursos') {
+          window.location.href = 'http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php';
+        } else {
+          this.route.navigate(['/users/reservas', modulo]);
+        }
+        break;
+
       case 'Cursos':
         this.route.navigate(['http://www2.politecnicojic.edu.co/polidinamico/polifomentocultural/pdfcinscripciones.php']);
         break;

@@ -5,6 +5,8 @@ import { GruposModel } from 'src/app/models/grupos';
 import { GruposService } from 'src/app/services/grupos.service';
 import { SalonesService } from 'src/app/services/salones.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+
+import { FlatpickrModule } from 'angularx-flatpickr';
 import Swal from 'sweetalert2';
 
 @Component({

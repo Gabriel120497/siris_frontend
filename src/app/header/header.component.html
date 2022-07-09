@@ -24,7 +24,7 @@
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
-            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','Reservas']">Reservas</a></li>
+            <li><a class="dropdown-item" *ngIf="admin  || colaborador" [routerLink]="['/', 'admin','Reservas']">Reservas</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','Colaboradores']">Colaboradores</a></li>
             <li><a class="dropdown-item" *ngIf="profesor" [routerLink]="['/', 'teachers','Mis-Grupos']">Mis Grupos</a></li>
             <li><a class="dropdown-item" *ngIf="profesor"[routerLink]="['/', 'teachers','Audiciones']">Audiciones Pendientes</a></li>

@@ -15,7 +15,7 @@ export class TablaReservasAprobadasComponent implements OnInit {
   constructor(private route: Router, private reservasService: ReservasService,
     private usuariosService: UsuariosService) { }
 
-  headerTabla: string[] = ['ID Reserva', 'Usuario', 'Item', 'Documeto Usuario'];
+  headerTabla: string[] = ['ID Reserva', 'Item', 'Usuario', 'Documeto Usuario'];
   @Input() salones: any[];
   @Input() instrumentos: any[];
   @Input() equipos: any[];

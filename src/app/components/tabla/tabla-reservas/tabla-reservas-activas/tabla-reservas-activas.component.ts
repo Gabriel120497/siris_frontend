@@ -15,7 +15,7 @@ export class TablaReservasActivasComponent implements OnInit {
   constructor(private route: Router, private reservasService: ReservasService,
     private usuariosService: UsuariosService) { }
 
-  headerTabla: string[] = ['ID Reserva', 'Usuario', 'Item', 'Documeto Usuario'];
+  headerTabla: string[] = ['ID Reserva', 'Item', 'Usuario', 'Documeto Usuario'];
   @Input() salones: any[];
   @Input() instrumentos: any[];
   @Input() equipos: any[];
@@ -37,7 +37,7 @@ export class TablaReservasActivasComponent implements OnInit {
         console.log(response);
         Swal.fire({
           title: 'Éxito',
-          text: 'La reserva se ha activado con éxito',
+          text: 'La reserva ha terminado',
           icon: 'success',
           confirmButtonColor: '#009045',
           confirmButtonText: 'Confirmar'

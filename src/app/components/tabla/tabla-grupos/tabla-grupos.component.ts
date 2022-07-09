@@ -111,7 +111,7 @@ export class TablaGruposComponent implements OnInit {
           (response: any) => {
             Swal.fire({
               title: 'Éxito',
-              text: 'El instrumento se ha actualizado con éxito',
+              text: 'El grupo se ha actualizado con éxito',
               icon: 'success',
               confirmButtonColor: '#009045',
               confirmButtonText: 'Confirmar'

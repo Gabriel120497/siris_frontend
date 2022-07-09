@@ -10,7 +10,7 @@
                                 <tr>
                                     <th *ngFor="let item of headerTabla">{{item}}</th>
                                     <th style="width:150px;" class="text-center">
-                                        <i class="bi bi-gear-fill"></i>
+                                        Terminar Reserva
                                     </th>
                                 </tr>
                             </thead>
@@ -21,7 +21,7 @@
                                     <td>{{item.nombre + ' ' + item.apellido}}</td>
                                     <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
                                     <td class="text-center">
-                                        
+
                                         <button class="btn btn-outline-danger del-icon"
                                             (click)="devolverReserva(item.id)">
                                             <span><i class={{rojoBtn}}>

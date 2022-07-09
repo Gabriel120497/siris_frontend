@@ -114,7 +114,7 @@ export class UsuariosService {
 
   actualizarColaborador(token: string, usuario: any) {
     let headers = new HttpHeaders().set('Authorization', token);
-    return this.http.post(this.url + 'usuario/editarColaborador', usuario, { headers: headers });
+    return this.http.put(this.url + 'usuario/editarColaborador', usuario, { headers: headers });
   }
 
 }

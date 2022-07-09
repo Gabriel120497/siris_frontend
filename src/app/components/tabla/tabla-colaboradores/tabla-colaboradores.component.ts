@@ -95,9 +95,9 @@ export class TablaColaboradoresComponent implements OnInit {
       nombre: new FormControl({ value: this.colaboradores[index].nombre + ' ' + this.colaboradores[index].apellido, disabled: true }, Validators.required),
       rol: new FormControl(this.colaboradores[index].rol),
       celular: new FormControl(this.colaboradores[index].celular, Validators.required),
-      correo: new FormControl({ value: this.colaboradores[index].correo, disabled: true }),
-      prerequisitos: new FormControl(this.colaboradores[index].prerequisitos)
+      correo: new FormControl(this.colaboradores[index].correo, Validators.required),
     });
+    console.log(this.colaboradoresForm.value);
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
 
@@ -126,6 +126,8 @@ export class TablaColaboradoresComponent implements OnInit {
                 this.getColaboradores();
               }
             })
+            this.cargando = false;
+            this.getColaboradores();
           });
       }
     }, (reason) => {

@@ -1,4 +1,4 @@
-<app-cargando  *ngIf="cargando"></app-cargando>
+<app-cargando *ngIf="cargando"></app-cargando>
 <app-header></app-header>
 <div class="container">
     <div>
@@ -43,13 +43,17 @@
                         </div>
                         <div class="col2">
                             <label>Hora Inicio*</label>
-                            <ngb-timepicker formControlName="horaInicio" [(ngModel)]="horaInicial"></ngb-timepicker>
+                            <input class="form-control" formControlName="horaInicio" type="text" mwlFlatpickr
+                                [noCalendar]="true" [enableTime]="true" [time24hr]="true" dateFormat="H:i" />
+                            <!--ngb-timepicker formControlName="horaInicio" [(ngModel)]="horaInicial"></ngb-timepicker-->
                         </div>
                         <div class="col2">
                             <label>Hora Fin*</label>
+                            <input class="form-control" formControlName="horaFin" type="text" mwlFlatpickr
+                                [noCalendar]="true" [enableTime]="true" [time24hr]="true" dateFormat="H:i" />
                             <!--ngx-mat-timepicker #picker></ngx-mat-timepicker-->
                             <!--ngx-mat-timepicker formControlName="horaFin" [(ngModel)]="horaFinal"></ngx-mat-timepicker-->
-                            <ngb-timepicker formControlName="horaFin" [(ngModel)]="horaFinal"></ngb-timepicker>
+                            <!--ngb-timepicker formControlName="horaFin" [(ngModel)]="horaFinal"></ngb-timepicker-->
                         </div>
                         <div class="col2">
                             <label>Salón *</label>
@@ -60,7 +64,7 @@
                         </div>
                     </div>
                     <div>
-                        <button (click)="agregarDia()" type="button" [disabled]="agregar">Agregar dia</button>
+                        <button class="btn btn-outline-secondary" (click)="agregarDia()" type="button" [disabled]="agregar">Agregar dia</button>
 
                     </div>
                 </div>

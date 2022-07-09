@@ -10,7 +10,7 @@
                                 <tr>
                                     <th *ngFor="let item of headerTabla">{{item}}</th>
                                     <th style="width:150px;" class="text-center">
-                                        <i class="bi bi-gear-fill"></i>
+                                        Iniciar Reserva
                                     </th>
                                 </tr>
                             </thead>
@@ -21,7 +21,8 @@
                                     <td>{{item.nombre + ' ' + item.apellido}}</td>
                                     <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-success del-icon" (click)="reclamarReserva(item.id)">
+                                        <button class="btn btn-outline-success del-icon"
+                                            (click)="reclamarReserva(item.id)">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
@@ -35,11 +36,12 @@
                                     <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
 
                                     <td class="text-center">
-                                        <button class="btn btn-outline-success del-icon" (click)="reclamarReserva(item.id)">
+                                        <button class="btn btn-outline-success del-icon"
+                                            (click)="reclamarReserva(item.id)">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
-                                        
+
                                     </td>
                                 </tr>
 
@@ -50,11 +52,12 @@
                                     <td>{{item.tipo_documento + ' ' + item.numero_documento}}</td>
 
                                     <td class="text-center">
-                                        <button class="btn btn-outline-success del-icon" (click)="reclamarReserva(item.id)">
+                                        <button class="btn btn-outline-success del-icon"
+                                            (click)="reclamarReserva(item.id)">
                                             <span><i class={{verdeBtn}}>
                                                 </i></span>
                                         </button>
-                                        
+
                                     </td>
                                 </tr>
                             </tbody>

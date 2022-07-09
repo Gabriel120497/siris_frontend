@@ -50,7 +50,7 @@ export class SalonesComponent implements OnInit {
         this.cargando = false;
         Swal.fire({
           title: 'Importante',
-          text: `La placa ${salon.ubicacion} ya se encuentra registrada`,
+          text: `El salón ${salon.ubicacion} ya se existe`,
           icon: 'warning',
           confirmButtonColor: '#009045',
           confirmButtonText: 'Ok'

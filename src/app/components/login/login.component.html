@@ -12,12 +12,12 @@
 					</span>
 
 					<div class="wrap-input100">
-						<input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario"
+						<input class="input100" type="text" id="usuario" name="usuario" placeholder="Correo"
 							formControlName="usuario">
 						<div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)" class="alert-validate">
 
 							<div *ngIf="usuario.errors?.['required']">
-								EL Usuario es requerido
+								EL Correo es requerido
 							</div>
 						</div>
 						<span class="focus-input100"></span>
@@ -49,7 +49,7 @@
 					<div class="container-login100-form-btn">
 						<button type="button" class="login100-form-btn"
 							[routerLink]="['/', 'registro']">
-							Reistrarse
+							Registrarse
 						</button>
 					</div>
 					
