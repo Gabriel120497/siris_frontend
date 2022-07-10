@@ -1,6 +1,9 @@
 .img {
-    width: 60%;
+    width: 15%;
     height: auto;
+}
+.logo{
+    padding-left: 20px;
 }
 
 .img:hover{
@@ -19,7 +22,7 @@
 
 .navbar{
     flex-wrap: nowrap;
-    background-color: #009045;
+    background-color: #ccdc4c;
 }
 
 .dropdown-menu.show {
@@ -31,9 +34,9 @@
 }
 
 .nav-link {
-    color: #009045;
+    color: #ccdc4c;
 }
 
-.nav-link::hover{
-    color: #009045;
+.nav-link:hover{
+    color: #ccdc4c;
 }

@@ -89,20 +89,18 @@ export class CursosGruposComponent implements OnInit {
           'hora_fin': this.horaFinal.hour + ':' + this.horaFinal.minute
         });
         this.dias.splice(0, 1);
-        let profesor = this.profesores.filter((profesor: { id: any; }) => profesor.id = this.nuevoGrupoForm.value.profesor);
+        let profesor = this.profesores.find((profe: { id: any; })  => profe.id == this.nuevoGrupoForm.value.profesor);        
         this.nuevoGrupoRequest.nombre = this.nuevoGrupoForm.value.nombre;
         this.nuevoGrupoRequest.descripcion = this.nuevoGrupoForm.value.descripcion;
-        this.nuevoGrupoRequest.profesor = profesor[0].nombre + ' ' + profesor[0].apellido
+        this.nuevoGrupoRequest.profesor = profesor.nombre + ' ' + profesor.apellido
         this.nuevoGrupoRequest.cupos_totales = this.nuevoGrupoForm.value.cupos_totales;
         this.nuevoGrupoRequest.cupos_restantes = this.nuevoGrupoForm.value.cupos_totales;
         this.nuevoGrupoRequest.prerequisitos = this.nuevoGrupoForm.value.prerequisitos != '' ? this.nuevoGrupoForm.value.prerequisitos : 'N/A';
         this.nuevoGrupoRequest.horario = this.dias;
         this.nuevoGrupoRequest.id_salon_clases = this.nuevoGrupoForm.value.id_salon_clase;
-        console.log(this.nuevoGrupoRequest);
 
         this.gruposService.nuevoGrupo(this.nuevoGrupoRequest, this.usuariosService.getToken()).subscribe(
           (response: any) => {
-            console.log(response.grupo);
             this.cargando = false;
 
             Swal.fire({
@@ -148,7 +146,6 @@ export class CursosGruposComponent implements OnInit {
   }
 
   agregarDia() {
-    console.log(this.dias);
     if (this.dias.length < 6) {
       if (this.horaInicial.hour < this.horaFinal.hour) {
         this.dias.push({

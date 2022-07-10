@@ -25,6 +25,10 @@
   font-size: medium;
 }
 
-tbody{
+tbody {
   vertical-align: middle;
+}
+
+.nav-link {
+  color: black;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AudicionesService } from 'src/app/services/audiciones.service';
 import { GruposService } from 'src/app/services/grupos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,8 @@ export class GruposProyeccionComponent implements OnInit {
   setSlidesVar: number = 0;
 
   constructor(private route: Router, private router: ActivatedRoute,
-    private gruposService: GruposService, private usuariosService: UsuariosService) { }
+    private gruposService: GruposService, private usuariosService: UsuariosService,
+    private audicionesService: AudicionesService) { }
 
   role: any = this.usuariosService.getRol();//this.router.snapshot.paramMap.get('role');
 
@@ -70,11 +72,38 @@ export class GruposProyeccionComponent implements OnInit {
       });
   }
 
-  audicionar(grupo: string) {
-    console.log('entré', this.role);
-  
+  audicionar(grupo: any) {
     if (this.role != 'Externos' && this.role != 'undefined' && this.role != undefined) {
       console.log(`se manda correo al docente del grupo ${grupo}`);
+      this.cargando = true;
+      let aspirante = {
+        tipo_documento: this.usuariosService.getDocumento().split(' ')[0],
+        numero_documento: this.usuariosService.getDocumento().split(' ')[1],
+        id_grupo: grupo.id
+      }
+      console.log(aspirante);
+      
+      this.audicionesService.nuevaAudicion(aspirante).subscribe(
+        (response: any) => {
+          //this.grupos = response.grupos;
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Su audicion a quedado registrada con éxito, ' +
+              'el docente se estará comunicando prontamente para agendar la audición',
+            icon: 'success',
+            confirmButtonColor: '#009045',
+            confirmButtonText: 'Confirmar'
+          })
+        }, error => {
+          Swal.fire({
+            title: 'Importante',
+            text: error.error.message,
+            icon: 'warning',
+            confirmButtonColor: '#009045',
+            confirmButtonText: 'Confirmar'
+          })
+        });
+        this.cargando = false;
     } else {
       this.route.navigate(['externos/Audicion', grupo]);
     }

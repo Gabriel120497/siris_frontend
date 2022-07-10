@@ -75,7 +75,8 @@ body {
 
 .left button:hover,
 .right button:hover {
-  background-color: #F4D331;
+  background-color: #f4a455;
+  opacity: 70%;
   color: white;
 }
 
@@ -119,6 +120,8 @@ body {
 .btn {
   padding: 0.1rem 0.4rem;
   font-size: small;
+  background: #cfe3eb;
+  border-color: #cfe3eb;
 }
 
 .del-icon {

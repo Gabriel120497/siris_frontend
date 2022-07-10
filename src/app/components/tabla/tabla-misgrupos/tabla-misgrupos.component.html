@@ -14,7 +14,7 @@
                                 <tr>
                                     <th *ngFor="let item of headerTabla">{{item}}</th>
                                     <th style="width:150px;" class="text-center">
-                                        <i class="bi bi-gear-fill"></i>
+                                        Ver Estudiantes
                                     </th>
                                 </tr>
                             </thead>
@@ -85,9 +85,9 @@
                                     <thead>
                                         <tr>
                                             <th *ngFor="let item of headerTablaEstudiantes">{{item}}</th>
-                                            <th style="width:150px;" class="text-center">
+                                            <!--th style="width:150px;" class="text-center">
                                                 <i class="bi bi-gear-fill"></i>
-                                            </th>
+                                            </th-->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -97,12 +97,12 @@
                                             <td>{{item.nombre + ' ' + item.apellido}}</td>
                                             <td>{{item.celular}}</td>
                                             <td>{{item.correo}}</td>
-                                            <td class="text-center">
+                                            <!--td class="text-center">
                                                 <button class="btn btn-outline-danger del-icon">
                                                     <span><i class={{rojoBtn}}>
                                                         </i></span>
                                                 </button>
-                                            </td>
+                                            </td-->
                                         </tr>
                                     </tbody>
                                 </table>

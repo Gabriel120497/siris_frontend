@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="container-fluid nav">
-    <a class="navbar-brand" (click)="redirigir()"><img class="img" src="../../assets/logoPoli.png"></a>
+    <a class="navbar-brand logo" (click)="redirigir()"><img class="img" src="../../assets/logoFomentoCultural.png"></a>
 
 
     <!--div class="btn-group">
@@ -21,7 +21,7 @@
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Roles']">Nuevo Colaborador</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Instrumentos']">Nuevo Instrumento</a></li>
-            <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li>
+            <!--li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Equipos']">Nuevo Equipo</a></li-->
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Salones']">Nuevo Salón</a></li>
             <li><a class="dropdown-item" *ngIf="admin" [routerLink]="['/', 'admin','agregar','Grupos-de-Proyeccion']">Nuevo Grupo de Proyección</a></li>
             <li><a class="dropdown-item" *ngIf="admin  || colaborador" [routerLink]="['/', 'admin','Reservas']">Reservas</a></li>

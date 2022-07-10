@@ -42,6 +42,7 @@ export class TablaAudicionesComponent implements OnInit {
             confirmButtonColor: '#009045',
             confirmButtonText: 'Confirmar'
           })
+          this.audiciones = [];
         });
   }
 
@@ -53,7 +54,6 @@ export class TablaAudicionesComponent implements OnInit {
       estado_usuario: 'INTEGRANTE'
     }
     this.audicionesService.actualizarAudicion(audicion).subscribe((response: any) => {
-      this.cargando = false;
       Swal.fire({
         title: 'Éxito',
         text: 'La audición se ha actualizado existosamente',
@@ -63,6 +63,7 @@ export class TablaAudicionesComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.getAudicionesPendientes();
+          this.cargando = false;
         }
       })
     }, error => {
@@ -73,6 +74,9 @@ export class TablaAudicionesComponent implements OnInit {
         confirmButtonColor: '#009045',
         confirmButtonText: 'Confirmar'
       })
+      this.cargando = false;
+      this.getAudicionesPendientes();
+
     });
   }
 
@@ -84,9 +88,8 @@ export class TablaAudicionesComponent implements OnInit {
       estado_usuario: 'RECHAZADO'
     }
     console.log(audicion);
-    
+
     this.audicionesService.actualizarAudicion(audicion).subscribe((response: any) => {
-      this.cargando = false;
       Swal.fire({
         title: 'Éxito',
         text: 'La audición se ha actualizado existosamente',
@@ -98,6 +101,8 @@ export class TablaAudicionesComponent implements OnInit {
           this.getAudicionesPendientes();
         }
       })
+      this.cargando = false;
+      //this.getAudicionesPendientes();
     }, error => {
       Swal.fire({
         title: 'Importante',
@@ -106,7 +111,11 @@ export class TablaAudicionesComponent implements OnInit {
         confirmButtonColor: '#009045',
         confirmButtonText: 'Confirmar'
       })
+      //this.audiciones = [];
+      //this.getAudicionesPendientes();
+      this.cargando = false;
     });
+    this.getAudicionesPendientes();
   }
 
 }

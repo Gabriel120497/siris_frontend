@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-tabla-reservas',
   templateUrl: './tabla-reservas.component.html',
-  styleUrls: ['./tabla-reservas.component.css']
+  styleUrls: ['../../../css/tabla.component.css']
 })
 export class TablaReservasComponent implements OnInit {
 

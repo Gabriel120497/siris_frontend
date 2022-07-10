@@ -45,6 +45,7 @@ export class TablaMisgruposComponent implements OnInit {
   getEstudiantes(index: number, modal: any) {
     this.gruposService.getEstudiantes(this.usuariosService.getToken(), this.mis_grupos[index].id).subscribe(
       (response: any) => {
+        this.estudiantes = response.estudiantes
         this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
 
         }, (reason) => {

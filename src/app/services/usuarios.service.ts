@@ -16,6 +16,7 @@ export class UsuariosService {
   sub: string;
   nombre: string;
   correo: string;
+  documento: string;
   constructor(public http: HttpClient) {
     this.url = global.url;
   }
@@ -90,6 +91,16 @@ export class UsuariosService {
       this.token = '';
     }
     return this.token;
+  }
+
+  getDocumento() {
+    let identity = JSON.parse(localStorage.getItem('identity') || '');
+    if (identity && (identity != undefined || identity != 'undefined')) {
+      this.documento = identity.documento;
+    } else {
+      this.documento = '';
+    }
+    return this.documento;
   }
 
   profesores(token: string | []) {

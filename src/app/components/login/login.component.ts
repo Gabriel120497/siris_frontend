@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UsuariosModel } from 'src/app/models/usuario';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -52,12 +53,19 @@ export class LoginComponent implements OnInit {
               }
 
             }, error => {
-              this.status = 'error';
+
             }
           )
 
         } else {
           this.status = 'error';
+          Swal.fire({
+            title: 'Error',
+            text: response.message,
+            icon: 'error',
+            confirmButtonColor: '#009045',
+            confirmButtonText: 'Confirmar'
+          })
         }
 
       }, error => {

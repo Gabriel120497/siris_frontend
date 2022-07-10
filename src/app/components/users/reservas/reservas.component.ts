@@ -61,7 +61,7 @@ export class ReservasComponent implements OnInit {
     this.cargando = true;
     if (this.selectedItem.length !== 0 && this.reservaJson !== undefined) {
       this.reserva.id_usuario = this.usuariosService.getId();
-      this.reserva.estado = 'aprobada';
+      this.reserva.estado = 'Aprobada';
       this.reserva.item = this.selectedItem.nombre || this.selectedItem.ubicacion;
       this.reserva.tipo_item = this.modulo;
       this.reserva.fecha_inicio = this.reservaJson.fecha_inicio;
@@ -91,18 +91,36 @@ export class ReservasComponent implements OnInit {
         icon: 'warning',
         confirmButtonColor: '#009045'
       })
+      this.cargando = false;
     }
   }
 
   obtenerHora(e: any) {
+    console.log(e.length);
+    
     let pipe = new DatePipe('en-US');
+    if (e.length > 2 ) {
+      console.log('entro if',e);
+      
+      this.reservaJson = {
+        'fecha_inicio': pipe.transform(JSON.parse(e)[0].start, 'yyyy-MM-dd HH:mm:ss'),
+        'fecha_fin': pipe.transform(JSON.parse(e)[0].end, 'yyyy-MM-dd HH:mm:ss')
+      }
+    console.log(this.reservaJson);
 
-    this.reservaJson = {
-      'fecha_inicio': pipe.transform(JSON.parse(e)[0].start, 'dd-MM-yyyy HH:mm:ss'),
-      'fecha_fin': pipe.transform(JSON.parse(e)[0].end, 'dd-MM-yyyy HH:mm:ss')
+    } else {
+      this.reservaJson = undefined;
+      /*Swal.fire({
+        title: 'Atención',
+        text: `Recuerde seleccionar una fecha y hora antes de hacer su reserva`,
+        icon: 'warning',
+        confirmButtonColor: '#009045'
+      })*/
     }
 
-    this.show = true; this.cargando = true;
+
+    this.show = true; 
+    this.cargando = true;
     if (this.modulo === 'Salones') {
       this.salonesService.getSalones(this.usuariosService.getToken()).subscribe(
         (response: any) => {

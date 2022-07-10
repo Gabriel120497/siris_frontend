@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   slides: any[] = [
     { nombre: 'Grupos de Proyeccion', modulo: 'GruposProyeccion' },
     { nombre: 'Instrumentos', modulo: 'Instrumentos' },
-    { nombre: 'Equipos', modulo: 'Equipos' },
+    //{ nombre: 'Equipos', modulo: 'Equipos' },
     { nombre: 'Salones', modulo: 'Salones' },
     { nombre: 'Cursos', modulo: 'Cursos' }
   ];
